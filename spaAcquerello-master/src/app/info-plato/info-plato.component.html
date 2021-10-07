@@ -1,0 +1,24 @@
+<body>
+    <div class="container">
+        <div class="box one">
+            <a href="carta" style="color: #25274d; font-size: small;">Volver</a>
+        <div class="details">
+            <div class="topic">{{platoObtener._nombre}}</div>
+            <p>{{platoObtener._descripcion}}</p>
+            <div class="price-box">
+                <div class="price">${{platoObtener._precio}}</div>
+            </div>
+        </div>
+        <div class="button1">
+            <button (click)="agregarProducto()">Añadir al Carrito</button>
+        </div>
+        </div>
+        <div class="box two">
+        <div class="image-box">
+            <div class="image">
+            <img src="{{platoObtener._imagen}}" alt="">
+            </div>
+        </div>
+        </div>
+    </div>
+</body>

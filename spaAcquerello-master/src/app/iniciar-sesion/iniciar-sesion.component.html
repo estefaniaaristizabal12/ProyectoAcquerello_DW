@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .bg{
+            background-image: url(assets/restauranteInicio.png);
+            background-position: center center;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+    
+<div class="container w-75 bg-primary mt-5 rounded shadow" >
+    <div class="row align-items-center align-items-stretch">
+        <div class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded bg">
+            
+        </div>
+
+        <div class="col bg-white p-5 col-lg-7 col-xl-6 rounded-end">
+            <div class="text-end">
+                <img src="assets/LogoAquerello2.png" alt="" style="width:48px">
+            </div>
+            <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido a Acquerello</h2>
+
+            
+            <form (ngSubmit)="inicioSesionSubmit()">
+                <div class="mb-4">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="text" class="form-control"  name ="email" id="email" placeholder="example@example.com" [(ngModel)]="email">
+                </div>
+                <div class class="mb-4">
+                    <label for="contrasenia" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control"  name ="contrasenia" id="contrasenia" placeholder="contaseña" [(ngModel)]="contrasenia">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                </div>
+                <div class="my-3">
+                    <span>No tienes una cuenta? <a routerLink="/registrarse">Regístrate</a></span> <br/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<br>
+    
+</body>
+</html>
+
+
+

@@ -1,0 +1,48 @@
+
+
+<div class="container rounded mt-5" >
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="border-color: lightslategray;">
+                <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" routerLink="/perfilAdmin" role="tab" aria-controls="v-pills-home" aria-selected="false">Mi Perfil</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"  routerLink="/reporteVenta" role="tab" aria-controls="v-pills-profile" aria-selected="false">Reporte Ventas</a>
+                <a class="nav-link active" id="v-pills-messages-tab" data-toggle="pill" routerLink="/administrarProductos" role="tab" aria-controls="v-pills-messages" aria-selected="true"> Editar y eliminar productos</a>
+                <a class="nav-link " id="v-pills-messages-tab" data-toggle="pill" routerLink="/agregarProducto"  role="tab" aria-controls="v-pills-messages" aria-selected="false">Agregar productos</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" routerLink="/" (click)="cerrar()" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cerrar Sesión</a>
+              </div>
+        </div>
+
+        <div class="col-md-1">
+            
+        </div>
+
+        <div class="col-md-7 rounded" style="background:#f7f7f7">
+            <h1 style="text-align: center;">Editar producto</h1>
+            <h6 style="text-align: center;">Acquerello</h6>
+        <div class="row">
+                     
+                <form >
+                    <div class="mb-4">
+                        <label for="nombre" class="form-label">Nombre</label> 
+                        <input type="text" class="form-control" name ="nombre" id="nombre" placeholder="Nombre" value={{platoObtener._nombre}} [(ngModel)]="platoObtener._nombre"> 
+                    </div>
+                    <div class class="mb-4">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control"  name ="descripcion" id="descripcion" placeholder="descripcion" value={{platoObtener._descripcion}} [(ngModel)]="platoObtener._descripcion" >
+                    </div>
+                    <div class class="mb-4">
+                        <label for="descripcion" class="form-label">Precio</label>
+                        <input type="number" class="form-control" name ="precio" id="precio" placeholder="Precio" value={{platoObtener._precio}} [(ngModel)]="platoObtener._precio">
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary" style="background-color: #25274d;" (click)="actualizar()">Editar producto</button>
+                        <br>
+                    </div>
+            
+                </form>
+
+            </div>
+
+    </div>
+</div>

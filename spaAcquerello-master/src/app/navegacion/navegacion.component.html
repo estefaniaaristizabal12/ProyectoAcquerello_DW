@@ -1,0 +1,61 @@
+
+<nav *ngIf="mostrarInicioG" class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Acquerello</a>
+    <form class="d-flex">
+      <div class="btn-group dropstart" (click)="actualizar()">
+        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <a  href="#"> <img src="assets/perfilU.png" width="30" height="30"></a>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" routerLink="/registrarse">Registrarse</a></li>
+          <li><a class="dropdown-item" routerLink="/iniciarSesion">Iniciar sesión</a></li>
+        </ul>
+      </div>   
+          <button class="btn btn-outline-light"  [disabled]="true"type="submit"><a  routerLink="/carroCompras"> <img src="assets/carroC.png" width="30" height="30"></a></button>
+    </form>
+  </div>
+</nav>
+
+<nav *ngIf="mostrarInicioU" class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Acquerello</a>
+    <form class="d-flex">
+      <div class="btn-group dropstart" (click)="actualizar()">
+        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <a  href="#"> <img src="assets/perfilU.png" width="30" height="30"></a>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" routerLink="/miCuenta">Mi perfil</a></li>
+          <li><a class="dropdown-item" routerLink="/ordenes">Mis ordenes</a></li>
+          <li><a class="dropdown-item" routerLink="/" (click)="cerrar()" >Cerrar sesión</a></li>
+        </ul>
+      </div>   
+          <button  class="btn btn-outline-light" type="submit"><a  routerLink="/carroCompras"> <img src="assets/carroC.png" width="30" height="30"></a></button>
+    </form>
+  </div>
+</nav>
+
+<nav *ngIf="mostrarInicioA" class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Acquerello</a>
+    <form class="d-flex">
+      <div class="btn-group dropstart" (click)="actualizar()">
+        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <a  href="#"> <img src="assets/perfilU.png" width="30" height="30"></a>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" routerLink="/perfilAdmin">Mi perfil</a></li>
+          <li><a class="dropdown-item" routerLink="/reporteVenta">Reporte de ventas</a></li>
+          <li><a class="dropdown-item" routerLink="/administrarProductos">Editar y eliminar productos</a></li>
+          <li><a class="dropdown-item" routerLink="/agregarProducto">Agregar producto</a></li>
+          <li><a class="dropdown-item" routerLink="/" (click)="cerrar()">Cerrar sesión</a></li>
+        </ul>
+      </div>  
+      
+      <button class="btn btn-outline-light" [disabled]="true" type="submit"><a  routerLink="/carroCompras"> <img src="assets/carroC.png" width="30" height="30"></a></button>
+          
+    </form>
+  </div>
+</nav>
+

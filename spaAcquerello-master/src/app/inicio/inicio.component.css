@@ -1,0 +1,118 @@
+.card ::shadow{
+    margin-top: 8%;
+    margin-left: 17%;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Satisfy&display=swap');
+h1{
+    font-family: 'Hina Mincho', serif;
+    font-size: 50px;
+    color: #25274d;
+}
+
+p{
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+
+h6{
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+    color: #efb810 ;
+    margin-bottom: 2%;
+}
+
+.pedir{
+    margin: 20px;
+    font-size: 20px;
+    background: none;
+    border-radius: 10px;
+    border: 2px solid #25274d;
+    color: #25274d;
+}
+
+.pedir:hover{
+    background: #25274d;
+    color: #fff;
+  }
+
+
+  ::selection{
+    background: #98B6EC;
+    display: flex;
+  }
+ 
+  
+  
+  .card ::shadow{
+      margin-top: 8%;
+      margin-left: 10%;
+  }
+  
+  
+  
+  .wrapper .card{
+    max-width: 400px;
+    width: 100%;
+    padding: 20px ;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+  }
+  .wrapper .card .images img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position:relative;
+    margin-left: 11%;
+    box-shadow: 0 0 20px #98B6EC;
+  }
+  .wrapper .card .text .product-name{
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .wrapper .card .text .spec{
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  
+  .wrapper .card .button{
+    display: flex;
+    margin-top: 20px;
+  }
+  .wrapper .card .button button{
+    width: 200px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #98B6EC;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 3px #98B6EC;
+  }
+  .wrapper .card .button button.cart{
+    margin-left: 20px;
+    background: none;
+    border: 2px solid #98B6EC;
+    color: #98B6EC;
+  }
+  .wrapper .card .button button.cart:hover{
+    background: #98B6EC;
+    color: #fff;
+  }
+  
+  .message.show{
+    left: 32px;
+  }

@@ -1,0 +1,43 @@
+
+
+<div class="col-12 text-center mb-2">
+    <h1 class="titulo-negro">
+        Domicilios
+    </h1>
+</div>
+<div class="col-12 text-center">
+    <h6 class="titulo-gold">
+        Categorías
+    </h6>
+</div>
+
+<div class="container" style="display: contents;">
+  <div class="row" >
+
+    <div class="col-md-4" *ngFor="let plato of listaPlatos"  >
+      <div class="wrapper" >
+        <div class="card">
+          <div class="images">
+            <img src="{{plato._imagen}}">
+          </div>
+          <div class="text">
+            <div class="product-name">{{plato._nombre}}</div>
+            <div class="spec">{{plato._descripcion}}</div>
+          </div>
+          <div class="button">
+            <button class="purchase" (click)="verProducto(plato)">Ver más info</button>
+            <button class="cart"  (click)="agregarProductoCC(plato)">Añadir al Carrito</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+</div>
+
+

@@ -1,0 +1,43 @@
+<div class="container rounded bg-white mt-5" >
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" routerLink="/perfilAdmin" role="tab" aria-controls="v-pills-home" aria-selected="false">Mi Perfil</a>
+                <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill"  routerLink="/reporteVenta" role="tab" aria-controls="v-pills-profile" aria-selected="true">Reporte Ventas</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" routerLink="/administrarProductos" role="tab" aria-controls="v-pills-messages" aria-selected="false"> Editar y eliminar productos</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" routerLink="/agregarProducto"  role="tab" aria-controls="v-pills-messages" aria-selected="false">Agregar productos</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" routerLink="/" (click)="cerrar()" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cerrar Sesión</a>
+              </div>
+        </div>
+        <div class="col-md-8">
+            <div  class="d-md-flex d-none justify-content-md-between justify-content-sm-center align-content-center border-bottom border-2 my-2 text-light p-3 rounded-3" style="background: #25274d; " >
+                <div  class="col-2 text-sm-center text-md-start align-self-center">
+                    <h1 class="h5 fw-bold">Nombre Plato</h1>
+                </div>
+                <div class="col-2 align-self-center">
+                    <h1 class="h5 fw-bold">Precio Plato</h1>
+                </div>
+                <div class="col-2 align-self-center">
+                    <h1 class="h5 fw-bold">Platos Vendidos</h1>
+                </div>
+                <div class="col-2 align-self-center">
+                    <h1 class="h5 fw-bold">Total Vendido</h1>
+                </div>
+            </div>
+            <div class="d-md-flex d-sm-block justify-content-md-between justify-content-sm-center text-center border-bottom border-2 my-2 bg-light p-2 rounded-3" *ngFor="let plato of listaPlatos" >
+                <div class="col-md-1 text-sm-center text-md-start align-self-center my-2">
+                    <h1 class="h6">{{plato._nombre}}</h1>
+                </div>
+                <div class="col-md-1 text-sm-center text-md-start align-self-center my-2">
+                    <h1 class="h6">${{plato._precio}}</h1>
+                </div>
+                <div class="col-md-1 text-sm-center text-md-start align-self-center my-2">
+                    <a href="{{totalVendidosF(plato)}}" style="text-decoration:none; color:black" > <h1 class="h6">{{totalVendidos}}</h1> </a>
+                </div>
+                <div class="col-md-1 text-sm-center text-md-start align-self-center my-2">
+                    <a href="{{precioTotalF(plato)}}" style="text-decoration:none; color:black"> <h1 class="h6"> ${{precioTotal}}</h1> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

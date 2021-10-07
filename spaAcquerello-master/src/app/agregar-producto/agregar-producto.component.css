@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Satisfy&display=swap');
+h1{
+    font-family: 'Hina Mincho', serif;
+    font-size: 50px;
+    color: #25274d;
+}
+
+h6{
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+    color: #efb810 ;
+    margin-bottom: 2%;
+}

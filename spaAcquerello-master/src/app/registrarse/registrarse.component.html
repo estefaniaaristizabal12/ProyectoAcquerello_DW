@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .bg{
+            background-image: url(assets/restauranteRegistro.png);
+            background-position: center center;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+    
+<div class="container w-75 bg-primary mt-5 rounded shadow" >
+    <div class="row align-items-center align-items-stretch">
+        <div class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded bg">
+            
+        </div>
+
+        <div class="col bg-white p-5 col-lg-7 col-xl-6 rounded-end">
+            <div class="text-end">
+                <img src="assets/LogoAquerello2.png" alt="" style="width:48px">
+            </div>
+            <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido a Acquerello</h2>
+
+            
+            <form (ngSubmit)="registroSubmit()" #listaForm="ngForm" novalidate>
+                <div class="mb-4">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" name ="email" id="email" placeholder="example@example.com" [(ngModel)]="usuario._email"  #email="ngModel" required minlength="3"  email="true" >
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                            class="alert">
+                        
+                        <div *ngIf="email.errors?.required">
+                            Email es Requerido.
+                        </div>
+                        <div *ngIf="email.errors?.minlength">
+                            Minimo 3 Caracteres.
+                        </div>
+                        <div *ngIf="email.errors?.email">
+                            Email incorrecto ( example@example.com).
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="nombre" class="form-label">Nombres</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre"  placeholder="nombre" [(ngModel)]="usuario._nombre"  #name="ngModel" required minlength="3" maxlength="20">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                            class="alert">
+                
+                        <div *ngIf="name.errors?.required">
+                            Nombre es Requerido.
+                        </div>
+                        <div *ngIf="name.errors?.minlength">
+                            El nombre debe tener minimo 3 Caracteres.
+                        </div>
+                     </div>
+                </div>
+                <div class="mb-4">
+                    <label for="apellido" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido"  placeholder="apellido" [(ngModel)]="usuario._apellido"  #apellido="ngModel" required minlength="3" maxlength="20">
+                    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+                            class="alert">
+        
+                        <div *ngIf="apellido.errors?.required">
+                            Apellido es Requerido.
+                        </div>
+                        <div *ngIf="apellido.errors?.minlength">
+                            El Apellido debe tener minimo 3 Caracteres.
+                        </div>
+                     </div>
+                </div>
+                <div class="mb-4">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion"   placeholder="direccion" [(ngModel)]="usuario._direccion"  #direccion="ngModel" required minlength="5" maxlength="30">
+                    <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)"
+                         class="alert">
+
+                        <div *ngIf="direccion.errors?.required">
+                            Direeccion es Requerido.
+                        </div>
+                        <div *ngIf="direccion.errors?.minlength">
+                            La Direccion debe tener minimo 5 Caracteres.
+                        </div>
+                     </div>
+                </div>
+                <div class="mb-4">
+                    <label for="contrasenia" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasenia" name="contrasenia"  placeholder="contraseña" [(ngModel)]="usuario._contrasenia" #contrasenia="ngModel" required minlength="5" maxlength="30">
+                    <div *ngIf="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)"
+                        class="alert">
+
+                            <div *ngIf="contrasenia.errors?.required">
+                                La Contraseña es Requerido.
+                            </div>
+                            <div *ngIf="contrasenia.errors?.minlength">
+                                La Contraseña debe tener minimo 5 Caracteres.
+                            </div>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary" [disabled]= "!listaForm.valid">Registrate</button>
+                </div>
+                <div class="my-3">
+                    <span>Ya tienes una cuenta? <a routerLink="/iniciarSesion">Inicia Sesion</a></span> <br/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of _usuarioService.listaUsuarios">
+                <th scope="row">{{usuario._nombre}}</th>
+                <td>{{usuario._apellido}}</td>
+                <td>{{usuario._email}}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+    </div>
+   </div> 
+    
+</body>
+</html>
+
+
+
