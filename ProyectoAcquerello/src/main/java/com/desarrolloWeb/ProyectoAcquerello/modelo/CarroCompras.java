@@ -2,27 +2,29 @@ package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import java.util.List;
+
 
 import javax.persistence.Basic;
+//import javax.persistence.EmbeddedId;
+
 
 @Entity
 public class CarroCompras {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCC;
+    private Long id_CC;
 
-    @OneToOne 
-    private Usuario usuario;
+    //@EmbeddedId
+    @ManyToOne
+    private Usuario usuarioc;
 
-    @OneToMany
-    private List<Plato> plato;
+    @ManyToOne
+    private Plato platoc;
 
     @Basic
     private Integer cantidad;
@@ -39,13 +41,16 @@ public class CarroCompras {
 
     //Getter
     public Long getIdCC(){
-        return idCC;
+        return id_CC;
     } 
 
+    public Plato getPlato(){
+        return platoc;
+    }
 
     public Usuario getUsuario(){
-        return usuario;
-    } 
+        return usuarioc;
+    }
 
     public Integer getCantidad(){
         return cantidad;
@@ -58,13 +63,15 @@ public class CarroCompras {
     //Setter
 
     public void setIdFactura(Long idCC){
-        this.idCC = idCC ;
+        this.id_CC = idCC ;
     } 
-
-    public void setIdUsuario(Usuario usuario){
-        this.usuario = usuario ;
+    
+    public void setPlato(Plato plato){
+        this.platoc = plato ;
     } 
-
+    public void setUsuario(Usuario usuario){
+        this.usuarioc = usuario ;
+    } 
 
     public void setCantidad(Integer cantidad){
         this.cantidad = cantidad ;

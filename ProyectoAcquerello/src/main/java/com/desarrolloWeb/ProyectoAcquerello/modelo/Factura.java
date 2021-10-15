@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Basic;
+//import javax.persistence.EmbeddedId;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 //import javax.persistence.Temporal;
@@ -20,11 +21,12 @@ public class Factura {
     private Long idFactura;
 
     @ManyToOne
-    private Plato plato; //Muchas facturas tienen un plato
+    private Usuario usuariof;
 
     @ManyToOne
-    private Usuario usuario; //Muchas facturas tienen un usuario
+    private Plato platof;
 
+    
    // @Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime fecha;
 
@@ -45,14 +47,6 @@ public class Factura {
         return idFactura;
     } 
 
-    public Plato getPlato(){
-        return plato;
-    } 
-
-    public Usuario getUsuario(){
-        return usuario;
-    } 
-
     public Integer getCantidad(){
         return cantidad;
     }
@@ -65,19 +59,27 @@ public class Factura {
         return fecha;
     } 
 
+    public Plato getPlato(){
+        return platof;
+    }
+
+    public Usuario getUsuario(){
+        return usuariof;
+    }
+
     //Setter
 
     public void setIdFactura(Long idFactura){
         this.idFactura = idFactura ;
     } 
 
-    public void setIdPlato(Plato plato){
-        this.plato = plato ;
+    public void setPlato(Plato plato){
+        this.platof = plato ;
+    } 
+    public void setUsuario(Usuario usuario){
+        this.usuariof = usuario ;
     } 
 
-    public void setIdUsuario(Usuario usuario){
-        this.usuario = usuario ;
-    } 
 
 
     public void setCantidad(Integer cantidad){

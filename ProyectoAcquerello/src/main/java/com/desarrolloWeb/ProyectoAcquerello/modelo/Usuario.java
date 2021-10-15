@@ -30,11 +30,12 @@ public class Usuario {
     @Basic
     private String contrasenia;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuariof")
     private List<Factura> facturas;  //Un usuario tiene muchas facturas
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-    private List<CarroCompras> carroCompras;  //Un usuario tiene muchos productos en un carro de compras
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuarioc")
+    private List<CarroCompras> carroCompras;  //Un usuario tiene muchos productos en un carro de compras 
 
     //Constructor
     public Usuario(){

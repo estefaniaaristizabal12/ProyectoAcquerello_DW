@@ -1,6 +1,9 @@
 package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +24,14 @@ public class Plato {
 
     @Basic
     private float precio;
+
+  
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "platof")
+    private List<Factura> facturas;  //Un usuario tiene muchas facturas
+
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "platoc")
+    private List<CarroCompras> carroCompras;  //Un usuario tiene muchos productos en un carro de compras 
 
 
     //Constructor
