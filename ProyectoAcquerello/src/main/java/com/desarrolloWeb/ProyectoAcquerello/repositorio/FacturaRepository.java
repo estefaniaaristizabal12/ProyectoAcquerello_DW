@@ -8,7 +8,5 @@ import com.desarrolloWeb.ProyectoAcquerello.modelo.Factura;
 
 @Repository
 public interface FacturaRepository extends  JpaRepository<Factura, Long>  {
-
-    
-
+   
 }
