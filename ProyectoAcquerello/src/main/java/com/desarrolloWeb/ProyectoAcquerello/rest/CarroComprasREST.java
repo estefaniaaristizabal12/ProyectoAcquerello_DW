@@ -1,6 +1,4 @@
 package com.desarrolloWeb.ProyectoAcquerello.rest;
-//import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
-//import com.desarrolloWeb.ProyectoAcquerello.servicio.ICarroComprasService;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -16,17 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.data.domain.PageImpl;
-//import org.springframework.data.domain.Pageable;
-//import org.springframework.data.domain.Sort;
-//import org.springframework.data.domain.Sort.Direction;
-//import org.springframework.web.bind.annotation.DeleteMapping;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
