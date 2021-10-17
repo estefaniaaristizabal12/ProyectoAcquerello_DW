@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +49,7 @@ public class UsuarioREST {
 
 	//http://localhost:8080/usuarios/listarUsuarios?page=1
 	@GetMapping("/usuarios/listarUsuarios")
-	public List<UsuarioDTO> getEquipos(@RequestParam(name="page") int page, 
+	public List<UsuarioDTO> getUsuarios(@RequestParam(name="page") int page, 
 			@RequestParam(name="size", required = false, defaultValue = "10") int size) {
 	
 		Page<Usuario> usuarios = usuarioService.getUsuarios(PageRequest.of(page,size));
@@ -61,6 +62,21 @@ public class UsuarioREST {
 
 		return result;
 		
+	}
+
+
+	//http://localhost:8080/darUsuario?idUsuario=14 
+
+	//OJO> falta ver impresiones de los ERRORES!
+
+	@GetMapping("/darUsuario")
+	public UsuarioDTO getUsuarioById(@RequestParam(name = "idUsuario") Long idUsuario){
+		ModelMapper mapper = new ModelMapper();
+		UsuarioDTO usuario = new UsuarioDTO();
+		Usuario usu = new Usuario();
+		usu = usuarioService.getUsuarioById(idUsuario);
+		usuario = mapper.map(usu, UsuarioDTO.class);
+		return usuario;
 	}
 
 	/*
@@ -76,9 +92,15 @@ public class UsuarioREST {
 	}*/
 	
 
-    @DeleteMapping("/usuarios/eliminar/{id}")
-	public void deleteUsuario(@PathVariable Long idUsuario) {
-		usuarioService.deleteUsuario(idUsuario);
+    @DeleteMapping("/eliminarUsuario")
+	public String deleteUsuario(@RequestParam (name = "idUsuario") Long idUsuario) {
+		Boolean res = usuarioService.deleteUsuario(idUsuario);
+		if(res == true){
+			return "Se elimino correctamente";
+		}
+		else{
+			return "Se genero un error ";
+		}
 	}
 
     @PostMapping("/usuarios/crear")
@@ -86,11 +108,12 @@ public class UsuarioREST {
 		return usuarioService.createUsuario(nuevoUsuario);
 	}
 
+	/*
 	@PutMapping(value = "crear", consumes = MediaType.APPLICATION_XML_VALUE,
 				produces = MediaType.APPLICATION_XML_VALUE)
 	public Usuario crearUsuarioXML(@RequestBody Usuario nuevoUsuario){
 		System.out.println("Creando un usuario");
 		return usuarioService.createUsuario(nuevoUsuario);
-	}
+	} */
     
 }

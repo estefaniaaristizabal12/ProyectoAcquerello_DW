@@ -22,9 +22,7 @@ class LoadData {
                 usuario.setDireccion("direccion"+i);
 				repository.save(usuario);
 			}
-
             System.out.println("Usuarios cargados de manera exitosa");
-
         };
 
     }

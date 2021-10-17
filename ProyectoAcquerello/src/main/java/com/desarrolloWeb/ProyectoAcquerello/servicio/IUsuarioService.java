@@ -9,7 +9,7 @@ public interface IUsuarioService {
 
     Usuario getUsuarioById(Long idUsuario);
 
-    void deleteUsuario (Long idUsuario);
+    Boolean deleteUsuario (Long idUsuario);
 
     Page<Usuario> getUsuarios(Pageable pageable);
 

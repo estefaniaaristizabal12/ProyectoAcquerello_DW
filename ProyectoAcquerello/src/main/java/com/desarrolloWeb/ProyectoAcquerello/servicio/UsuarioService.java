@@ -29,17 +29,29 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Usuario getUsuarioById(Long idUsuario){
-        return repository.findById(idUsuario).orElseThrow();
+        Optional<Usuario> usuario = repository.findById(idUsuario);
+        if (usuario.isPresent()) {
+			return usuario.get();
+		}
+        else{
+            System.out.println("ERRORRR");
+            return usuario.get();
+        }
     }
 
     @Override
-    public void deleteUsuario (Long idUsuario){
+    public Boolean deleteUsuario (Long idUsuario){
+        Boolean delet = false;
         Optional<Usuario> usuario = repository.findById(idUsuario);
 		if (usuario.isPresent()) {
 			repository.delete(usuario.get());
+            delet = true;
 		} else {
+            System.out.println("ERRORRR");
 			//throw new EquipoNotFoundException(idUsuario);
 		}
+
+        return delet;
     }
   
 }
