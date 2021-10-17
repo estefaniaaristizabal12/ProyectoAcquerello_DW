@@ -79,18 +79,6 @@ public class UsuarioREST {
 		return usuario;
 	}
 
-	/*
-	
-	@GetMapping("/usuarios/listar/{page}/{size}")
-	public Page<UsuarioDTO> getEquipos(@PathVariable("page") int pagina, @PathVariable("size") int size) {
-		Pageable pageable = new SolrPageRequest(pagina, size, Sort.by(Direction.ASC, "id"));
-		Page<Usuario> usuarios = usuarioService.getUsuarios(pageable);
-		
-		List<UsuarioDTO> result = convertirDTOs(usuarios);
-		
-		return new PageImpl<>(result, pageable, usuarios.getTotalElements());
-	}*/
-	
 
     @DeleteMapping("/eliminarUsuario")
 	public String deleteUsuario(@RequestParam (name = "idUsuario") Long idUsuario) {
