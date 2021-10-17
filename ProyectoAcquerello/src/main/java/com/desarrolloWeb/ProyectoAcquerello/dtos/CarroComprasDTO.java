@@ -21,7 +21,7 @@ public class CarroComprasDTO {
 
 
     /**
-	 * @param id_CC the idPlato to set
+	 * @param id_CC the id_CC to set
 	 */
     public void setId_CC(Long id_CC) {
         this.id_CC = id_CC;
@@ -37,7 +37,7 @@ public class CarroComprasDTO {
 
     
     /**
-	 * @param usuarioc the idPlato to set
+	 * @param usuarioc the usuarioc to set
 	 */
     public void setUsuarioc(Usuario usuarioc) {
         this.usuarioc = usuarioc;
@@ -53,7 +53,7 @@ public class CarroComprasDTO {
 
     
     /**
-	 * @param platoc the idPlato to set
+	 * @param platoc the platoc to set
 	 */
     public void setPlatoc(Plato platoc) {
         this.platoc = platoc;
@@ -69,7 +69,7 @@ public class CarroComprasDTO {
 
     
     /**
-	 * @param cantidad the idPlato to set
+	 * @param cantidad the cantidad to set
 	 */
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
@@ -85,7 +85,7 @@ public class CarroComprasDTO {
 
     
     /**
-	 * @param precio the idPlato to set
+	 * @param precio the precio to set
 	 */
     public void setPrecio(float precio) {
         this.precio = precio;
