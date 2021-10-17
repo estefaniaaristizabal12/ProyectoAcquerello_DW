@@ -1,5 +1,6 @@
 package com.desarrolloWeb.ProyectoAcquerello.servicio;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
@@ -16,15 +17,16 @@ public class CarroComprasService implements ICarroComprasService{
     @Autowired
 	private CarroComprasRepository repository;
 
-    
-    
     @Override
-	public CarroCompras crearCarroCompras(CarroCompras newCarroCompras) {
+	public CarroCompras createCarroCompras(CarroCompras newCarroCompras) {
 		return repository.save(newCarroCompras);
 	}
 
+	@Override
+	public List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario){
+		return repository.findByUsuarioc(idUsuario);
+	}
 
-    
 	@Override
 	public CarroCompras actualizarCarroCompras(CarroCompras newCarroCompras, Long id) {
 
@@ -42,11 +44,12 @@ public class CarroComprasService implements ICarroComprasService{
 
 
     @Override
-	public void deleteCarroCompras(Long id) {
+	public Boolean deleteCarroCompras(Long id) {
 		Optional<CarroCompras> carroCompras = repository.findById(id);
 
 		if (carroCompras.isPresent()) {
 			repository.delete(carroCompras.get());
+			return true;
 		} else {
 			throw new PlatoNotFoundException(id);
 		}
