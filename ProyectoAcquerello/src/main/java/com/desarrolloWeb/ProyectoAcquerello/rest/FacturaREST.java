@@ -1,8 +1,6 @@
 package com.desarrolloWeb.ProyectoAcquerello.rest;
 
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IFacturaService;
-import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
@@ -15,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.modelmapper.ModelMapper;
+import org.springframework.web.bind.annotation.RestController;
 
 
+@RestController
 public class FacturaREST {
 
     @Autowired

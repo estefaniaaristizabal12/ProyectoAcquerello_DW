@@ -9,6 +9,16 @@
             "mainClass": "com.desarrolloWeb.ProyectoAcquerello.ProyectoAcquerelloApplication",
             "projectName": "ProyectoAcquerello",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoAcquerelloApplication<ProyectoAcquerello>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.desarrolloWeb.ProyectoAcquerello.main.ProyectoAcquerelloApplication",
+            "projectName": "ProyectoAcquerello",
+            "args": ""
         }
     ]
 }

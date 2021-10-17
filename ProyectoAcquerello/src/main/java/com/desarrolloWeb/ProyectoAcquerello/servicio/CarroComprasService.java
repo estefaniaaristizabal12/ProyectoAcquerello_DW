@@ -7,7 +7,9 @@ import com.desarrolloWeb.ProyectoAcquerello.repositorio.CarroComprasRepository;
 import com.desarrolloWeb.ProyectoAcquerello.util.PlatoNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CarroComprasService implements ICarroComprasService{
 
     
