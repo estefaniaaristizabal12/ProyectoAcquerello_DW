@@ -30,13 +30,19 @@ export class CartaComponent implements OnInit {
 
   constructor( public _platoService: PlatoService, public router: Router ) { 
     var aux = localStorage.getItem('localListaPlatos');
+
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) 
+    /*
     if(aux== null){
       this.listaPlatos = [];
     }
     else{
       this.listaPlatos =  JSON.parse(aux);
-    }
-
+    } 
+*/
     var storageList = localStorage.getItem('localListaUsuarios');
     if(storageList== null){
       this.listaUsuarios = [];

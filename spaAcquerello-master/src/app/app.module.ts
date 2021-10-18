@@ -20,6 +20,8 @@ import { ReporteVentasComponent } from './reporte-ventas/reporte-ventas.componen
 import { AdministrarProductoComponent } from './administrar-producto/administrar-producto.component';
 import { EditarProductoComponent } from './editar-producto/editar-producto.component';
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
+import { PlatoService } from '../app/plato.service'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,10 +47,11 @@ import { AgregarProductoComponent } from './agregar-producto/agregar-producto.co
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     
   ],
-  providers: [
+  providers: [ PlatoService
   ],
   bootstrap: [AppComponent]
 })
