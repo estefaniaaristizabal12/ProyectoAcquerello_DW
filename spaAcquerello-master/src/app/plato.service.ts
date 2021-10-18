@@ -6,7 +6,7 @@ import { Plato } from './model/plato';
 })
 export class PlatoService {
 
-  platoObtener:Plato =  new Plato('','','',0);
+  platoObtener:Plato =  new Plato(0,'','','',0);
   public listaPlato: Plato[] = [];
 
   constructor() { 

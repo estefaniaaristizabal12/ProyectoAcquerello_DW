@@ -7,9 +7,9 @@ public interface IUsuarioService {
 
     Usuario createUsuario(Usuario nuevoUsuario);
 
-    Usuario getUsuarioById(Long idUsuario);
+    Usuario getUsuarioById(String email);
 
-    Boolean deleteUsuario (Long idUsuario);
+    Boolean deleteUsuario(String email);
 
     Page<Usuario> getUsuarios(Pageable pageable);
 

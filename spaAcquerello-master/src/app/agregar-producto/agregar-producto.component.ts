@@ -11,7 +11,7 @@ export class AgregarProductoComponent implements OnInit {
   public foto:string="";
   public listaPlatos: Plato[] = [];
   public listaP2: Plato[] = [];
-  public plato: Plato = new Plato("","","assets/imagenVacia.png",0);
+  public plato: Plato = new Plato(0,"","","assets/imagenVacia.png",0);
   
   constructor() { 
     var storageList = localStorage.getItem('localListaPlatos');

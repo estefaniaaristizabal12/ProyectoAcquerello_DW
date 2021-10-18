@@ -14,16 +14,19 @@ public class Plato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPlato;
+    private Long _idPlato;
 
     @Basic
-    private String nombre;
+    private String _nombre;
 
     @Basic
-    private String descripcion;
+    private String _descripcion;
 
     @Basic
-    private float precio;
+    private String _imagen;
+
+    @Basic
+    private float _precio;
 
   
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "platof")
@@ -41,36 +44,36 @@ public class Plato {
 
     //Getter
     public Long getId(){
-        return idPlato;
+        return _idPlato;
     } 
 
     public String getNombre(){
-        return nombre;
+        return _nombre;
     } 
 
     public String getDescripcion(){
-        return descripcion;
+        return _descripcion;
     }
 
     public float getPrecio(){
-        return precio;
+        return _precio;
     } 
 
     //Setter
     public void setId(Long idPlato){
-        this.idPlato = idPlato ;
+        this._idPlato = idPlato ;
     } 
 
     public void setNombre(String nombre){
-        this.nombre = nombre ;
+        this._nombre = nombre ;
     } 
    
     public void setDescripcion(String descripcion){
-        this.descripcion = descripcion ;
+        this._descripcion = descripcion ;
     } 
 
     public void setPrecio(float precio){
-        this.precio = precio ;
+        this._precio = precio ;
     } 
     
     

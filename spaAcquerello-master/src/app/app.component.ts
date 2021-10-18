@@ -18,12 +18,12 @@ export class AppComponent {
   public admin: Usuario = new Usuario("","","","","","");
   public admin2: Usuario = new Usuario("Acquerello", "Ristorante", "acquerello@ristorante.com","admin12345","Cl. 122 #15a-24","administrador");
   constructor() { 
-    let producto1:Plato = new Plato('Pasta Al Pomodoro Fresco', 'Clásica salsa pomodoro, albahaca y aceite de oliva.','assets/plato1.jpg', 19000);
-    let producto2:Plato = new Plato('Pasta Al Funghi', 'Salsa cremosa de hongos con adicion de especies y parmigiano.','assets/plato2.jpg', 12000);
-    let producto3:Plato = new Plato('Pasta Vegetariana', 'Cremosa salsa de vegetales: calabacines, hongos, ceboll.','assets/plato3.jpg', 13000);
-    let producto4:Plato = new Plato('Pizza Burrata', 'Burrata fresca de búfala con adición parmigiano y pimienta.','assets/plato5.jpg', 12000);
-    let producto5:Plato = new Plato('Pizza Margarita', 'Bocconcini, queso mozzarella, albahaca y pimienta.','assets/plato5.jpg', 16000);
-    let producto6:Plato = new Plato('Pizza Quattro Formago', 'Bocconcini, queso azul, pecorino y láminas crujiente.','assets/plato6.jpg', 18000);
+    let producto1:Plato = new Plato(1,'Pasta Al Pomodoro Fresco', 'Clásica salsa pomodoro, albahaca y aceite de oliva.','assets/plato1.jpg', 19000);
+    let producto2:Plato = new Plato(2,'Pasta Al Funghi', 'Salsa cremosa de hongos con adicion de especies y parmigiano.','assets/plato2.jpg', 12000);
+    let producto3:Plato = new Plato(3,'Pasta Vegetariana', 'Cremosa salsa de vegetales: calabacines, hongos, ceboll.','assets/plato3.jpg', 13000);
+    let producto4:Plato = new Plato(4,'Pizza Burrata', 'Burrata fresca de búfala con adición parmigiano y pimienta.','assets/plato5.jpg', 12000);
+    let producto5:Plato = new Plato(5,'Pizza Margarita', 'Bocconcini, queso mozzarella, albahaca y pimienta.','assets/plato5.jpg', 16000);
+    let producto6:Plato = new Plato(6,'Pizza Quattro Formago', 'Bocconcini, queso azul, pecorino y láminas crujiente.','assets/plato6.jpg', 18000);
 
     this.listaPlato.push(producto1);
     this.listaPlato.push(producto2);

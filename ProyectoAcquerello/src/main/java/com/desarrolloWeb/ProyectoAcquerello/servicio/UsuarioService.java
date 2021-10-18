@@ -28,8 +28,9 @@ public class UsuarioService implements IUsuarioService {
 
 
     @Override
-    public Usuario getUsuarioById(Long idUsuario){
-        Optional<Usuario> usuario = repository.findById(idUsuario);
+    public Usuario getUsuarioById(String email){
+        long id = 0;
+        Optional<Usuario> usuario = repository.findById(id);
         if (usuario.isPresent()) {
 			return usuario.get();
 		}
@@ -40,9 +41,10 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Boolean deleteUsuario (Long idUsuario){
+    public Boolean deleteUsuario (String emai){
         Boolean delet = false;
-        Optional<Usuario> usuario = repository.findById(idUsuario);
+        long id = 0;
+        Optional<Usuario> usuario = repository.findById(id);
 		if (usuario.isPresent()) {
 			repository.delete(usuario.get());
             delet = true;

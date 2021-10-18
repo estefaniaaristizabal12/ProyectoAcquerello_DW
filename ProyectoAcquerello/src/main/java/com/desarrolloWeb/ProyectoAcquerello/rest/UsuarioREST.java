@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.modelmapper.ModelMapper;
@@ -30,6 +31,7 @@ import org.springframework.data.domain.PageRequest;
 
 
 @RestController
+@RequestMapping("usuario")
 public class UsuarioREST {
 
     @Autowired
@@ -48,7 +50,7 @@ public class UsuarioREST {
 
 
 	//http://localhost:8080/usuarios/listarUsuarios?page=1
-	@GetMapping("/usuarios/listarUsuarios")
+	@GetMapping("/listarUsuarios")
 	public List<UsuarioDTO> getUsuarios(@RequestParam(name="page") int page, 
 			@RequestParam(name="size", required = false, defaultValue = "10") int size) {
 	
@@ -70,19 +72,19 @@ public class UsuarioREST {
 	//OJO> falta ver impresiones de los ERRORES!
 
 	@GetMapping("/darUsuario")
-	public UsuarioDTO getUsuarioById(@RequestParam(name = "idUsuario") Long idUsuario){
+	public UsuarioDTO getUsuarioById(@RequestParam(name = "email") String email){
 		ModelMapper mapper = new ModelMapper();
 		UsuarioDTO usuario = new UsuarioDTO();
 		Usuario usu = new Usuario();
-		usu = usuarioService.getUsuarioById(idUsuario);
+		usu = usuarioService.getUsuarioById(email);
 		usuario = mapper.map(usu, UsuarioDTO.class);
 		return usuario;
 	}
 
 
     @DeleteMapping("/eliminarUsuario")
-	public String deleteUsuario(@RequestParam (name = "idUsuario") Long idUsuario) {
-		Boolean res = usuarioService.deleteUsuario(idUsuario);
+	public String deleteUsuario(@RequestParam (name = "email") String email) {
+		Boolean res = usuarioService.deleteUsuario(email);
 		if(res == true){
 			return "Se elimino correctamente";
 		}
@@ -91,7 +93,7 @@ public class UsuarioREST {
 		}
 	}
 
-    @PostMapping("/usuarios/crear")
+    @PostMapping("/crear")
 	public Usuario createUsuario(@RequestBody Usuario nuevoUsuario) {
 		return usuarioService.createUsuario(nuevoUsuario);
 	}

@@ -9,9 +9,9 @@ import { Plato } from '../model/plato';
 })
 export class InicioComponent implements OnInit {
 
-  public plato1: Plato = new Plato("","","",0);
-  public plato2: Plato = new Plato("","","",0);
-  public plato3: Plato = new Plato("","","",0);
+  public plato1: Plato = new Plato(0,"","","",0);
+  public plato2: Plato = new Plato(0,"","","",0);
+  public plato3: Plato = new Plato(0,"","","",0);
 
   public listaPlatos: Plato[] = [];
   

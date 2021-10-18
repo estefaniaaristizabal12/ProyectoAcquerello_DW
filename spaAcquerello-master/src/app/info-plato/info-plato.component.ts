@@ -14,8 +14,8 @@ import { PlatoService } from '../plato.service';
 })
 export class InfoPlatoComponent implements OnInit {
 
-  platoObtener: Plato = new Plato ('','','',0);
-  public plato: Plato = new Plato("","","",0);
+  platoObtener: Plato = new Plato (0,"","","",0);
+  public plato: Plato = new Plato(0,"","","",0);
   public listaPlatos: Plato[] = [];
   public mostrar:boolean=true;
   public listaUsuarios: Usuario[] = [];

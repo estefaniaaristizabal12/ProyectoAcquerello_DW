@@ -14,7 +14,7 @@ export class ReporteVentasComponent implements OnInit {
 
   public listaPlatos: Plato[] = [];
   public listaP2: Plato[] = [];
-  public aux: Plato = new Plato("","","",0);
+  public aux: Plato = new Plato(0,"","","",0);
   public listaUsuarios: Usuario[] =[];
   public listaOrdenes: CarroCompras [] = [];
   public usuario: Usuario = new Usuario("","","","","","");

@@ -23,12 +23,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping("plato")
 public class PlatoREST {
 
     @Autowired
@@ -48,7 +50,7 @@ public class PlatoREST {
 
 
 	//http://localhost:8080/platos/listarPlatos?page=1
-	@GetMapping("/platos/listarPlatos")
+	@GetMapping("/listarPlatos")
 	public List<PlatoDTO> getUsuarios(@RequestParam(name="page") int page, 
 			@RequestParam(name="size", required = false, defaultValue = "10") int size) {
 	
@@ -81,19 +83,19 @@ public class PlatoREST {
 
 
     
-    @PostMapping("/platos/crear")
+    @PostMapping("/crear")
 	public Plato crearPlato(@RequestBody Plato newPlato) {
 		return platoService.createPlato(newPlato);
 	}
 
 
-    @PutMapping("/platos/actualizar/{id}")
+    @PutMapping("/actualizar/{id}")
 	public Plato actualizarPlato(@RequestBody Plato newPlato, @PathVariable Long id) {
 		return platoService.actualizarPlato(newPlato, id);
 	}
 
 
-    @DeleteMapping("/platos/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
 	public void deletePlato(@PathVariable Long id) {
 		platoService.deletePlato(id);
 	}

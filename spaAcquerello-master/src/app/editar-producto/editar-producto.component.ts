@@ -14,8 +14,8 @@ export class EditarProductoComponent implements OnInit {
 
 
 
-  platoObtener: Plato = new Plato ('','','',0);
-  aux: Plato = new Plato ('','','',0);
+  platoObtener: Plato = new Plato (0,'','','',0);
+  aux: Plato = new Plato (0,'','','',0);
   public listaPlatos: Plato[] = [];
   public listaP2: Plato[] = [];
 

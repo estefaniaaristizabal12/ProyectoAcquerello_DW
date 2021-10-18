@@ -12,7 +12,7 @@ export class AdministrarProductoComponent implements OnInit {
 
   public listaPlatos: Plato[] = [];
   public listaP2: Plato[] = [];
-  public aux: Plato = new Plato("","","",0);
+  public aux: Plato = new Plato(0,"","","",0);
 
   constructor( public _platoService: PlatoService, public router: Router ) {
     var storageList = localStorage.getItem('localListaPlatos');
