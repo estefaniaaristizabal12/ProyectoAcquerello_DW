@@ -62,7 +62,7 @@ public class CarroCompras {
 
     //Setter
 
-    public void setIdFactura(Long idCC){
+    public void setIdCC(Long idCC){
         this.id_CC = idCC ;
     } 
     

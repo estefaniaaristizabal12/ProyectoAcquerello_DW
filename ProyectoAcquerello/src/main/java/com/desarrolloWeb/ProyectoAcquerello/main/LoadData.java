@@ -112,7 +112,6 @@ class LoadData {
             carroCompras1.setUsuario(usuarioA);
             carroCompras1.setPlato(platoA);
             carroCompras1.setCantidad(2);
-            carroCompras1.setIdFactura(factura1.getIdFactura());
             carroCompras1.setPrecio(105000);
             repository.save(carroCompras1);
             
@@ -122,7 +121,6 @@ class LoadData {
             carroCompras1.setUsuario(usuarioA);
             carroCompras1.setPlato(platoB);
             carroCompras1.setCantidad(1);
-            carroCompras1.setIdFactura(factura1.getIdFactura());
             carroCompras1.setPrecio(50000);
             repository.save(carroCompras2);
 
