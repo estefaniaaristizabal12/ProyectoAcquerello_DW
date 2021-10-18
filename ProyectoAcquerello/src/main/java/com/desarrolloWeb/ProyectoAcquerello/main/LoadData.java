@@ -1,8 +1,10 @@
 package com.desarrolloWeb.ProyectoAcquerello.main;
 import org.springframework.context.annotation.Configuration;
 
+import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
+import com.desarrolloWeb.ProyectoAcquerello.repositorio.CarroComprasRepository;
 import com.desarrolloWeb.ProyectoAcquerello.repositorio.PlatoRepository;
 import com.desarrolloWeb.ProyectoAcquerello.repositorio.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -43,6 +45,19 @@ class LoadData {
 				repository.save(plato);
 			}
             System.out.println("Platos cargados de manera exitosa");
+        };
+    }
+
+    @Bean
+    CommandLineRunner initDataCarroCompras(CarroComprasRepository repository) {
+
+        return args -> {
+
+            System.out.println("Cargando Carrritos de compras en la Base de Datos");
+            CarroCompras carroCompras1 = new CarroCompras();
+            repository.save(carroCompras1);
+            System.out.println("Carritos de Compras cargados de manera exitosa");
+
         };
     }
     
