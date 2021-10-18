@@ -37,44 +37,81 @@ public class Plato {
     private List<CarroCompras> carroCompras;  //Un usuario tiene muchos productos en un carro de compras 
 
 
-    //Constructor
-    public Plato(){
-
+    
+    public Plato() {
     }
 
-    //Getter
-    public Long getId(){
+
+    public Long get_idPlato() {
         return _idPlato;
-    } 
+    }
 
-    public String getNombre(){
+
+    public void set_idPlato(Long _idPlato) {
+        this._idPlato = _idPlato;
+    }
+
+
+    public String get_nombre() {
         return _nombre;
-    } 
+    }
 
-    public String getDescripcion(){
+
+    public void set_nombre(String _nombre) {
+        this._nombre = _nombre;
+    }
+
+
+    public String get_descripcion() {
         return _descripcion;
     }
 
-    public float getPrecio(){
+
+    public void set_descripcion(String _descripcion) {
+        this._descripcion = _descripcion;
+    }
+
+
+    public String get_imagen() {
+        return _imagen;
+    }
+
+
+    public void set_imagen(String _imagen) {
+        this._imagen = _imagen;
+    }
+
+
+    public float get_precio() {
         return _precio;
-    } 
+    }
 
-    //Setter
-    public void setId(Long idPlato){
-        this._idPlato = idPlato ;
-    } 
 
-    public void setNombre(String nombre){
-        this._nombre = nombre ;
-    } 
-   
-    public void setDescripcion(String descripcion){
-        this._descripcion = descripcion ;
-    } 
+    public void set_precio(float _precio) {
+        this._precio = _precio;
+    }
 
-    public void setPrecio(float precio){
-        this._precio = precio ;
-    } 
-    
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+
+    public List<CarroCompras> getCarroCompras() {
+        return carroCompras;
+    }
+
+
+    public void setCarroCompras(List<CarroCompras> carroCompras) {
+        this.carroCompras = carroCompras;
+    }
+
+
+  
     
 }

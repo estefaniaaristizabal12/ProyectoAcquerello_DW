@@ -17,7 +17,7 @@ export class PlatoService {
   getlistaPlato(){
     let Url = 'http://localhost:8080/plato';
     //this.http.get<Plato[]>(this.Url+"/listarPlatos");
-    return this.http.get<Plato[]>(Url+"/listarPlatos");
+    return this.http.get<Plato[]>(Url+"/listaPlatosEst");
   }
 
 }

@@ -1,5 +1,7 @@
 package com.desarrolloWeb.ProyectoAcquerello.servicio;
 
+import java.util.List;
+
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
 
 import org.springframework.data.domain.Page;
@@ -12,6 +14,8 @@ public interface IPlatoService {
     Page<Plato> getPlatos(Pageable pageable);
 
     Plato getPlatoById(Long idPlato);
+
+    Iterable<Plato> getPlatosL();
 
     Plato actualizarPlato(Plato plato, Long id);
 

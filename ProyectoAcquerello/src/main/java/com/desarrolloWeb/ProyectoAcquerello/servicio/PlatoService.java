@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
@@ -28,6 +27,11 @@ public class PlatoService implements IPlatoService{
 	}
 
 	@Override
+	public Iterable<Plato> getPlatosL() {
+		return repository.findAll();
+	}
+
+	@Override
     public Plato getPlatoById(Long idUsuario){
         Optional<Plato> plato = repository.findById(idUsuario);
         if (plato.isPresent()) {
@@ -44,9 +48,9 @@ public class PlatoService implements IPlatoService{
 	public Plato actualizarPlato(Plato newPlato, Long id) {
 
 		return repository.findById(id).map(provider -> {
-			provider.setNombre(newPlato.getNombre());
-			provider.setDescripcion(newPlato.getDescripcion());
-			provider.setPrecio(newPlato.getPrecio());
+			provider.set_nombre(newPlato.get_nombre());
+			provider.set_descripcion(newPlato.get_descripcion());
+			provider.set_precio(newPlato.get_precio());
 
 
 			return repository.save(provider);

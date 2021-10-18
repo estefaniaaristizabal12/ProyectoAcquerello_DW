@@ -48,6 +48,20 @@ public class PlatoREST {
 		return result;
 	}
 
+	@GetMapping("/listaPlatosEst")
+	public List<PlatoDTO> getUsuarios() {
+
+		Iterable<Plato> platos = platoService.getPlatosL();
+		List<PlatoDTO> result = new ArrayList<>();
+		ModelMapper mapper = new ModelMapper();
+		
+		for (Plato plato : platos) {
+			result.add(mapper.map(plato, PlatoDTO.class));
+		}
+
+		return result;
+	}
+
 
 	//http://localhost:8080/platos/listarPlatos?page=1
 	@GetMapping("/listarPlatos")

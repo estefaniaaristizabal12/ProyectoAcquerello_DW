@@ -76,25 +76,28 @@ class LoadData {
 
                     // ___________ Plato 1 _________________
 
-            platoA.setNombre("Pasta Al Pomodoro Fresco");
-            platoA.setDescripcion("Clasica pasta con albahaca y aceite de oliva");
-            platoA.setPrecio(19000);
+            platoA.set_nombre("Pasta Al Pomodoro Fresco");
+            platoA.set_descripcion("Clasica pasta con albahaca y aceite de oliva");
+            platoA.set_precio(19000);
+            platoA.set_imagen("assets/imagenVacia.png");
             repository.save(platoA);
 
                     // ___________ Plato 2 _________________
 
-            platoB.setNombre("Pasta Al Funghi");
-            platoB.setDescripcion("Salsa cremosa de hongos con adicion de especies");
-            platoB.setPrecio(21000);
+            platoB.set_nombre("Pasta Al Funghi");
+            platoB.set_descripcion("Salsa cremosa de hongos con adicion de especies");
+            platoB.set_precio(19000);
+            platoB.set_imagen("assets/imagenVacia.png");
             repository.save(platoB);
 
 
             Plato plato = new Plato();
             for (int i = 3; i< 20; i++) {
 				plato = new Plato();
-				plato.setNombre("Plato "+i);
-				plato.setDescripcion("descripcion"+i);
-				plato.setPrecio(100);
+				plato.set_nombre("Plato "+i);
+				plato.set_descripcion("descripcion"+i);
+				plato.set_precio(100);
+                plato.set_imagen("assets/imagenVacia.png");
 				repository.save(plato);
 			}
             System.out.println("Platos cargados de manera exitosa");

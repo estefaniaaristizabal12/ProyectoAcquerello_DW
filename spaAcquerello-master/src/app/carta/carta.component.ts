@@ -34,15 +34,19 @@ export class CartaComponent implements OnInit {
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;
-    }) 
-    /*
+    }) ;
+
+    this.async_print_personas();
+    
+  
+  /*
     if(aux== null){
       this.listaPlatos = [];
     }
     else{
       this.listaPlatos =  JSON.parse(aux);
-    } 
-*/
+    }  */
+
     var storageList = localStorage.getItem('localListaUsuarios');
     if(storageList== null){
       this.listaUsuarios = [];
@@ -74,8 +78,11 @@ export class CartaComponent implements OnInit {
       this.validacion = true;
     }
 
+  }
 
-
+  async async_print_personas() {
+    await new Promise((f) => setTimeout(f, 1000));
+    console.log(this.listaPlatos);
   }
 
   ngOnInit(): void {
@@ -87,8 +94,6 @@ export class CartaComponent implements OnInit {
   }
 
   
-
-
   agregarProductoCC(platoE:Plato){
 
     if(this.validacion ==false && this.vAdmon == false){
