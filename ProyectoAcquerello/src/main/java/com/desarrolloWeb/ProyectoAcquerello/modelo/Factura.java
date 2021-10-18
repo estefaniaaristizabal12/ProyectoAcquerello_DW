@@ -1,9 +1,13 @@
 package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Basic;
 //import javax.persistence.EmbeddedId;
 import javax.persistence.GeneratedValue;
@@ -27,8 +31,10 @@ public class Factura {
     private Plato platof;
 
     
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
    // @Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime fecha;
+	//private LocalDateTime fecha;
 
     @Basic
     private Integer cantidad;
@@ -55,7 +61,7 @@ public class Factura {
         return total;
     } 
 
-    public LocalDateTime getFecha(){
+    public Date getFecha(){
         return fecha;
     } 
 
@@ -80,7 +86,13 @@ public class Factura {
         this.usuariof = usuario ;
     } 
 
+    public void setUsuario(Date fecha){
+        this.fecha = fecha;
+    } 
 
+    public void setFecha(Date fecha){
+        this.fecha = fecha;
+    } 
 
     public void setCantidad(Integer cantidad){
         this.cantidad = cantidad ;

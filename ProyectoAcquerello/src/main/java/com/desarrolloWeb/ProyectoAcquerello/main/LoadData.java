@@ -1,6 +1,8 @@
 package com.desarrolloWeb.ProyectoAcquerello.main;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Calendar;
+
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Factura;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
@@ -44,11 +46,11 @@ class LoadData {
 
             // ___________ Usuario B _________________
 
-            usuarioA.setNombre("Estefania");
-			usuarioA.setApellido("Aristizabal");
-			usuarioA.setEmail("estefaniaAristi@gmail.com");
-            usuarioA.setContrasenia("12345");
-            usuarioA.setDireccion("Calle Salitre 1 izqu");
+            usuarioB.setNombre("Estefania");
+			usuarioB.setApellido("Aristizabal");
+			usuarioB.setEmail("estefaniaAristi@gmail.com");
+            usuarioB.setContrasenia("12345");
+            usuarioB.setDireccion("Calle Salitre 1 izqu");
 			repository.save(usuarioB);
 
 
@@ -118,10 +120,10 @@ class LoadData {
 
             // ___________ CarroCompras 2 _________________
 
-            carroCompras1.setUsuario(usuarioA);
-            carroCompras1.setPlato(platoB);
-            carroCompras1.setCantidad(1);
-            carroCompras1.setPrecio(50000);
+            carroCompras2.setUsuario(usuarioA);
+            carroCompras2.setPlato(platoB);
+            carroCompras2.setCantidad(1);
+            carroCompras2.setPrecio(50000);
             repository.save(carroCompras2);
 
             ;
@@ -138,12 +140,17 @@ class LoadData {
             System.out.println("Cargando Facturas en la Base de Datos");
             
             // ___________ Factura 1 _________________
-
-
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, 1899);
+            calendar.set(Calendar.DAY_OF_MONTH, 11);
+            calendar.set(Calendar.MONTH, 10);
+            calendar.set(Calendar.HOUR, 6);
+            
             factura1.setPlato(platoA);
             factura1.setUsuario(usuarioA);
             factura1.setCantidad(2);
             factura1.setTotal(105000);
+            factura1.setFecha(calendar.getTime());
             repository.save(factura1);
 
             // ___________ Factura 2 _________________
@@ -152,6 +159,7 @@ class LoadData {
             factura2.setUsuario(usuarioA);
             factura2.setCantidad(1);
             factura2.setTotal(50000);
+            factura2.setFecha(calendar.getTime());
             repository.save(factura2);
 
             ;
