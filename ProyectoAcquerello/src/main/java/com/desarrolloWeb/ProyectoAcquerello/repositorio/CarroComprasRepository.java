@@ -9,5 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
 public interface CarroComprasRepository extends JpaRepository <CarroCompras, Long>{
+    
     List<CarroCompras> findByUsuarioc (Long idUsuario);   
+
 }
