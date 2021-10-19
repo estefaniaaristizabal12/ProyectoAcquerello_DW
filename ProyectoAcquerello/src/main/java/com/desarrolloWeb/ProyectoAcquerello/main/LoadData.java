@@ -114,19 +114,23 @@ class LoadData {
             // ___________ CarroCompras 1 _________________
 
 
-            carroCompras1.setUsuario(usuarioA);
-            carroCompras1.setPlato(platoA);
-            carroCompras1.setCantidad(2);
-            carroCompras1.setPrecio(105000);
+            carroCompras1.setUsuarioc(usuarioA);
+            carroCompras1.setPlatoc(platoA);
+            carroCompras1.set_cantidad(2);
+            carroCompras1.set_precio(120000);
+            carroCompras1.set_nombreProducto(platoA.get_nombre());
+            carroCompras1.set_foto("assets/imagenVacia.png");
             repository.save(carroCompras1);
             
 
             // ___________ CarroCompras 2 _________________
 
-            carroCompras2.setUsuario(usuarioA);
-            carroCompras2.setPlato(platoB);
-            carroCompras2.setCantidad(1);
-            carroCompras2.setPrecio(50000);
+            carroCompras2.setUsuarioc(usuarioA);
+            carroCompras2.setPlatoc(platoB);
+            carroCompras2.set_cantidad(1);
+            carroCompras2.set_precio(50000);
+            carroCompras2.set_nombreProducto(platoB.get_nombre());
+            carroCompras2.set_foto("assets/imagenVacia.png");
             repository.save(carroCompras2);
 
             ;
