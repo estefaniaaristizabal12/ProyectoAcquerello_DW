@@ -55,5 +55,17 @@ public class UsuarioService implements IUsuarioService {
 
         return delet;
     }
+
+    @Override
+	public Usuario updateUsuario(Usuario newUsuario) {
+		Optional<Usuario> pro = repository.findById(newUsuario.get_idUsuario());
+		Usuario provider = pro.get();
+        provider.set_nombre(newUsuario.get_nombre());
+        provider.set_apellido(newUsuario.get_apellido());
+        provider.set_direccion(newUsuario.get_direccion());
+        provider.set_contrasenia(newUsuario.get_contrasenia());
+        provider.set_email(newUsuario.get_email());
+		return repository.save(provider);
+	}
   
 }

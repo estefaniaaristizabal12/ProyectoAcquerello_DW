@@ -98,12 +98,10 @@ public class UsuarioREST {
 		return usuarioService.createUsuario(nuevoUsuario);
 	}
 
-	/*
-	@PutMapping(value = "crear", consumes = MediaType.APPLICATION_XML_VALUE,
-				produces = MediaType.APPLICATION_XML_VALUE)
-	public Usuario crearUsuarioXML(@RequestBody Usuario nuevoUsuario){
-		System.out.println("Creando un usuario");
-		return usuarioService.createUsuario(nuevoUsuario);
-	} */
+	
+	@PostMapping("/actualizarPlato")
+	public Usuario actualizarPlato(@RequestBody Usuario newUsuario) {
+		return usuarioService.updateUsuario(newUsuario);
+	}
     
 }

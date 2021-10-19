@@ -13,7 +13,7 @@ public interface IUsuarioService {
 
     Page<Usuario> getUsuarios(Pageable pageable);
 
-    //Usuario actualizarUsuario(Usuario usuario, Long idUsuario);
+    Usuario updateUsuario(Usuario usuario);
 
 
     
