@@ -8,7 +8,7 @@ import { Usuario } from './model/usuario';
 })
 export class IniciarGuard implements CanActivate {
 
-  public admin: Usuario = new Usuario("","","","","","");
+  public admin: Usuario = new Usuario(0,"","","","","");
   public correoA: string = "";
   canActivate(){
 
@@ -17,7 +17,7 @@ export class IniciarGuard implements CanActivate {
     var auxa= localStorage.getItem('administrador');
 
     if(auxa== null){
-      this.admin = new Usuario("","","","","","");
+      this.admin = new Usuario(0,"","","","","");
     }
     else{
       this.admin = JSON.parse(auxa);

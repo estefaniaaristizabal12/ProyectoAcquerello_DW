@@ -12,7 +12,7 @@ import { UsuarioService } from '../usuario.service';
 })
 export class RegistrarseComponent implements OnInit {
 
-  public usuario: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
   constructor( public _usuarioService: UsuarioService, public router: Router ) { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class RegistrarseComponent implements OnInit {
 
   registroSubmit(){
     this._usuarioService.agregar(this.usuario);
-    this.usuario = new Usuario("","","","","","cliente");
+    this.usuario = new Usuario(0,"","","","","cliente");
     alert("lol:" + this.usuario._nombre + " " +this.usuario._apellido);
   }
 

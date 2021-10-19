@@ -17,8 +17,8 @@ export class ReporteVentasComponent implements OnInit {
   public aux: Plato = new Plato(0,"","","",0);
   public listaUsuarios: Usuario[] =[];
   public listaOrdenes: CarroCompras [] = [];
-  public usuario: Usuario = new Usuario("","","","","","");
-  public auxU: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public auxU: Usuario = new Usuario(0,"","","","","");
   public totalVendidos: number = 0; 
   public precioTotal: number = 0; 
 
@@ -59,7 +59,7 @@ export class ReporteVentasComponent implements OnInit {
 
 
     for(let auxU of this.listaUsuarios){
-      this.listaOrdenes = auxU.ordenes;
+      this.listaOrdenes = auxU.facturas;
       for(var i = 0; i < this.listaOrdenes.length; i++){
         if(plato._nombre == this.listaOrdenes[i]._nombreProducto){
           this.totalVendidos++;

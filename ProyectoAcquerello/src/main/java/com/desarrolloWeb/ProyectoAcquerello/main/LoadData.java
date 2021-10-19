@@ -37,31 +37,31 @@ class LoadData {
 
             // ___________ Usuario A _________________
 
-            usuarioA.setNombre("Juan");
-			usuarioA.setApellido("Bolaños");
-			usuarioA.setEmail("byjuanjobm1@gmail.com");
-            usuarioA.setContrasenia("12345");
-            usuarioA.setDireccion("Calle 89 n122i 27");
+            usuarioA.set_nombre("Juan");
+			usuarioA.set_apellido("Bolaños");
+			usuarioA.set_email("byjuanjobm1@gmail.com");
+            usuarioA.set_contrasenia("12345");
+            usuarioA.set_direccion("Calle 89 n122i 27");
 			repository.save(usuarioA);
 
             // ___________ Usuario B _________________
 
-            usuarioB.setNombre("Estefania");
-			usuarioB.setApellido("Aristizabal");
-			usuarioB.setEmail("estefaniaAristi@gmail.com");
-            usuarioB.setContrasenia("12345");
-            usuarioB.setDireccion("Calle Salitre 1 izqu");
+            usuarioB.set_nombre("Estefania");
+			usuarioB.set_apellido("Aristizabal");
+			usuarioB.set_email("estefaniaAristi@gmail.com");
+            usuarioB.set_contrasenia("12345");
+            usuarioB.set_direccion("Calle Salitre 1 izqu");
 			repository.save(usuarioB);
 
 
             Usuario usuario = new Usuario();
             for (int i = 3; i< 20; i++) {
 				usuario = new Usuario();
-				usuario.setNombre("Usuario "+i);
-				usuario.setApellido("Apellido"+i);
-				usuario.setEmail("email"+i);
-                usuario.setContrasenia("contrasenia"+i);
-                usuario.setDireccion("direccion"+i);
+				usuario.set_nombre("Usuario "+i);
+				usuario.set_apellido("Apellido"+i);
+				usuario.set_email("email"+i);
+                usuario.set_contrasenia("contrasenia"+i);
+                usuario.set_direccion("direccion"+i);
 				repository.save(usuario);
 			}
             System.out.println("Usuarios cargados de manera exitosa");

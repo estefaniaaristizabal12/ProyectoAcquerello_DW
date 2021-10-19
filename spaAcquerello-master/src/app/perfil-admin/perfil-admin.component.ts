@@ -8,8 +8,8 @@ import { Usuario } from '../model/usuario';
 })
 export class PerfilAdminComponent implements OnInit {
 
-  public usuario: Usuario = new Usuario("","","","","","");
-  public aux: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public aux: Usuario = new Usuario(0,"","","","","");
   public correoA:string ="";
   public numItems: number = 0;
 
@@ -18,7 +18,7 @@ export class PerfilAdminComponent implements OnInit {
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.usuario = new Usuario("","","","","","");
+      this.usuario = new Usuario(0,"","","","","");
     }
     else{
       this.usuario = JSON.parse(aux);

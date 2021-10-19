@@ -7,7 +7,7 @@ import { Usuario } from './model/usuario';
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
-  public admin: Usuario = new Usuario("","","","","","");
+  public admin: Usuario = new Usuario(0,"","","","","");
   public correoA: string = "";
   canActivate(){
 
@@ -16,7 +16,7 @@ export class AdminGuard implements CanActivate {
     var auxa= localStorage.getItem('administrador');
 
     if(auxa== null){
-      this.admin = new Usuario("","","","","","");
+      this.admin = new Usuario(0,"","","","","");
     }
     else{
       this.admin = JSON.parse(auxa);

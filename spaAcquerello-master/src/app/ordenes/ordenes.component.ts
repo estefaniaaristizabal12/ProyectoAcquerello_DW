@@ -13,8 +13,8 @@ export class OrdenesComponent implements OnInit {
 
   listaOrdenes: CarroCompras[] = [];
   dato: CarroCompras = new CarroCompras("",0,0,"");
-  public usuario: Usuario = new Usuario("","","","","","");
-  public aux: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public aux: Usuario = new Usuario(0,"","","","","");
   public listaUsuarios: Usuario[] = [];
   public correoA:string ="";
 
@@ -44,7 +44,7 @@ export class OrdenesComponent implements OnInit {
     //Aca toca cambiar a this.usuario.ordenes
 
     console.log(this.usuario._nombre);
-    this.listaOrdenes = this.usuario.ordenes;
+    this.listaOrdenes = this.usuario.facturas;
   }
 
   ngOnInit(): void {

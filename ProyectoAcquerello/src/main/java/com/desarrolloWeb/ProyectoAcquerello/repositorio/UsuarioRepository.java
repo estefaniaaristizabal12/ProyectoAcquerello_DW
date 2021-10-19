@@ -7,7 +7,7 @@ import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 
 @Repository
 public interface UsuarioRepository extends  PagingAndSortingRepository<Usuario, Long> {
-  
+  /*
    // ---------- Actualizar informacion del usuario -------------------
 
    @Query("update Usuario u set u.nombre = ?1 where u.idUsuario = ?2")
@@ -32,7 +32,7 @@ public interface UsuarioRepository extends  PagingAndSortingRepository<Usuario, 
 
    List<Usuario> findByEmail (String email);
 
-   Usuario findByIdUsuario (Long idUsuario);
+   Usuario findByIdUsuario (Long idUsuario); */
    
 }
 

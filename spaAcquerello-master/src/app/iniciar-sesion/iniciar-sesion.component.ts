@@ -12,8 +12,8 @@ export class IniciarSesionComponent implements OnInit {
 
   public email: string = "";
   public contrasenia: string = "";
-  public usuario: Usuario = new Usuario("","","","","","");
-  public admin: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public admin: Usuario = new Usuario(0,"","","","","");
   constructor( public _usuarioService: UsuarioService, public router: Router ) { }
   //@Output() informacionUsuario: EventEmitter<Usuario>= new EventEmitter();
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class IniciarSesionComponent implements OnInit {
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.admin = new Usuario("","","","","","");
+      this.admin = new Usuario(0,"","","","","");
     }
     else{
       this.admin =  JSON.parse(aux);

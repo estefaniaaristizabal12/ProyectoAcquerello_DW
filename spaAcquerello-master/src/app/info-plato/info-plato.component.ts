@@ -19,12 +19,12 @@ export class InfoPlatoComponent implements OnInit {
   public listaPlatos: Plato[] = [];
   public mostrar:boolean=true;
   public listaUsuarios: Usuario[] = [];
-  public aux1: Usuario = new Usuario("","","","","","");
+  public aux1: Usuario = new Usuario(0,"","","","","");
   public carroCompras: CarroCompras =  new CarroCompras("",0,0,"");
   public listaU2: Usuario[] = [];
   public listacarroCompras: CarroCompras[] = [];
-  public usuario: Usuario = new Usuario("","","","","","");
-  public admin: Usuario = new Usuario("","","","","","")
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public admin: Usuario = new Usuario(0,"","","","","")
   public correoA:string ="";
   public validacion: boolean = false;
 
@@ -57,7 +57,7 @@ export class InfoPlatoComponent implements OnInit {
       var auxa= localStorage.getItem('administrador');
 
       if(auxa== null){
-        this.admin = new Usuario("","","","","","");
+        this.admin = new Usuario(0,"","","","","");
       }
       else{
         this.admin = JSON.parse(auxa);
@@ -83,10 +83,10 @@ export class InfoPlatoComponent implements OnInit {
     }
 
     else{
-    this.listacarroCompras = this.usuario.listaCC;
+    this.listacarroCompras = this.usuario.carroCompras;
     this.carroCompras = new CarroCompras(this.platoObtener._nombre,1,this.platoObtener._precio, this.platoObtener._imagen);
     this.listacarroCompras.push(this.carroCompras);
-    this.usuario.listaCC = this.listacarroCompras;
+    this.usuario.carroCompras = this.listacarroCompras;
 
     for(let aux1 of this.listaUsuarios)
     {

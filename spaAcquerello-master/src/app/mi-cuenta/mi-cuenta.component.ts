@@ -11,8 +11,8 @@ import { Usuario } from '../model/usuario';
 export class MiCuentaComponent implements OnInit {
 
   
-  public usuario: Usuario = new Usuario("","","","","","");
-  public aux: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public aux: Usuario = new Usuario(0,"","","","","");
   public listaUsuarios: Usuario[] = [];
   public listaU2: Usuario[] = [];
   public correoA:string ="";

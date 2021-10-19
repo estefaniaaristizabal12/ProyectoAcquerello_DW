@@ -1,99 +1,72 @@
 package com.desarrolloWeb.ProyectoAcquerello.dtos;
 
+import java.util.List;
+
+import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
+import com.desarrolloWeb.ProyectoAcquerello.modelo.Factura;
+
 public class UsuarioDTO {
     
 
-    private Long idUsuario;
-    private String nombre;
-    private String apellido;
-    private String direccion;
-    private String email;
-    private String contrasenia;
+    private Long _idUsuario;
+    private String _email;
+    private String _nombre;
+    private String _apellido;
+    private String _direccion;
+    private String _contrasenia;
+    private List<Factura> facturas;
+    private List<CarroCompras> carroCompras;
+
+    public Long get_idUsuario() {
+        return _idUsuario;
+    }
+    public void set_idUsuario(Long _idUsuario) {
+        this._idUsuario = _idUsuario;
+    }
+    public String get_email() {
+        return _email;
+    }
+    public void set_email(String _email) {
+        this._email = _email;
+    }
+    public String get_nombre() {
+        return _nombre;
+    }
+    public void set_nombre(String _nombre) {
+        this._nombre = _nombre;
+    }
+    public String get_apellido() {
+        return _apellido;
+    }
+    public void set_apellido(String _apellido) {
+        this._apellido = _apellido;
+    }
+    public String get_direccion() {
+        return _direccion;
+    }
+    public void set_direccion(String _direccion) {
+        this._direccion = _direccion;
+    }
+    public String get_contrasenia() {
+        return _contrasenia;
+    }
+    public void set_contrasenia(String _contrasenia) {
+        this._contrasenia = _contrasenia;
+    }
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+    public List<CarroCompras> getCarroCompras() {
+        return carroCompras;
+    }
+    public void setCarroCompras(List<CarroCompras> carroCompras) {
+        this.carroCompras = carroCompras;
+    }
+    
 
     
-    /**
-	 * @return the idUsuario
-	 */
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-    	/**
-	 * @param idUsuario the idUsuario to set
-	 */
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    
-    /**
-	 * @return the nombre
-	 */
-    public String getNombre() {
-        return nombre;
-    }
-    /**
-	 * @param nombre the nombre to set
-	 */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    
-    /**
-	 * @return the apellido
-	 */
-    public String getApellido() {
-        return apellido;
-    }
-    /**
-	 * @param apellido the apellido to set
-	 */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-
-    
-    /**
-	 * @return the direccion
-	 */
-    public String getDireccion() {
-        return direccion;
-    }
-    /**
-	 * @param direccion the direccion to set
-	 */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    
-    /**
-	 * @return the email
-	 */
-    public String getEmail() {
-        return email;
-    }
-    /**
-	 * @param email the email to set
-	 */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    
-    /**
-	 * @return the contrasenia
-	 */
-    public String getContrasenia() {
-        return contrasenia;
-    }
-    /**
-	 * @param contrasenia the contrasenia to set
-	 */
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
 
 }

@@ -8,8 +8,8 @@ import { Usuario } from './model/usuario';
 export class UsuarioService {
   
   public listaUsuarios: Usuario[] = [];
-  public usuario: Usuario = new Usuario("","","","","","");
-  public usuarioActual: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public usuarioActual: Usuario = new Usuario(0,"","","","","");
 
   
 
@@ -77,7 +77,7 @@ export class UsuarioService {
         return usuario;
       }
     }
-    return new Usuario("","","","","","");
+    return new Usuario(0,"","","","","");
   }
 
   

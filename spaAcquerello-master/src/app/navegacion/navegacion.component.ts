@@ -11,14 +11,14 @@ export class NavegacionComponent implements OnInit {
   public mostrarInicioG: boolean = true; //General
   public mostrarInicioU: boolean = true; //Usuario
   public mostrarInicioA: boolean = true; //Administrador
-  public admin: Usuario = new Usuario("","","","","","");
+  public admin: Usuario = new Usuario(0,"","","","","");
 
   constructor() {
 
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.admin = new Usuario("","","","","","");
+      this.admin = new Usuario(0,"","","","","");
     }
     else{
       this.admin = JSON.parse(aux);

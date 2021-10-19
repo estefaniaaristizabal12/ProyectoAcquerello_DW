@@ -16,8 +16,8 @@ export class CarroComprasComponent implements OnInit {
   listaCC2: CarroCompras[] = [];
   dato: CarroCompras = new CarroCompras("",0,0,"");
   aux2: CarroCompras = new CarroCompras("",0,0,"");
-  public usuario: Usuario = new Usuario("","","","","","");
-  public aux: Usuario = new Usuario("","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","");
+  public aux: Usuario = new Usuario(0,"","","","","");
   public listaUsuarios: Usuario[] = [];
   public listaU2: Usuario[] = [];
   public correoA:string ="";
@@ -54,7 +54,7 @@ export class CarroComprasComponent implements OnInit {
     //Aca toca cambiar a this.usuario.ordenes
 
     console.log(this.usuario._nombre);
-    this.listaCC = this.usuario.listaCC;
+    this.listaCC = this.usuario.carroCompras;
     if(this.listaCC.length>0){
       this.mostrar =  true;
     }else{
@@ -96,8 +96,8 @@ export class CarroComprasComponent implements OnInit {
     for (var i = 0; i < this.listaCC.length; i++) {
 
       if(datoE == this.listaCC[i]){
-        this.usuario.listaCC[i]._cantidad = datoE._cantidad +1;
-        this.listaCC[i]._cantidad = this.usuario.listaCC[i]._cantidad;
+        this.usuario.carroCompras[i]._cantidad = datoE._cantidad +1;
+        this.listaCC[i]._cantidad = this.usuario.carroCompras[i]._cantidad;
       }
     }
 
@@ -122,9 +122,9 @@ export class CarroComprasComponent implements OnInit {
     for (var i = 0; i < this.listaCC.length; i++) {
 
       if(datoE == this.listaCC[i]){
-        if(this.usuario.listaCC[i]._cantidad  != 0){
-          this.usuario.listaCC[i]._cantidad = datoE._cantidad -1;
-          this.listaCC[i]._cantidad = this.usuario.listaCC[i]._cantidad;
+        if(this.usuario.carroCompras[i]._cantidad  != 0){
+          this.usuario.carroCompras[i]._cantidad = datoE._cantidad -1;
+          this.listaCC[i]._cantidad = this.usuario.carroCompras[i]._cantidad;
         }
       }
     }
@@ -150,7 +150,7 @@ export class CarroComprasComponent implements OnInit {
       }
     }
 
-    this.usuario.listaCC = this.listaCC2;
+    this.usuario.carroCompras = this.listaCC2;
     this.listaCC = this.listaCC2;
     this.listaCC2 = [];
 
@@ -172,12 +172,12 @@ export class CarroComprasComponent implements OnInit {
   pagar(){
 
 
-    for (var i = 0; i < this.usuario.listaCC.length; i++) {
-      this.usuario.ordenes.push(this.usuario.listaCC[i]);
+    for (var i = 0; i < this.usuario.carroCompras.length; i++) {
+      this.usuario.facturas.push(this.usuario.carroCompras[i]);
     }
 
     this.listaCC = [];
-    this.usuario.listaCC= this.listaCC;
+    this.usuario.carroCompras= this.listaCC;
 
     for(let aux of this.listaUsuarios)
    {

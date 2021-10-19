@@ -13,22 +13,22 @@ import javax.persistence.Entity;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long _idUsuario;
 
     @Basic
-    private String nombre;
+    private String _email;
 
     @Basic
-    private String apellido;
+    private String _nombre;
 
     @Basic
-    private String direccion;
+    private String _apellido;
 
     @Basic
-    private String email;
+    private String _direccion;
 
     @Basic
-    private String contrasenia;
+    private String _contrasenia;
 
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuariof")
@@ -42,56 +42,67 @@ public class Usuario {
 
     }
 
-    //Getter
-    public Long getIdUsuario(){
-        return idUsuario;
-    } 
-
-    public String getNombre(){
-        return nombre;
-    } 
-
-    public String getApellido(){
-        return apellido;
-    } 
-
-    public String getDireccion(){
-        return direccion;
+    public Long get_idUsuario() {
+        return _idUsuario;
     }
 
-    public String getEmail(){
-        return email;
-    } 
+    public String get_email() {
+        return _email;
+    }
 
-    public String getContrasenia(){
-        return contrasenia;
-    } 
+    public void set_email(String _email) {
+        this._email = _email;
+    }
 
-    //Setter
+    public String get_nombre() {
+        return _nombre;
+    }
 
-    public void setIdUsuario(Long idUsuario){
-        this.idUsuario = idUsuario ;
-    } 
+    public void set_nombre(String _nombre) {
+        this._nombre = _nombre;
+    }
 
-    public void setNombre(String nombre){
-        this.nombre = nombre ;
-    } 
+    public String get_apellido() {
+        return _apellido;
+    }
 
-    public void setApellido (String apellido){
-        this.apellido = apellido ;
-    } 
+    public void set_apellido(String _apellido) {
+        this._apellido = _apellido;
+    }
 
+    public String get_direccion() {
+        return _direccion;
+    }
 
-    public void setDireccion(String direccion){
-        this.direccion = direccion ;
-    } 
-   
-    public void setEmail(String email){
-        this.email = email ;
-    } 
+    public void set_direccion(String _direccion) {
+        this._direccion = _direccion;
+    }
 
-    public void setContrasenia(String contrasenia){
-        this.contrasenia = contrasenia ;
-    } 
+    public String get_contrasenia() {
+        return _contrasenia;
+    }
+
+    public void set_contrasenia(String _contrasenia) {
+        this._contrasenia = _contrasenia;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    public List<CarroCompras> getCarroCompras() {
+        return carroCompras;
+    }
+
+    public void setCarroCompras(List<CarroCompras> carroCompras) {
+        this.carroCompras = carroCompras;
+    }
+
+    
+
     
 }
