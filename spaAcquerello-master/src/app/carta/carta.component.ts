@@ -20,7 +20,7 @@ export class CartaComponent implements OnInit {
   public listaUsuarios: Usuario[] = [];
   public aux1: Usuario = new Usuario(0,"","","","","");
   public admin: Usuario = new Usuario(0,"","","","","");
-  public carroCompras: CarroCompras =  new CarroCompras("",0,0,"");
+  public carroCompras: CarroCompras =  new CarroCompras(0,"",0,0,"");
   public listaU2: Usuario[] = [];
   public listacarroCompras: CarroCompras[] = [];
   public usuario: Usuario = new Usuario(0,"","","","","");
@@ -106,7 +106,7 @@ export class CartaComponent implements OnInit {
     else{
 
     this.listacarroCompras = this.usuario.carroCompras;
-    this.carroCompras = new CarroCompras(platoE._nombre,1,platoE._precio, platoE._imagen);
+    this.carroCompras = new CarroCompras(0,platoE._nombre,1,platoE._precio, platoE._imagen);
     this.listacarroCompras.push(this.carroCompras);
     this.usuario.carroCompras = this.listacarroCompras;
 

@@ -20,7 +20,7 @@ export class InfoPlatoComponent implements OnInit {
   public mostrar:boolean=true;
   public listaUsuarios: Usuario[] = [];
   public aux1: Usuario = new Usuario(0,"","","","","");
-  public carroCompras: CarroCompras =  new CarroCompras("",0,0,"");
+  public carroCompras: CarroCompras =  new CarroCompras(0,"",0,0,"");
   public listaU2: Usuario[] = [];
   public listacarroCompras: CarroCompras[] = [];
   public usuario: Usuario = new Usuario(0,"","","","","");
@@ -84,7 +84,7 @@ export class InfoPlatoComponent implements OnInit {
 
     else{
     this.listacarroCompras = this.usuario.carroCompras;
-    this.carroCompras = new CarroCompras(this.platoObtener._nombre,1,this.platoObtener._precio, this.platoObtener._imagen);
+    this.carroCompras = new CarroCompras(0,this.platoObtener._nombre,1,this.platoObtener._precio, this.platoObtener._imagen);
     this.listacarroCompras.push(this.carroCompras);
     this.usuario.carroCompras = this.listacarroCompras;
 

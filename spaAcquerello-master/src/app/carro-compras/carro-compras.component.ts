@@ -14,8 +14,8 @@ export class CarroComprasComponent implements OnInit {
   
   listaCC: CarroCompras[] = [];
   listaCC2: CarroCompras[] = [];
-  dato: CarroCompras = new CarroCompras("",0,0,"");
-  aux2: CarroCompras = new CarroCompras("",0,0,"");
+  dato: CarroCompras = new CarroCompras(0,"",0,0,"");
+  aux2: CarroCompras = new CarroCompras(0,"",0,0,"");
   public usuario: Usuario = new Usuario(0,"","","","","");
   public aux: Usuario = new Usuario(0,"","","","","");
   public listaUsuarios: Usuario[] = [];

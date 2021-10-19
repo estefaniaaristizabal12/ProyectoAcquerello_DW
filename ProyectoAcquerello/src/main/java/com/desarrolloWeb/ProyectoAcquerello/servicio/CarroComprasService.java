@@ -32,8 +32,8 @@ public class CarroComprasService implements ICarroComprasService{
 
 		return repository.findById(id).map(provider -> {
 
-			provider.setCantidad(newCarroCompras.getCantidad());
-			provider.setPrecio(newCarroCompras.getPrecio());
+			provider.set_cantidad(newCarroCompras.get_cantidad());
+			provider.set_precio(newCarroCompras.get_precio());
 
 			return repository.save(provider);
             

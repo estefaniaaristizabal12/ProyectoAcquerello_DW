@@ -5,91 +5,61 @@ import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 
 public class CarroComprasDTO {
 
-    private Long id_CC;
+
+    private Long _id_CC;
+    private String _nombreProducto;
     private Usuario usuarioc;
     private Plato platoc;
-    private Integer cantidad;
-    private float precio;
+    private String _foto;
+    private Integer _cantidad;
+    private float _precio;
 
-
-    /**
-	 * @return the id_CC
-	 */
-    public Long getId_CC() {
-        return id_CC;
+    
+    public Long get_id_CC() {
+        return _id_CC;
     }
-
-
-    /**
-	 * @param id_CC the id_CC to set
-	 */
-    public void setId_CC(Long id_CC) {
-        this.id_CC = id_CC;
+    public void set_id_CC(Long _id_CC) {
+        this._id_CC = _id_CC;
     }
-
-
-    /**
-	 * @return the usuarioc
-	 */
+    public String get_nombreProducto() {
+        return _nombreProducto;
+    }
+    public void set_nombreProducto(String _nombreProducto) {
+        this._nombreProducto = _nombreProducto;
+    }
     public Usuario getUsuarioc() {
         return usuarioc;
     }
-
-    
-    /**
-	 * @param usuarioc the usuarioc to set
-	 */
     public void setUsuarioc(Usuario usuarioc) {
         this.usuarioc = usuarioc;
     }
-
-
-    /**
-	 * @return the platoc
-	 */
     public Plato getPlatoc() {
         return platoc;
     }
-
-    
-    /**
-	 * @param platoc the platoc to set
-	 */
     public void setPlatoc(Plato platoc) {
         this.platoc = platoc;
     }
-
-
-    /**
-	 * @return the cantidad
-	 */
-    public Integer getCantidad() {
-        return cantidad;
+    public String get_foto() {
+        return _foto;
+    }
+    public void set_foto(String _foto) {
+        this._foto = _foto;
+    }
+    public Integer get_cantidad() {
+        return _cantidad;
+    }
+    public void set_cantidad(Integer _cantidad) {
+        this._cantidad = _cantidad;
+    }
+    public float get_precio() {
+        return _precio;
+    }
+    public void set_precio(float _precio) {
+        this._precio = _precio;
     }
 
     
-    /**
-	 * @param cantidad the cantidad to set
-	 */
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
 
-
-    /**
-	 * @return the precio
-	 */
-    public float getPrecio() {
-        return precio;
-    }
-
-    
-    /**
-	 * @param precio the precio to set
-	 */
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
 
     
     

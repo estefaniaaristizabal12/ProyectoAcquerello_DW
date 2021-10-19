@@ -12,7 +12,7 @@ import { UsuarioService } from '../usuario.service';
 export class OrdenesComponent implements OnInit {
 
   listaOrdenes: CarroCompras[] = [];
-  dato: CarroCompras = new CarroCompras("",0,0,"");
+  dato: CarroCompras = new CarroCompras(0,"",0,0,"");
   public usuario: Usuario = new Usuario(0,"","","","","");
   public aux: Usuario = new Usuario(0,"","","","","");
   public listaUsuarios: Usuario[] = [];
