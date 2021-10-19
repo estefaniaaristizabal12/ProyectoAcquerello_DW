@@ -99,8 +99,8 @@ public class UsuarioREST {
 	}
 
 	
-	@PostMapping("/actualizarPlato")
-	public Usuario actualizarPlato(@RequestBody Usuario newUsuario) {
+	@PostMapping("/actualizarUsuario")
+	public Usuario actualizarUsuario(@RequestBody Usuario newUsuario) {
 		return usuarioService.updateUsuario(newUsuario);
 	}
     

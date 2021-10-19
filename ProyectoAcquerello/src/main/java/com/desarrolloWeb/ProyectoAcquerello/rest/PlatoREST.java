@@ -100,8 +100,11 @@ public class PlatoREST {
 
 
     @PostMapping("/actualizarPlato")
-	public Plato actualizarPlato(@RequestBody Plato newPlato) {
-		return platoService.updatePlato(newPlato);
+	public Plato actualizarPlato(@RequestBody PlatoDTO newPlato) {
+		Plato plato = new Plato();
+		ModelMapper mapper = new ModelMapper();
+		plato = mapper.map(newPlato, Plato.class);
+		return platoService.updatePlato(plato);
 	}
 
 

@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 @Service
 public class PlatoService implements IPlatoService{
 
@@ -44,7 +46,7 @@ public class PlatoService implements IPlatoService{
     }
 
 
-	@Override
+	@Transactional
 	public Plato updatePlato(Plato newPlato) {
 		Optional<Plato> pro = repository.findById(newPlato.get_idPlato());
 		Plato provider = pro.get();
@@ -52,7 +54,7 @@ public class PlatoService implements IPlatoService{
 		provider.set_descripcion(newPlato.get_descripcion());
 		provider.set_imagen(newPlato.get_imagen());
 		provider.set_precio(newPlato.get_precio());
-		return repository.save(provider);
+		return provider;
 	}
 
 

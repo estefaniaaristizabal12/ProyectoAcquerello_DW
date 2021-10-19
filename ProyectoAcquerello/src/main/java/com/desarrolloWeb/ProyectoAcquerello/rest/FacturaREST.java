@@ -38,13 +38,6 @@ public class FacturaREST {
 	}
 
 
-    /*
-    @DeleteMapping("/facturas/eliminar/{id}")
-	public void deleteFactura(@PathVariable Long idFactura) {
-		facturaService.deleteFactura(idFactura);
-	}
-
-	*/
 
     @PostMapping("/crear")
 	public Factura createFactura(@RequestBody Factura nuevaFactura) {
