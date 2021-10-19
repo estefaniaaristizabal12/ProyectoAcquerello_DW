@@ -30,27 +30,21 @@ export class EditarProductoComponent implements OnInit {
 
   actualizar(){
 
+    this._platoService.updatePlato(this.platoObtener);
+
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;
     }) ;
 
-
-    
-    for(let aux of this.listaPlatos)
-    {
-      if(this.platoObtener._nombre != aux._nombre){
-        this.listaP2.push(aux);
-      }else{
-        this.listaP2.push(this.platoObtener);
-      }
-    }
-
-    localStorage.setItem('localListaPlatos',JSON.stringify(this.listaP2));
-    this.listaP2=[];
-
+    this.async_print_personas();
     this.router.navigateByUrl("/administrarProductos");
 
+  }
+
+  async async_print_personas() {
+    await new Promise((f) => setTimeout(f, 1000));
+    console.log(this.listaPlatos);
   }
 
   cerrar(){

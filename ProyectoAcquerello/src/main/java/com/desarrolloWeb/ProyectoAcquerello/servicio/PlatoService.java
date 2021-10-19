@@ -24,7 +24,7 @@ public class PlatoService implements IPlatoService{
 	@Override
 	public Page<Plato> getPlatos(Pageable pageable) {
 		return repository.findAll(pageable);
-	}
+	} 
 
 	@Override
 	public Iterable<Plato> getPlatosL() {

@@ -25,7 +25,7 @@ export class PlatoService {
   }
 
   updatePlato (plato: Plato){
-    return this.http.post(this.Url + "/actualizarPlato", plato);
+    return this.http.post(this.Url +"/actualizarPlato", plato);
   }
 
   deletePlato (plato: Plato){

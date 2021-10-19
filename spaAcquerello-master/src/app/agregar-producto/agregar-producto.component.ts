@@ -24,11 +24,17 @@ export class AgregarProductoComponent implements OnInit {
   }
   agregarPlato(){
     this._platoService.createPlato(this.plato);
+    this.async_print_personas();
   }
 
   cerrar(){
     localStorage.setItem('actual',"");
     alert("Se cerró sesión correctamente!");
+  }
+  
+  async async_print_personas() {
+    await new Promise((f) => setTimeout(f, 1000));
+    console.log(this.listaPlatos);
   }
 
 }
