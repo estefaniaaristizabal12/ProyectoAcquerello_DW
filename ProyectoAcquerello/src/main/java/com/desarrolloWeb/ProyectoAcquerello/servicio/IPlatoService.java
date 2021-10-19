@@ -17,7 +17,7 @@ public interface IPlatoService {
 
     Iterable<Plato> getPlatosL();
 
-    Plato actualizarPlato(Plato plato, Long id);
+    Plato updatePlato(Plato plato);
 
     void deletePlato(Long id);
 

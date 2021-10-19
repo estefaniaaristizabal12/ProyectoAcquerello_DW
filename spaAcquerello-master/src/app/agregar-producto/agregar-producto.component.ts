@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plato } from '../model/plato';
+import { PlatoService } from '../plato.service';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -13,28 +14,19 @@ export class AgregarProductoComponent implements OnInit {
   public listaP2: Plato[] = [];
   public plato: Plato = new Plato(0,"","","assets/imagenVacia.png",0);
   
-  constructor() { 
-    var storageList = localStorage.getItem('localListaPlatos');
-    if(storageList== null){
-      this.listaPlatos = [];
-    }
-    else{
-      this.listaPlatos = JSON.parse(storageList);
-    }
+  constructor(public _platoService: PlatoService) { 
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) ;
   }
-
   ngOnInit(): void {
   }
-
   agregarPlato(){
-    this.listaPlatos.push(this.plato);
-    localStorage.setItem('localListaPlatos',JSON.stringify(this.listaPlatos));
-    alert("El plato "+this.plato._nombre+" , se agregó correctamente");
-    window.location.reload();
+    this._platoService.createPlato(this.plato);
   }
 
   cerrar(){
-    //borro el inicio
     localStorage.setItem('actual',"");
     alert("Se cerró sesión correctamente!");
   }

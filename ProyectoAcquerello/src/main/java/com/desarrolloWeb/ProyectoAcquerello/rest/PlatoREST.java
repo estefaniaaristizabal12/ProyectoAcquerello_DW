@@ -48,6 +48,11 @@ public class PlatoREST {
 		return result;
 	}
 
+	@PostMapping("/crear")
+	public Plato crearPlato(@RequestBody Plato newPlato) {
+		return platoService.createPlato(newPlato);
+	}
+
 	@GetMapping("/listaPlatosEst")
 	public List<PlatoDTO> getUsuarios() {
 
@@ -75,10 +80,8 @@ public class PlatoREST {
 		for (Plato plato : platos) {
 			result.add(mapper.map(plato, PlatoDTO.class));
 		}
-
 		return result;
 	}
-
 
 	//http://localhost:8080/darPlato?idUPlato=14 
 
@@ -96,30 +99,16 @@ public class PlatoREST {
 
 
 
-    
-    @PostMapping("/crear")
-	public Plato crearPlato(@RequestBody Plato newPlato) {
-		return platoService.createPlato(newPlato);
+    @PostMapping("/actualizarPlato")
+	public Plato actualizarPlato(@RequestBody Plato newPlato) {
+		return platoService.updatePlato(newPlato);
 	}
 
 
-    @PutMapping("/actualizar/{id}")
-	public Plato actualizarPlato(@RequestBody Plato newPlato, @PathVariable Long id) {
-		return platoService.actualizarPlato(newPlato, id);
-	}
-
-
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar")
 	public void deletePlato(@PathVariable Long id) {
 		platoService.deletePlato(id);
 	}
 	
-
-    /*
-    @GetMapping("/platos/consultar/{idPlato}")
-	public Plato getPlatoById(@PathVariable Long idPlato) {
-		return platoService.getPlatoById(idPlato);
-	}
-    */
 
 }

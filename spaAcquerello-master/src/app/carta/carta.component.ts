@@ -39,13 +39,6 @@ export class CartaComponent implements OnInit {
     this.async_print_personas();
     
   
-  /*
-    if(aux== null){
-      this.listaPlatos = [];
-    }
-    else{
-      this.listaPlatos =  JSON.parse(aux);
-    }  */
 
     var storageList = localStorage.getItem('localListaUsuarios');
     if(storageList== null){

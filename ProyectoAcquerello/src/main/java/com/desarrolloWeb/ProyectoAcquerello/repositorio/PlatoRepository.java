@@ -10,4 +10,5 @@ import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
 public interface PlatoRepository extends PagingAndSortingRepository<Plato, Long> {
     
     
+    
 }

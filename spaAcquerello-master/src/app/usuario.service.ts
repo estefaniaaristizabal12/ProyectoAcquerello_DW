@@ -80,8 +80,4 @@ export class UsuarioService {
     return new Usuario(0,"","","","","");
   }
 
-  
-
-
-
 }

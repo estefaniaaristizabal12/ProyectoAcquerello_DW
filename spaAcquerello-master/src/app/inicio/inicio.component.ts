@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Plato } from '../model/plato';
+import { PlatoService } from '../plato.service';
 
 @Component({
   selector: 'app-inicio',
@@ -15,14 +16,13 @@ export class InicioComponent implements OnInit {
 
   public listaPlatos: Plato[] = [];
   
-  constructor(public route: Router) { 
-    var aux = localStorage.getItem('localListaPlatos');
-    if(aux== null){
-      this.listaPlatos = [];
-    }
-    else{
-      this.listaPlatos =  JSON.parse(aux);
-    }
+  constructor(private _platoService: PlatoService, public route: Router) { 
+
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) ;
+
 
     if(this.listaPlatos.length >= 3){
     this.plato1 = this.listaPlatos[0];

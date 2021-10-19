@@ -34,13 +34,11 @@ export class InfoPlatoComponent implements OnInit {
           this.platoObtener = this._servicioProducto.platoObtener;
 
 
-      var aux = localStorage.getItem('localListaPlatos');
-      if(aux== null){
-        this.listaPlatos = [];
-      }
-      else{
-        this.listaPlatos =  JSON.parse(aux);
-      }
+      this._servicioProducto.getlistaPlato()
+      .subscribe(data =>{
+        this.listaPlatos = data;
+      }) ;
+      
   
       var storageList = localStorage.getItem('localListaUsuarios');
       if(storageList== null){

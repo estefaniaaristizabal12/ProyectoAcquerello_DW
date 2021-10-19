@@ -15,15 +15,13 @@ export class AdministrarProductoComponent implements OnInit {
   public aux: Plato = new Plato(0,"","","",0);
 
   constructor( public _platoService: PlatoService, public router: Router ) {
-    var storageList = localStorage.getItem('localListaPlatos');
-    if(storageList== null){
-      this.listaPlatos = [];
-    }
-    else{
-      this.listaPlatos = JSON.parse(storageList);
-    }
 
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) ;
   }
+
 
   ngOnInit(): void {
   }
@@ -45,17 +43,8 @@ export class AdministrarProductoComponent implements OnInit {
 
   
   borrarDato(platoE: Plato){
-    for (var i = 0; i < this.listaPlatos.length; i++) {
-     if(platoE != this.listaPlatos[i]){ //Si la lista esta vacia
-       this.listaP2.push(this.listaPlatos[i]);
-       
-     }
-   }
-
-   localStorage.setItem('localListaPlatos',JSON.stringify(this.listaP2));
-   this.listaP2 = [];
-
-   this.actualizar();
+    this._platoService.deletePlato(platoE);
+   //this.actualizar();
  }
 
  actualizar(){

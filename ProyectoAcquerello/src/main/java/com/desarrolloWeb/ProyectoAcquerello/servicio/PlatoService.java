@@ -45,19 +45,14 @@ public class PlatoService implements IPlatoService{
 
 
 	@Override
-	public Plato actualizarPlato(Plato newPlato, Long id) {
-
-		return repository.findById(id).map(provider -> {
-			provider.set_nombre(newPlato.get_nombre());
-			provider.set_descripcion(newPlato.get_descripcion());
-			provider.set_precio(newPlato.get_precio());
-
-
-			return repository.save(provider);
-            
-		}).orElseGet(() -> {
-			throw new PlatoNotFoundException(id);
-		});
+	public Plato updatePlato(Plato newPlato) {
+		Optional<Plato> pro = repository.findById(newPlato.get_idPlato());
+		Plato provider = pro.get();
+		provider.set_nombre(newPlato.get_nombre());
+		provider.set_descripcion(newPlato.get_descripcion());
+		provider.set_imagen(newPlato.get_imagen());
+		provider.set_precio(newPlato.get_precio());
+		return repository.save(provider);
 	}
 
 

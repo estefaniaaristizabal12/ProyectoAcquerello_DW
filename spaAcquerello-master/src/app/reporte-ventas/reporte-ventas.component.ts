@@ -23,13 +23,10 @@ export class ReporteVentasComponent implements OnInit {
   public precioTotal: number = 0; 
 
   constructor( public _platoService: PlatoService, public router: Router ) {
-    var storageList = localStorage.getItem('localListaPlatos');
-    if(storageList== null){
-      this.listaPlatos = [];
-    }
-    else{
-      this.listaPlatos = JSON.parse(storageList);
-    }
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) ;
 
   }
 

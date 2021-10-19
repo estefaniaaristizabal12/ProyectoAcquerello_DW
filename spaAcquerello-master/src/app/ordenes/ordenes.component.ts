@@ -29,7 +29,6 @@ export class OrdenesComponent implements OnInit {
       this.correoA = aux1;
     }
 
-    console.log("holaaa" + this.correoA);
     //Se debe validar que no sea nula la lista.
     var storageList = localStorage.getItem('localListaUsuarios');
     if(storageList== null){

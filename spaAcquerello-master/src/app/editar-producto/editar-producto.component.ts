@@ -19,10 +19,10 @@ export class EditarProductoComponent implements OnInit {
   public listaPlatos: Plato[] = [];
   public listaP2: Plato[] = [];
 
-  constructor(public _servicioProducto: PlatoService, private router:Router) {
+  constructor(public _platoService: PlatoService, private router:Router) {
 
-      if(this._servicioProducto.platoObtener)
-          this.platoObtener = this._servicioProducto.platoObtener;
+      if(this._platoService.platoObtener)
+          this.platoObtener = this._platoService.platoObtener;
    }
 
   ngOnInit(): void {
@@ -30,14 +30,11 @@ export class EditarProductoComponent implements OnInit {
 
   actualizar(){
 
-    var aux1 = localStorage.getItem('localListaPlatos');
-    //Se debe validar que no sea nulo el string.
-    if(aux1== null){
-      this.listaPlatos=[];
-    }
-    else{
-      this.listaPlatos = JSON.parse(aux1);
-    }
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) ;
+
 
     
     for(let aux of this.listaPlatos)
