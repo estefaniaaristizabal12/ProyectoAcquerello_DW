@@ -73,6 +73,15 @@
             <version>8.0.0</version>
             <type>jar</type>
         </dependency>
+
+		<!--  Aca automaticamente spring asegura el proyecto 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>2.5.5</version>
+		</dependency>	
+
+		-->
  </dependencies>
 
 	<build>

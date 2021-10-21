@@ -1,5 +1,5 @@
 package com.desarrolloWeb.ProyectoAcquerello.repositorio;
-import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -31,8 +31,8 @@ public interface UsuarioRepository extends  PagingAndSortingRepository<Usuario, 
    // ------------- Buscar Usuario ------------------------
 
    List<Usuario> findByEmail (String email);
-
-   Usuario findByIdUsuario (Long idUsuario); */
+*/
+   Optional<Usuario> findByEmail (String email); 
    
 }
 
