@@ -3,6 +3,7 @@ package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 import javax.persistence.Entity;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,8 @@ import java.util.List;
 
 import javax.persistence.Basic;
 =======
+=======
+>>>>>>> parent of 4eaeae8 (funcionalcito)
 import javax.persistence.ManyToOne;
 
 
