@@ -2,9 +2,11 @@ package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+@Embeddable
 public class IdFactura implements Serializable{
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
