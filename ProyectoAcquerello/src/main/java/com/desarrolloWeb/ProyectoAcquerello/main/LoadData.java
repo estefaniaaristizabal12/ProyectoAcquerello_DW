@@ -35,7 +35,7 @@ class LoadData {
         return args -> {
 			System.out.println("Cargando Usuarios en la Base de Datos");
 
-            // ___________ Usuario A _________________
+            // ____ Usuario A ______
 
             usuarioA.set_nombre("Juan");
 			usuarioA.set_apellido("Bolaños");
@@ -44,7 +44,7 @@ class LoadData {
             usuarioA.set_direccion("Calle 89 n122i 27");
 			repository.save(usuarioA);
 
-            // ___________ Usuario B _________________
+            // ____ Usuario B ______
 
             usuarioB.set_nombre("Estefania");
 			usuarioB.set_apellido("Aristizabal");
@@ -74,7 +74,7 @@ class LoadData {
         return args -> {
 	        System.out.println("Cargando Usuarios en la Base de Datos");
 
-                    // ___________ Plato 1 _________________
+                    // ____ Plato 1 ______
 
             platoA.set_nombre("Pasta Al Pomodoro Fresco");
             platoA.set_descripcion("Clasica pasta con albahaca y aceite de oliva");
@@ -82,7 +82,7 @@ class LoadData {
             platoA.set_imagen("assets/imagenVacia.png");
             repository.save(platoA);
 
-                    // ___________ Plato 2 _________________
+                    // ____ Plato 2 ______
 
             platoB.set_nombre("Pasta Al Funghi");
             platoB.set_descripcion("Salsa cremosa de hongos con adicion de especies");
@@ -111,7 +111,7 @@ class LoadData {
 
             System.out.println("Cargando Carrritos de compras en la Base de Datos");
             
-            // ___________ CarroCompras 1 _________________
+            // ____ CarroCompras 1 ______
 
 
             carroCompras1.setUsuarioc(usuarioA);
@@ -123,7 +123,7 @@ class LoadData {
             repository.save(carroCompras1);
             
 
-            // ___________ CarroCompras 2 _________________
+            // ____ CarroCompras 2 ______
 
             carroCompras2.setUsuarioc(usuarioA);
             carroCompras2.setPlatoc(platoB);
@@ -146,8 +146,7 @@ class LoadData {
 
             System.out.println("Cargando Facturas en la Base de Datos");
             
-            // ___________ Factura 1 _________________
-
+            // ____ Factura 1 ______
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, 1899);
             calendar.set(Calendar.DAY_OF_MONTH, 11);
@@ -161,13 +160,13 @@ class LoadData {
             //factura1.setFecha(calendar.getTime());
             repository.save(factura1);
 
-            // ___________ Factura 2 _________________
+            // ____ Factura 2 ______
 
             factura2.setPlato(platoB);
             factura2.setUsuario(usuarioA);
             factura2.setCantidad(1);
             factura2.setTotal(50000);
-           // factura2.setFecha(calendar.getTime());
+            //factura2.setFecha(calendar.getTime());
             repository.save(factura2);
 
             ;

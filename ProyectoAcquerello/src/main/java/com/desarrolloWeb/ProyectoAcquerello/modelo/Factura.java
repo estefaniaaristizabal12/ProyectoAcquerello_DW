@@ -1,46 +1,28 @@
 package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Basic;
+//import javax.persistence.EmbeddedId;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+//import javax.persistence.Temporal;
+//import javax.persistence.TemporalType;
 
-import java.util.List;
-
-import javax.persistence.Basic;
-=======
-=======
->>>>>>> parent of 4eaeae8 (funcionalcito)
-import javax.persistence.ManyToOne;
-
-
-import javax.persistence.Basic;
-import javax.persistence.EmbeddedId;
-
->>>>>>> parent of 4eaeae8 (funcionalcito)
 
 @Entity
-public class Factura{
+public class Factura {
 
-<<<<<<< HEAD
-=======
-    @EmbeddedId
-    IdFactura id;
-    /*
->>>>>>> parent of 4eaeae8 (funcionalcito)
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFactura;
-
-    @ManyToMany
-    private List<Plato> platosf;  //Una factura tiene muchos platos
 
     @ManyToOne
     private Usuario usuariof;
@@ -48,6 +30,8 @@ public class Factura{
     @ManyToOne
     private Plato platof;
 
+
+    @Basic
     private Integer cantidad;
 
     @Basic
@@ -58,70 +42,49 @@ public class Factura{
     public Factura(){
 
     }
-
-
-    public Long getIdFactura() {
+    
+    //Getter
+    public Long getIdFactura(){
         return idFactura;
-    }
+    } 
 
-
-    public void setIdFactura(Long idFactura) {
-        this.idFactura = idFactura;
-    }
-
-
-    public List<Plato> getPlatosf() {
-        return platosf;
-    }
-
-
-    public void setPlatosf(List<Plato> platosf) {
-        this.platosf = platosf;
-    }
-
-
-    public Usuario getUsuariof() {
-        return usuariof;
-    }
-
-
-    public void setUsuariof(Usuario usuariof) {
-        this.usuariof = usuariof;
-    }
-
-
-    public Plato getPlatof() {
-        return platof;
-    }
-
-
-    public void setPlatof(Plato platof) {
-        this.platof = platof;
-    }
-
-
-    public List<Integer> getCantidad() {
+    public Integer getCantidad(){
         return cantidad;
     }
 
-
-    public void setCantidad(List<Integer> cantidad) {
-        this.cantidad = cantidad;
-    }
-
-
-    public float getTotal() {
+    public float getTotal(){
         return total;
+    } 
+
+  
+
+    public Plato getPlato(){
+        return platof;
     }
 
-
-    public void setTotal(float total) {
-        this.total = total;
+    public Usuario getUsuario(){
+        return usuariof;
     }
 
-    
+    //Setter
 
+    public void setIdFactura(Long idFactura){
+        this.idFactura = idFactura ;
+    } 
+
+    public void setPlato(Plato plato){
+        this.platof = plato ;
+    } 
+    public void setUsuario(Usuario usuario){
+        this.usuariof = usuario ;
+    } 
+
+    public void setCantidad(Integer cantidad){
+        this.cantidad = cantidad ;
+    } 
+   
+    public void setTotal(float total){
+        this.total = total ;
+    } 
     
 }
-
-
