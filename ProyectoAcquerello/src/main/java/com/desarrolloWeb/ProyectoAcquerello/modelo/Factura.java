@@ -30,7 +30,7 @@ public class Factura{
     @ManyToOne
     private Plato platof;
 
-    private List<Integer> cantidad;
+    private Integer cantidad;
 
     @Basic
     private float total;
