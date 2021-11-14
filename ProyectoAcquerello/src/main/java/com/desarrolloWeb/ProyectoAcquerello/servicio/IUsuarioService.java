@@ -15,6 +15,8 @@ public interface IUsuarioService {
 
     Usuario updateUsuario(Usuario usuario);
 
+    Iterable<Usuario> getUsuariosL();
+
 
     
 }

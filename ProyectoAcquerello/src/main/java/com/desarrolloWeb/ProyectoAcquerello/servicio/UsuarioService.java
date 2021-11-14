@@ -26,6 +26,11 @@ public class UsuarioService implements IUsuarioService {
 		return repository.findAll(pageable);
 	}
 
+    @Override
+    public Iterable<Usuario> getUsuariosL(){
+        return repository.findAll();
+    }
+
 
     @Override
     public Usuario getUsuarioById(String email){

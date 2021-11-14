@@ -54,7 +54,7 @@ public class PlatoREST {
 	}
 
 	@GetMapping("/listaPlatosEst")
-	public List<PlatoDTO> getUsuarios() {
+	public List<PlatoDTO> getPlatos() {
 
 		Iterable<Plato> platos = platoService.getPlatosL();
 		List<PlatoDTO> result = new ArrayList<>();
@@ -70,7 +70,7 @@ public class PlatoREST {
 
 	//http://localhost:8080/platos/listarPlatos?page=1
 	@GetMapping("/listarPlatos")
-	public List<PlatoDTO> getUsuarios(@RequestParam(name="page") int page, 
+	public List<PlatoDTO> getPlatos(@RequestParam(name="page") int page, 
 			@RequestParam(name="size", required = false, defaultValue = "10") int size) {
 	
 		Page<Plato> platos = platoService.getPlatos(PageRequest.of(page,size));

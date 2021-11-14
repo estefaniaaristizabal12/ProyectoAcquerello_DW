@@ -22,6 +22,7 @@ import { EditarProductoComponent } from './editar-producto/editar-producto.compo
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
 import { PlatoService } from '../app/plato.service'
 import { HttpClientModule } from '@angular/common/http';
+import { UsuarioService } from './usuario.service';
 
 @NgModule({
   declarations: [
@@ -51,8 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
     
   ],
-  providers: [ PlatoService
-  ],
+  providers: [ PlatoService,
+    UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

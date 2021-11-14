@@ -49,6 +49,20 @@ public class UsuarioREST {
 	}
 
 
+	@GetMapping("/listaUsuariosEst")
+	public List<UsuarioDTO> getUsuarios() {
+		Iterable<Usuario> usuarios = usuarioService.getUsuariosL();
+		List<UsuarioDTO> result = new ArrayList<>();
+		ModelMapper mapper = new ModelMapper();
+		
+		for (Usuario usuario : usuarios) {
+			result.add(mapper.map(usuario, UsuarioDTO.class));
+		}
+		return result;
+	}
+
+
+
 	//http://localhost:8080/usuarios/listarUsuarios?page=1
 	@GetMapping("/listarUsuarios")
 	public List<UsuarioDTO> getUsuarios(@RequestParam(name="page") int page, 

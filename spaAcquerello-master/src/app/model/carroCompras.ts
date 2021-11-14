@@ -13,7 +13,6 @@ export class CarroCompras {
     public _precio: number;
 
 
-
     constructor(id_CC: number, nombre:string, cantidad:number,  precio:number,  foto:string){
             this._id_CC = id_CC;
             this._nombreProducto = nombre;

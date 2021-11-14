@@ -1,6 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CarroCompras } from './model/carroCompras';
 import { Usuario } from './model/usuario';
+
+/*
+import { Injectable } from '@angular/core';
+import { Plato } from './model/plato';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+*/
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +18,18 @@ export class UsuarioService {
   public listaUsuarios: Usuario[] = [];
   public usuario: Usuario = new Usuario(0,"","","","","");
   public usuarioActual: Usuario = new Usuario(0,"","","","","");
+  Url = 'http://localhost:8080/usuario';
 
   
 
-  constructor() { 
-
-    //Aca toca actualizar con lo del LocalStorage
-    var storageList = localStorage.getItem('localListaUsuarios');
-    if(storageList== null){
-      this.listaUsuarios = [];
-    }
-    else{
-      this.listaUsuarios = JSON.parse(storageList);
-    }
+  constructor(private http: HttpClient) { 
   }
+
+
+  getlistaUsuario(){
+    return this.http.get<Usuario[]>(this.Url+"/listaUsuariosEst");
+  }
+
   agregar(usuario :Usuario){
     
     //excepto esto
@@ -42,6 +48,13 @@ export class UsuarioService {
 
   buscarPersona(emailP:string){
 
+    this.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;  
+
+    this.async_print_personas();
+
     for(let usuario of this.listaUsuarios)
     {
       if(emailP == usuario._email){
@@ -52,6 +65,15 @@ export class UsuarioService {
   }
 
   verificarContrasenia(emailP:string, contrasenaP:string){
+
+    this.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
+    this.async_print_personas();
+
+
     for(let usuario of this.listaUsuarios)
     {
       if(emailP == usuario._email){
@@ -69,6 +91,13 @@ export class UsuarioService {
   }
 
   darUsuario(emailP:string){
+
+    this.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
+
     for(let usuario of this.listaUsuarios)
     {
       if(emailP == usuario._email){
@@ -78,6 +107,11 @@ export class UsuarioService {
       }
     }
     return new Usuario(0,"","","","","");
+  }
+
+  async async_print_personas() {
+    await new Promise((f) => setTimeout(f, 1000));
+    console.log(this.listaUsuarios);
   }
 
 }
