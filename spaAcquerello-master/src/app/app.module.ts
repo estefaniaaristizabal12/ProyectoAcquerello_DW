@@ -22,7 +22,7 @@ import { EditarProductoComponent } from './editar-producto/editar-producto.compo
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
 import { PlatoService } from '../app/plato.service'
 import { HttpClientModule } from '@angular/common/http';
-import { UsuarioService } from './usuario.service';
+import { UsuarioService } from '../app/usuario.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,6 @@ import { UsuarioService } from './usuario.service';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule
-    
   ],
   providers: [ PlatoService,
     UsuarioService],

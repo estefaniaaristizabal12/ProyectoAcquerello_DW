@@ -14,8 +14,8 @@ public class UsuarioDTO {
     private String _apellido;
     private String _direccion;
     private String _contrasenia;
-    private List<Factura> facturas;
-    private List<CarroCompras> carroCompras;
+    private List<FacturaDTO> facturas;
+    private List<CarroComprasDTO> carroCompras;
 
     public Long get_idUsuario() {
         return _idUsuario;
@@ -53,16 +53,16 @@ public class UsuarioDTO {
     public void set_contrasenia(String _contrasenia) {
         this._contrasenia = _contrasenia;
     }
-    public List<Factura> getFacturas() {
+    public List<FacturaDTO> getFacturas() {
         return facturas;
     }
-    public void setFacturas(List<Factura> facturas) {
+    public void setFacturas(List<FacturaDTO> facturas) {
         this.facturas = facturas;
     }
-    public List<CarroCompras> getCarroCompras() {
+    public List<CarroComprasDTO> getCarroCompras() {
         return carroCompras;
     }
-    public void setCarroCompras(List<CarroCompras> carroCompras) {
+    public void setCarroCompras(List<CarroComprasDTO> carroCompras) {
         this.carroCompras = carroCompras;
     }
     

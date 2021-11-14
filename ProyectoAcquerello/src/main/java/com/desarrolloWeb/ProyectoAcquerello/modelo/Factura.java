@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Basic;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 //import javax.persistence.EmbeddedId;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,11 +32,8 @@ public class Factura {
     @ManyToOne
     private Plato platof;
 
-    
     @Temporal(TemporalType.DATE)
     private Date fecha;
-   // @Temporal(TemporalType.TIMESTAMP)
-	//private LocalDateTime fecha;
 
     @Basic
     private Integer cantidad;

@@ -1,5 +1,7 @@
 package com.desarrolloWeb.ProyectoAcquerello.dtos;
 
+import java.util.Date;
+
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 
@@ -10,9 +12,17 @@ public class FacturaDTO {
     private Plato platof;
     private Integer cantidad;
     private float total;
-
+    private Date fecha;
 
     
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
     /**
 	 * @return the idFactura
 	 */
