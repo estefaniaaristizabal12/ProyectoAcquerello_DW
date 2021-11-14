@@ -22,7 +22,6 @@ public class CarroCompras {
     @Basic
     private String _nombreProducto;
 
-    //@EmbeddedId
     @ManyToOne
     private Usuario usuarioc;
 
