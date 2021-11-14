@@ -44,6 +44,7 @@ export class OrdenesComponent implements OnInit {
 
     console.log(this.usuario._nombre);
     this.listaOrdenes = this.usuario.facturas;
+    
   }
 
   ngOnInit(): void {

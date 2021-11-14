@@ -3,6 +3,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
 
 @Component({
@@ -14,6 +15,9 @@ export class CarroComprasComponent implements OnInit {
   
   listaCC: CarroCompras[] = [];
   listaCC2: CarroCompras[] = [];
+  facturaN: Factura [] = [];
+  fechaL: Date = new Date();
+  factAux: Factura = new Factura(0,0,0,this.fechaL);
   dato: CarroCompras = new CarroCompras(0,"",0,0,"");
   aux2: CarroCompras = new CarroCompras(0,"",0,0,"");
   public usuario: Usuario = new Usuario(0,"","","","","");
@@ -172,9 +176,19 @@ export class CarroComprasComponent implements OnInit {
   pagar(){
 
 
+
     for (var i = 0; i < this.usuario.carroCompras.length; i++) {
-      this.usuario.facturas.push(this.usuario.carroCompras[i]);
+      this.factAux.cantidad = this.usuario.carroCompras[i]._cantidad;
+      this.factAux.total = this.usuario.carroCompras[i]._precio * this.usuario.carroCompras[i]._cantidad;
+      this.factAux.idFactura = 555;
+      this.factAux.fecha = this.fechaL;
+      this.usuario.facturas.push(this.factAux);
+
     }
+
+    /*for (var i = 0; i < this.usuario.carroCompras.length; i++) {
+      this.usuario.facturas.push(this.usuario.carroCompras[i]);
+    }*/
 
     this.listaCC = [];
     this.usuario.carroCompras= this.listaCC;

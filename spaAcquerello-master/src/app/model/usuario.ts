@@ -1,4 +1,5 @@
 import { CarroCompras } from "./carroCompras";
+import { Factura } from "./factura";
 
 export class Usuario {
     public _idUsuario: number = 0;
@@ -8,7 +9,7 @@ export class Usuario {
     public _direccion: string = "";
     public _contrasenia: string = "";
     public carroCompras: CarroCompras[] = [];
-    public facturas: CarroCompras[] = [];
+    public facturas: Factura[] = [];
     constructor(idUsuario:number, nombre:string, apellido:string,  email:string, 
          contrasenia:string,  direccion:string){
             this._idUsuario = idUsuario;

@@ -30,7 +30,7 @@ public class Plato {
     private float _precio;
 
   
-    @ManyToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "platof")
     private List<Factura> facturas;  //Un usuario tiene muchas facturas
 
     

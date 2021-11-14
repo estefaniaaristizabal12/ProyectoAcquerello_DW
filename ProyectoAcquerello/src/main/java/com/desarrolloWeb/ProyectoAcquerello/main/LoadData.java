@@ -153,20 +153,20 @@ class LoadData {
             calendar.set(Calendar.MONTH, 10);
             calendar.set(Calendar.HOUR, 6);
             
-            factura1.setPlato(platoA);
-            factura1.setUsuario(usuarioA);
+            factura1.setPlatof(platoB);
+            factura1.setUsuariof(usuarioA);
             factura1.setCantidad(2);
             factura1.setTotal(105000);
-            //factura1.setFecha(calendar.getTime());
+            factura1.setFecha(calendar.getTime());
             repository.save(factura1);
 
             // ____ Factura 2 ______
 
-            factura2.setPlato(platoB);
-            factura2.setUsuario(usuarioA);
+            factura2.setPlatof(platoA);
+            factura2.setUsuariof(usuarioA);
             factura2.setCantidad(1);
             factura2.setTotal(50000);
-            //factura2.setFecha(calendar.getTime());
+            factura2.setFecha(calendar.getTime());
             repository.save(factura2);
 
             ;
