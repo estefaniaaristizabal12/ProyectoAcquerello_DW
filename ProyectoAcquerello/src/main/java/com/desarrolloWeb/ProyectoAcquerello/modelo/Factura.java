@@ -1,35 +1,42 @@
 package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
+
+import java.io.Serializable;
+
 import javax.persistence.Basic;
+import javax.persistence.EmbeddedId;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 
 @Entity
-public class Factura {
+public class Factura{
+
+    @EmbeddedId
+    IdFactura id;
+
+
+    /*
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idFactura;
+    private Long idFactura;*/
 
     //En realidad es otra llave xd
+   /*
     @Basic
-    private Long idPlato;
+    private Long idPlato;*/
 
     @ManyToOne
     private Usuario usuariof;
 
     @ManyToOne
     private Plato platof;
-/*
-    @Temporal(TemporalType.DATE)
-    private Date fecha; */
 
     @Basic
     private Integer cantidad;
@@ -43,19 +50,6 @@ public class Factura {
 
     }
     
-    
-
-    public Long getIdPlato() {
-        return idPlato;
-    }
-
-
-
-    public void setIdPlato(Long idPlato) {
-        this.idPlato = idPlato;
-    }
-
-
 
     public Usuario getUsuariof() {
         return usuariof;
@@ -79,12 +73,28 @@ public class Factura {
         this.platof = platof;
     }
 
+    
+
 
 
     //Getter
-    public Long getIdFactura(){
+
+/*
+    public Long getIdFactura() {
         return idFactura;
-    } 
+    }
+
+    public void setIdFactura(Long idFactura) {
+        this.idFactura = idFactura;
+    }
+
+    public Long getIdPlato() {
+        return idPlato;
+    }
+
+    public void setIdPlato(Long idPlato) {
+        this.idPlato = idPlato;
+    }*/
 
     public Integer getCantidad(){
         return cantidad;
@@ -94,12 +104,6 @@ public class Factura {
         return total;
     } 
 
-    /*
-
-    public Date getFecha(){
-        return fecha;
-    }  */
-
     public Plato getPlato(){
         return platof;
     }
@@ -108,11 +112,6 @@ public class Factura {
         return usuariof;
     }
 
-    //Setter
-
-    public void setIdFactura(Long idFactura){
-        this.idFactura = idFactura ;
-    } 
 
     public void setPlato(Plato plato){
         this.platof = plato ;
@@ -120,11 +119,6 @@ public class Factura {
     public void setUsuario(Usuario usuario){
         this.usuariof = usuario ;
     } 
-
-    /*
-    public void setFecha(Date fecha){
-        this.fecha = fecha;
-    } */
 
     public void setCantidad(Integer cantidad){
         this.cantidad = cantidad ;
@@ -135,3 +129,37 @@ public class Factura {
     } 
     
 }
+
+class IdFactura implements Serializable{
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long idFacturax;
+    Long idProducto;
+
+    public IdFactura(Long idFacturax, Long idProducto) {
+        this.idFacturax = idFacturax;
+        this.idProducto = idProducto;
+    }
+
+    public Long getIdFacturax() {
+        return idFacturax;
+    }
+
+    public void setIdFacturax(Long idFacturax) {
+        this.idFacturax = idFacturax;
+    }
+
+    public Long getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Long idProducto) {
+        this.idProducto = idProducto;
+    }
+    
+
+    
+
+
+}
+

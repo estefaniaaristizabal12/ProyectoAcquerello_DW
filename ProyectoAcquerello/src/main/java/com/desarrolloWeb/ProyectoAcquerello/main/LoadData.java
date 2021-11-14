@@ -147,6 +147,7 @@ class LoadData {
             System.out.println("Cargando Facturas en la Base de Datos");
             
             // ___________ Factura 1 _________________
+
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, 1899);
             calendar.set(Calendar.DAY_OF_MONTH, 11);
