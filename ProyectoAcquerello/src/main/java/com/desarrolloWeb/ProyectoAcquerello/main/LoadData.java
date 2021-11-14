@@ -158,6 +158,7 @@ class LoadData {
             factura1.setCantidad(2);
             factura1.setTotal(105000);
             factura1.setFecha(calendar.getTime());
+            factura1.setFoto("assets/imagenVacia.png");
             repository.save(factura1);
 
             // ____ Factura 2 ______
@@ -167,6 +168,7 @@ class LoadData {
             factura2.setCantidad(1);
             factura2.setTotal(50000);
             factura2.setFecha(calendar.getTime());
+            factura2.setFoto("assets/imagenVacia.png");
             repository.save(factura2);
 
             ;

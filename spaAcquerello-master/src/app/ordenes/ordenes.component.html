@@ -17,13 +17,13 @@
 
         <div class="row border-top border-bottom" *ngFor="let dato of listaOrdenes">
           <div class="row main align-items-center" >
-              <div class="col-2"><img class="img-fluid" src="{{dato._foto}}"></div>
+              <div class="col-2"><img class="img-fluid" src="{{dato.foto}}"></div>
               <div class="col">
                   <div class="row text-muted">tipo xd </div>
-                  <div class="row">{{dato._nombreProducto}} </div>
+                  <div class="row">{{dato.nombreProducto}} 
               </div>
-              <div class="col"> {{dato._cantidad}} </div>
-              <div class="col">$COP. {{dato._precio}} </div>
+              <div class="col"> {{dato.cantidad}} </div>
+              <div class="col">$COP. {{dato.total}} </div>
           </div>
       </div>
       </div>

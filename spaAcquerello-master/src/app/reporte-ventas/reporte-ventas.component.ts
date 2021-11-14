@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Plato } from '../model/plato';
 import { Usuario } from '../model/usuario';
 import { PlatoService } from '../plato.service';
@@ -16,7 +17,7 @@ export class ReporteVentasComponent implements OnInit {
   public listaP2: Plato[] = [];
   public aux: Plato = new Plato(0,"","","",0);
   public listaUsuarios: Usuario[] =[];
-  public listaOrdenes: CarroCompras [] = [];
+  public listaOrdenes: Factura [] = [];
   public usuario: Usuario = new Usuario(0,"","","","","");
   public auxU: Usuario = new Usuario(0,"","","","","");
   public totalVendidos: number = 0; 
@@ -58,7 +59,7 @@ export class ReporteVentasComponent implements OnInit {
     for(let auxU of this.listaUsuarios){
       this.listaOrdenes = auxU.facturas;
       for(var i = 0; i < this.listaOrdenes.length; i++){
-        if(plato._nombre == this.listaOrdenes[i]._nombreProducto){
+        if(plato._nombre == this.listaOrdenes[i].nombreProducto){
           this.totalVendidos++;
         }
       }

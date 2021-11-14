@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
 import { UsuarioService } from '../usuario.service';
 
@@ -11,8 +12,10 @@ import { UsuarioService } from '../usuario.service';
 })
 export class OrdenesComponent implements OnInit {
 
-  listaOrdenes: CarroCompras[] = [];
-  dato: CarroCompras = new CarroCompras(0,"",0,0,"");
+  listaOrdenes: Factura[] = [];
+  fechaL: Date = new Date();
+  dato: Factura = new Factura(0,0,0,this.fechaL,"");
+  nombreProducto: String = "";
   public usuario: Usuario = new Usuario(0,"","","","","");
   public aux: Usuario = new Usuario(0,"","","","","");
   public listaUsuarios: Usuario[] = [];

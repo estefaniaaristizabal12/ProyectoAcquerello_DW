@@ -17,7 +17,7 @@ export class CarroComprasComponent implements OnInit {
   listaCC2: CarroCompras[] = [];
   facturaN: Factura [] = [];
   fechaL: Date = new Date();
-  factAux: Factura = new Factura(0,0,0,this.fechaL);
+  factAux: Factura = new Factura(0,0,0,this.fechaL,"");
   dato: CarroCompras = new CarroCompras(0,"",0,0,"");
   aux2: CarroCompras = new CarroCompras(0,"",0,0,"");
   public usuario: Usuario = new Usuario(0,"","","","","");

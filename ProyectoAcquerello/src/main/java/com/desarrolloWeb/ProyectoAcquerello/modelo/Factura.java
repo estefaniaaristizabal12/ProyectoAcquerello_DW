@@ -30,6 +30,9 @@ public class Factura {
     @ManyToOne
     private Plato platof;
 
+    @Basic
+    private String foto;
+
     
     @Temporal(TemporalType.DATE)
     private Date fecha;
@@ -43,6 +46,18 @@ public class Factura {
 
     public Factura(){
 
+    }
+    
+    
+
+
+    public String getFoto() {
+        return foto;
+    }
+
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
 

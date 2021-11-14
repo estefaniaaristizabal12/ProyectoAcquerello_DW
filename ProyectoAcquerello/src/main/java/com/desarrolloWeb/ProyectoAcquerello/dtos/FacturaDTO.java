@@ -13,8 +13,15 @@ public class FacturaDTO {
     private Date fecha;
     private Integer cantidad;
     private float total;
+    private String foto;
 
     
+    public String getFoto() {
+        return foto;
+    }
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
     public Long getIdFactura() {
         return idFactura;
     }
