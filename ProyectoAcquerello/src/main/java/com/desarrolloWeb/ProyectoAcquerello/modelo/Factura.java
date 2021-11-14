@@ -2,6 +2,7 @@ package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +13,24 @@ import javax.persistence.ManyToOne;
 import java.util.List;
 
 import javax.persistence.Basic;
+=======
+import javax.persistence.ManyToOne;
+
+
+import javax.persistence.Basic;
+import javax.persistence.EmbeddedId;
+
+>>>>>>> parent of 4eaeae8 (funcionalcito)
 
 @Entity
 public class Factura{
 
+<<<<<<< HEAD
+=======
+    @EmbeddedId
+    IdFactura id;
+    /*
+>>>>>>> parent of 4eaeae8 (funcionalcito)
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,6 +120,5 @@ public class Factura{
 
     
 }
-
 
 
