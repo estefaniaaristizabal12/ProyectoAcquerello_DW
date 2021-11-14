@@ -10,21 +10,21 @@ import javax.persistence.GenerationType;
 public class IdFactura implements Serializable{
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idFacturax;
+    Long idFactura;
 
     Long idProducto;
 
     public IdFactura(Long idFacturax, Long idProducto) {
-        this.idFacturax = idFacturax;
+        this.idFactura= idFacturax;
         this.idProducto = idProducto;
     }
 
     public Long getIdFacturax() {
-        return idFacturax;
+        return idFactura;
     }
 
     public void setIdFacturax(Long idFacturax) {
-        this.idFacturax = idFacturax;
+        this.idFactura = idFacturax;
     }
 
     public Long getIdProducto() {

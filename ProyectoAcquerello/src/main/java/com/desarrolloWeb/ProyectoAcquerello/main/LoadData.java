@@ -138,7 +138,7 @@ class LoadData {
 
         };
     }
-    
+    /*
     @Bean
     CommandLineRunner initDataFactura(FacturaRepository repository) {
 
@@ -174,5 +174,5 @@ class LoadData {
             System.out.println("Carritos de Compras cargados de manera exitosa");
 
         };
-    }
+    }*/
 }

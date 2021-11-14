@@ -2,10 +2,14 @@ package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 
+import java.io.Serializable;
 
 import javax.persistence.Basic;
+import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 
 
@@ -13,7 +17,7 @@ import javax.persistence.EmbeddedId;
 public class Factura{
 
     @EmbeddedId
-    IdFactura id;
+    IdFactura idx;
     /*
 
     @Id
@@ -122,5 +126,6 @@ public class Factura{
     } 
     
 }
+
 
 
