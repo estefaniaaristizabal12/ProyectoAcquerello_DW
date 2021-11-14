@@ -1,16 +1,14 @@
 package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
-import java.util.Date;
-
 public class idFactura{
     private Long idFactura;
-    private Date fecha;
+    private Long idProducto;
 
 
-    public idFactura(Long idFactura, Date fecha) {
+    public idFactura(Long idFactura, Long idProducto) {
         super();
         this.idFactura = idFactura;
-        this.fecha = fecha;
+        this.idProducto = idProducto;
     }
 
    

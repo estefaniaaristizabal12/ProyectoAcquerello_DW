@@ -1,8 +1,5 @@
 package com.desarrolloWeb.ProyectoAcquerello.dtos;
 
-import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
-import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
-
 public class CarroComprasDTO {
 
 

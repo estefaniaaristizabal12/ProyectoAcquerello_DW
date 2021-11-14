@@ -157,7 +157,7 @@ class LoadData {
             factura1.setUsuario(usuarioA);
             factura1.setCantidad(2);
             factura1.setTotal(105000);
-            factura1.setFecha(calendar.getTime());
+            //factura1.setFecha(calendar.getTime());
             repository.save(factura1);
 
             // ___________ Factura 2 _________________
@@ -166,7 +166,7 @@ class LoadData {
             factura2.setUsuario(usuarioA);
             factura2.setCantidad(1);
             factura2.setTotal(50000);
-            factura2.setFecha(calendar.getTime());
+           // factura2.setFecha(calendar.getTime());
             repository.save(factura2);
 
             ;

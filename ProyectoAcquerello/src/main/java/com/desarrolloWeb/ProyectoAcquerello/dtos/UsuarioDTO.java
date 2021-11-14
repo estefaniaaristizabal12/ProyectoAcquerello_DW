@@ -2,9 +2,6 @@ package com.desarrolloWeb.ProyectoAcquerello.dtos;
 
 import java.util.List;
 
-import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
-import com.desarrolloWeb.ProyectoAcquerello.modelo.Factura;
-
 public class UsuarioDTO {
     
 

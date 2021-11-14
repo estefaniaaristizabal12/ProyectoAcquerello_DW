@@ -8,6 +8,7 @@ import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 public class FacturaDTO {
 
     private Long idFactura;
+    private Long idPlato;
     private Usuario usuariof;
     private Plato platof;
     private Integer cantidad;
@@ -15,6 +16,15 @@ public class FacturaDTO {
     private Date fecha;
 
     
+    
+    public Long getIdPlato() {
+        return idPlato;
+    }
+
+    public void setIdPlato(Long idPlato) {
+        this.idPlato = idPlato;
+    }
+
     public Date getFecha() {
         return fecha;
     }
