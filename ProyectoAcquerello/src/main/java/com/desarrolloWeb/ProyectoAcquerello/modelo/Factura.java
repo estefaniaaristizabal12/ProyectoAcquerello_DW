@@ -5,12 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Basic;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 //import javax.persistence.EmbeddedId;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +18,13 @@ import javax.persistence.GenerationType;
 
 
 @Entity
+@IdClass (idFactura.class)
 public class Factura {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFactura;
+
 
     @ManyToOne
     private Usuario usuariof;
@@ -32,6 +32,7 @@ public class Factura {
     @ManyToOne
     private Plato platof;
 
+    @Id
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
