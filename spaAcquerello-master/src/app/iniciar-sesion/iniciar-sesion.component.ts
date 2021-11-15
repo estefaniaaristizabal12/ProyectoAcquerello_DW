@@ -48,12 +48,14 @@ export class IniciarSesionComponent implements OnInit {
       this.admin =  JSON.parse(aux);
     }
 
+/*
     if(this.email!= null && this.contrasenia != null && this.admin._email == this.email && this.admin._contrasenia == this.contrasenia){
       alert("Bienvenido "+this.admin._nombre);
       localStorage.setItem('actual',this.admin._email);
       this.dirigirInicioAdmon();
-    }
-    else if(this.email!= null && this.contrasenia != null && this._usuarioService.buscarPersona(this.email) == true){
+    } */
+    if(this.email!= null && this.contrasenia != null && this._usuarioService.buscarPersona(this.email) == true){
+      alert("entro al primero");
       if(this._usuarioService.verificarContrasenia(this.email, this.contrasenia)){
         this.usuario = this._usuarioService.darUsuario(this.email);
         alert("Bienvenido "+this.usuario._nombre);

@@ -25,6 +25,11 @@ export class UsuarioService {
 
 
   constructor(private http: HttpClient) { 
+    this.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;  
+
   }
 
   getlistaUsuario(){
@@ -48,14 +53,6 @@ export class UsuarioService {
   }
 
   buscarPersona(emailP:string){
-
-    this.getlistaUsuario()
-    .subscribe(data =>{
-      this.listaUsuarios = data;
-    }) ;  
-
-    this.async_print_personas();
-
     for(let usuario of this.listaUsuarios)
     {
       if(emailP == usuario._email){
