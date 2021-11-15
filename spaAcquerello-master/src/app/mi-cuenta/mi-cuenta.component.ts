@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-mi-cuenta',
@@ -22,7 +23,14 @@ export class MiCuentaComponent implements OnInit {
   public numItems: number = 0;
 
 
-  constructor(private router:Router) { 
+  constructor(private router:Router,public _usuarioService:UsuarioService ) { 
+
+
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
 
 
     var aux = localStorage.getItem('actual');
@@ -34,14 +42,6 @@ export class MiCuentaComponent implements OnInit {
       this.correoA = aux;
     }
 
-    //Se debe validar que no sea nula la lista.
-    var storageList = localStorage.getItem('localListaUsuarios');
-    if(storageList== null){
-      this.listaUsuarios = [];
-    }
-    else{
-      this.listaUsuarios = JSON.parse(storageList);
-    }
     this.buscarPersona(this.correoA);
   }
 

@@ -6,6 +6,7 @@ import { Factura } from '../model/factura';
 import { Plato } from '../model/plato';
 import { Usuario } from '../model/usuario';
 import { PlatoService } from '../plato.service';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-carta',
@@ -31,7 +32,8 @@ export class CartaComponent implements OnInit {
   public validacion: boolean = false;
   public vAdmon: boolean = false;
 
-  constructor( public _platoService: PlatoService, public router: Router ) { 
+
+  constructor( public _platoService: PlatoService, public router: Router, public _usuarioService: UsuarioService ) { 
     var aux = localStorage.getItem('localListaPlatos');
 
     this._platoService.getlistaPlato()
@@ -39,17 +41,15 @@ export class CartaComponent implements OnInit {
       this.listaPlatos = data;
     }) ;
 
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
+
     this.async_print_personas();
     
   
-
-    var storageList = localStorage.getItem('localListaUsuarios');
-    if(storageList== null){
-      this.listaUsuarios = [];
-    }
-    else{
-      this.listaUsuarios = JSON.parse(storageList);
-    }
 
     this.darCorreo();
     this.buscarPersona(this.correoA);

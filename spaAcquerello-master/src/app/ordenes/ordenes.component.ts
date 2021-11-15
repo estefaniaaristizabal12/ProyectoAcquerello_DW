@@ -34,14 +34,13 @@ export class OrdenesComponent implements OnInit {
       this.correoA = aux1;
     }
 
-    //Se debe validar que no sea nula la lista.
-    var storageList = localStorage.getItem('localListaUsuarios');
-    if(storageList== null){
-      this.listaUsuarios = [];
-    }
-    else{
-      this.listaUsuarios = JSON.parse(storageList);
-    }
+
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
+  
 
     this.buscarPersona(this.correoA);
 

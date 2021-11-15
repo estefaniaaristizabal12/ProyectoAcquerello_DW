@@ -5,6 +5,7 @@ import { Factura } from '../model/factura';
 import { Plato } from '../model/plato';
 import { Usuario } from '../model/usuario';
 import { PlatoService } from '../plato.service';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-reporte-ventas',
@@ -25,10 +26,15 @@ export class ReporteVentasComponent implements OnInit {
   public totalVendidos: number = 0; 
   public precioTotal: number = 0; 
 
-  constructor( public _platoService: PlatoService, public router: Router ) {
+  constructor( public _platoService: PlatoService, public router: Router, public _usuarioService: UsuarioService ) {
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;
+    }) ;
+
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
     }) ;
 
   }
@@ -50,14 +56,7 @@ export class ReporteVentasComponent implements OnInit {
   totalVendidosF(plato: Plato){
 
     this.totalVendidos = 0;
-    var aux = localStorage.getItem('localListaUsuarios');
-    if(aux == null){
-      this.listaUsuarios = [];
-    }else{
-      this.listaUsuarios = JSON.parse(aux);
-    }
-
-
+  
     for(let auxU of this.listaUsuarios){
       this.listaOrdenes = auxU.facturas;
       for(var i = 0; i < this.listaOrdenes.length; i++){

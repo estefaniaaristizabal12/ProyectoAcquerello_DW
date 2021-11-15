@@ -23,7 +23,6 @@ export class UsuarioService {
   public usuarioActual: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   Url = 'http://localhost:8080/usuario';
 
-  
 
   constructor(private http: HttpClient) { 
   }

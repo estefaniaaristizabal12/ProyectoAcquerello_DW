@@ -22,7 +22,7 @@ export class EditarProductoComponent implements OnInit {
   constructor(public _platoService: PlatoService, private router:Router) {
 
       if(this._platoService.platoObtener)
-          this.platoObtener = this._platoService.platoObtener;
+        this.platoObtener = this._platoService.platoObtener;
    }
 
   ngOnInit(): void {

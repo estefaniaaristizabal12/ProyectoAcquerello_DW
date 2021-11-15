@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-carro-compras',
@@ -34,9 +35,29 @@ export class CarroComprasComponent implements OnInit {
   public mostrarT: boolean = false;
 
 
+  /*
 
-  constructor(public router: Router) { 
+  constructor( public _usuarioService: UsuarioService, public router: Router ) { 
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
+    this.async_print_personas();
+    
+  }
+
+
+  */
+
+  constructor(public _usuarioService: UsuarioService,public router: Router) { 
     this.total = 0;
+
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
     var aux = localStorage.getItem('actual');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
@@ -46,14 +67,6 @@ export class CarroComprasComponent implements OnInit {
       this.correoA = aux;
     }
 
-    //Se debe validar que no sea nula la lista.
-    var storageList = localStorage.getItem('localListaUsuarios');
-    if(storageList== null){
-      this.listaUsuarios = [];
-    }
-    else{
-      this.listaUsuarios = JSON.parse(storageList);
-    }
 
     this.buscarPersona(this.correoA);
 
@@ -176,8 +189,6 @@ export class CarroComprasComponent implements OnInit {
   }
 
   pagar(){
-
-
 
     for (var i = 0; i < this.usuario.carroCompras.length; i++) {
       this.factAux.cantidad = this.usuario.carroCompras[i]._cantidad;
