@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CarroCompras } from './model/carroCompras';
+import { Factura } from './model/factura';
 import { Plato } from './model/plato';
 import { Usuario } from './model/usuario';
 
@@ -15,8 +17,10 @@ export class AppComponent {
   title = 'spaAcquerello';
   public listaPlato: Plato [] = [];
   public listaPlato2: Plato [] = [];
-  public admin: Usuario = new Usuario(0,"","","","","");
-  public admin2: Usuario = new Usuario(0,"Acquerello", "Ristorante", "acquerello@ristorante.com","admin12345","Cl. 122 #15a-24");
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public admin2: Usuario = new Usuario(0,"Acquerello", "Ristorante", "acquerello@ristorante.com","admin12345","Cl. 122 #15a-24",this.auxx,this.auxxf);
   constructor() { 
     let producto1:Plato = new Plato(1,'Pasta Al Pomodoro Fresco', 'Clásica salsa pomodoro, albahaca y aceite de oliva.','assets/plato1.jpg', 19000);
     let producto2:Plato = new Plato(2,'Pasta Al Funghi', 'Salsa cremosa de hongos con adicion de especies y parmigiano.','assets/plato2.jpg', 12000);

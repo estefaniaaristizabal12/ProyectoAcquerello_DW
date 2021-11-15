@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
 
 @Component({
@@ -8,8 +10,11 @@ import { Usuario } from '../model/usuario';
 })
 export class PerfilAdminComponent implements OnInit {
 
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public aux: Usuario = new Usuario(0,"","","","","");
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   public correoA:string ="";
   public numItems: number = 0;
 
@@ -18,7 +23,7 @@ export class PerfilAdminComponent implements OnInit {
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.usuario = new Usuario(0,"","","","","");
+      this.usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
     }
     else{
       this.usuario = JSON.parse(aux);

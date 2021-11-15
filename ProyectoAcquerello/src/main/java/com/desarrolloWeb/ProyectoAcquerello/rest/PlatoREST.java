@@ -53,6 +53,8 @@ public class PlatoREST {
 		return platoService.createPlato(newPlato);
 	}
 
+	//http://localhost:8080/plato/listarPlatosEst
+
 	@GetMapping("/listaPlatosEst")
 	public List<PlatoDTO> getPlatos() {
 

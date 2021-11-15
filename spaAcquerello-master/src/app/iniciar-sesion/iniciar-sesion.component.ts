@@ -1,5 +1,7 @@
 import { Component, OnInit, Output,EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
+import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
 import { UsuarioService } from '../usuario.service';
 
@@ -12,11 +14,27 @@ export class IniciarSesionComponent implements OnInit {
 
   public email: string = "";
   public contrasenia: string = "";
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public admin: Usuario = new Usuario(0,"","","","","");
-  constructor( public _usuarioService: UsuarioService, public router: Router ) { }
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public listaUsuarios: Usuario[] = [];
+  constructor( public _usuarioService: UsuarioService, public router: Router ) { 
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
+    this.async_print_personas();
+    
+  }
   //@Output() informacionUsuario: EventEmitter<Usuario>= new EventEmitter();
   ngOnInit(): void {
+  }
+
+  async async_print_personas() {
+    await new Promise((f) => setTimeout(f, 1000));
+    console.log(this.listaUsuarios);
   }
 
   inicioSesionSubmit(){
@@ -24,7 +42,7 @@ export class IniciarSesionComponent implements OnInit {
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.admin = new Usuario(0,"","","","","");
+      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf);
     }
     else{
       this.admin =  JSON.parse(aux);

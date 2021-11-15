@@ -1,11 +1,14 @@
 import { Usuario } from "./usuario";
 import { Plato } from "./plato";
+import { CarroCompras } from "./carroCompras";
 
 
 export class Factura {
+    auxx: CarroCompras[] = [];
+    auxxf: Factura [] = [];
     public idFactura: number;
     public nombreProducto: string = "";
-    public usuariof: Usuario = new Usuario(0,"","","","","");
+    public usuariof: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
     public platof: Plato = new Plato(0,'','','',0);
     public fecha: Date = new Date();
     public cantidad: number;

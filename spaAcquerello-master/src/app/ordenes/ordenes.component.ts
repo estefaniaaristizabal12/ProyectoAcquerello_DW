@@ -16,8 +16,10 @@ export class OrdenesComponent implements OnInit {
   fechaL: Date = new Date();
   dato: Factura = new Factura(0,0,0,this.fechaL,"");
   nombreProducto: String = "";
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public aux: Usuario = new Usuario(0,"","","","","");
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   public listaUsuarios: Usuario[] = [];
   public correoA:string ="";
 

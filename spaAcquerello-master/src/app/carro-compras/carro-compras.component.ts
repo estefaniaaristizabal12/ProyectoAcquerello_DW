@@ -20,8 +20,10 @@ export class CarroComprasComponent implements OnInit {
   factAux: Factura = new Factura(0,0,0,this.fechaL,"");
   dato: CarroCompras = new CarroCompras(0,"",0,0,"");
   aux2: CarroCompras = new CarroCompras(0,"",0,0,"");
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public aux: Usuario = new Usuario(0,"","","","","");
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   public listaUsuarios: Usuario[] = [];
   public listaU2: Usuario[] = [];
   public correoA:string ="";

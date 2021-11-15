@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/router';
+import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
 
 @Component({
@@ -11,14 +13,16 @@ export class NavegacionComponent implements OnInit {
   public mostrarInicioG: boolean = true; //General
   public mostrarInicioU: boolean = true; //Usuario
   public mostrarInicioA: boolean = true; //Administrador
-  public admin: Usuario = new Usuario(0,"","","","","");
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
 
   constructor() {
 
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.admin = new Usuario(0,"","","","","");
+      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf);
     }
     else{
       this.admin = JSON.parse(aux);

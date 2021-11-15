@@ -1,13 +1,10 @@
 package com.desarrolloWeb.ProyectoAcquerello.rest;
-
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
-
 import org.springframework.data.domain.Page;
 //import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,13 +45,12 @@ public class UsuarioREST {
 		return result;
 	}
 
-
+	//http://localhost:8080/usuario/listaUsuariosEst
 	@GetMapping("/listaUsuariosEst")
 	public List<UsuarioDTO> getUsuarios() {
 		Iterable<Usuario> usuarios = usuarioService.getUsuariosL();
 		List<UsuarioDTO> result = new ArrayList<>();
 		ModelMapper mapper = new ModelMapper();
-		
 		for (Usuario usuario : usuarios) {
 			result.add(mapper.map(usuario, UsuarioDTO.class));
 		}

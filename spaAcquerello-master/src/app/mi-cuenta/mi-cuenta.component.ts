@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
 
 @Component({
@@ -10,9 +12,10 @@ import { Usuario } from '../model/usuario';
 
 export class MiCuentaComponent implements OnInit {
 
-  
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public aux: Usuario = new Usuario(0,"","","","","");
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   public listaUsuarios: Usuario[] = [];
   public listaU2: Usuario[] = [];
   public correoA:string ="";

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { __values } from 'tslib';
 import { CarroCompras } from '../model/carroCompras';
+import { Factura } from '../model/factura';
 import { Plato } from '../model/plato';
 import { Usuario } from '../model/usuario';
 import { PlatoService } from '../plato.service';
@@ -19,12 +20,14 @@ export class InfoPlatoComponent implements OnInit {
   public listaPlatos: Plato[] = [];
   public mostrar:boolean=true;
   public listaUsuarios: Usuario[] = [];
-  public aux1: Usuario = new Usuario(0,"","","","","");
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
+  public aux1: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   public carroCompras: CarroCompras =  new CarroCompras(0,"",0,0,"");
   public listaU2: Usuario[] = [];
   public listacarroCompras: CarroCompras[] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public admin: Usuario = new Usuario(0,"","","","","")
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf)
   public correoA:string ="";
   public validacion: boolean = false;
 
@@ -55,7 +58,7 @@ export class InfoPlatoComponent implements OnInit {
       var auxa= localStorage.getItem('administrador');
 
       if(auxa== null){
-        this.admin = new Usuario(0,"","","","","");
+        this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf);
       }
       else{
         this.admin = JSON.parse(auxa);

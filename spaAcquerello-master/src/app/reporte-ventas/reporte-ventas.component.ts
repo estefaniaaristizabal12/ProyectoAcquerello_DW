@@ -13,13 +13,15 @@ import { PlatoService } from '../plato.service';
 })
 export class ReporteVentasComponent implements OnInit {
 
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
   public listaPlatos: Plato[] = [];
   public listaP2: Plato[] = [];
   public aux: Plato = new Plato(0,"","","",0);
   public listaUsuarios: Usuario[] =[];
   public listaOrdenes: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public auxU: Usuario = new Usuario(0,"","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public auxU: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   public totalVendidos: number = 0; 
   public precioTotal: number = 0; 
 

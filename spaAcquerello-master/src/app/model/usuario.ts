@@ -10,8 +10,8 @@ export class Usuario {
     public _contrasenia: string = "";
     public carroCompras: CarroCompras[] = [];
     public facturas: Factura[] = [];
-    constructor(idUsuario:number, nombre:string, apellido:string,  email:string, 
-         contrasenia:string,  direccion:string){
+    constructor(idUsuario:number,email:string, nombre:string, apellido:string,  
+        direccion:string, contrasenia:string, carroC: CarroCompras[],fact:Factura[]){
             this._idUsuario = idUsuario;
             this._email = email;
             this._nombre = nombre;

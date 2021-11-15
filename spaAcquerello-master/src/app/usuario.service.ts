@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CarroCompras } from './model/carroCompras';
 import { Usuario } from './model/usuario';
+import { HttpClient } from '@angular/common/http';
+import { Factura } from './model/factura';
+import { CarroCompras } from './model/carroCompras';
 
 /*
 import { Injectable } from '@angular/core';
@@ -14,17 +15,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  
+
+  auxx: CarroCompras[] = [];
+  auxxf: Factura [] = [];
   public listaUsuarios: Usuario[] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","");
-  public usuarioActual: Usuario = new Usuario(0,"","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public usuarioActual: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
   Url = 'http://localhost:8080/usuario';
 
   
 
   constructor(private http: HttpClient) { 
   }
-
 
   getlistaUsuario(){
     return this.http.get<Usuario[]>(this.Url+"/listaUsuariosEst");
@@ -106,7 +108,7 @@ export class UsuarioService {
         return usuario;
       }
     }
-    return new Usuario(0,"","","","","");
+    return new Usuario(0,"","","","","",this.auxx,this.auxxf);
   }
 
   async async_print_personas() {

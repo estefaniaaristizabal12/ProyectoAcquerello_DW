@@ -3,6 +3,9 @@ package com.desarrolloWeb.ProyectoAcquerello.servicio;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 import com.desarrolloWeb.ProyectoAcquerello.repositorio.UsuarioRepository;
 import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +64,7 @@ public class UsuarioService implements IUsuarioService {
         return delet;
     }
 
-    @Override
+    @Transactional
 	public Usuario updateUsuario(Usuario newUsuario) {
 		Optional<Usuario> pro = repository.findById(newUsuario.get_idUsuario());
 		Usuario provider = pro.get();
