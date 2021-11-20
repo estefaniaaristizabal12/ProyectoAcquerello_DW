@@ -24,11 +24,6 @@ public class PlatoService implements IPlatoService{
 	}
 
 	@Override
-	public Page<Plato> getPlatos(Pageable pageable) {
-		return repository.findAll(pageable);
-	} 
-
-	@Override
 	public Iterable<Plato> getPlatosL() {
 		return repository.findAll();
 	}
@@ -48,25 +43,27 @@ public class PlatoService implements IPlatoService{
 
 	@Transactional
 	public Plato updatePlato(Plato newPlato) {
-		Optional<Plato> pro = repository.findById(newPlato.get_idPlato());
-		Plato provider = pro.get();
+		Plato provider = getPlatoById(newPlato.get_idPlato());
 		provider.set_nombre(newPlato.get_nombre());
 		provider.set_descripcion(newPlato.get_descripcion());
 		provider.set_imagen(newPlato.get_imagen());
 		provider.set_precio(newPlato.get_precio());
+		repository.save(provider);
 		return provider;
 	}
 
 
     @Override
 	public void deletePlato(Long id) {
-		Optional<Plato> plato = repository.findById(id);
+		repository.deleteById(id);
 
+		/*
+		Optional<Plato> plato = repository.findById(id);
 		if (plato.isPresent()) {
-			repository.delete(plato.get());
+			repository.deleteById(id);
 		} else {
 			throw new PlatoNotFoundException(id);
-		}
+		}  */
 	}
 
 

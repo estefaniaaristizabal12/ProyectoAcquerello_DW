@@ -23,8 +23,8 @@ export class CarroComprasComponent implements OnInit {
   aux2: CarroCompras = new CarroCompras(0,"",0,0,"");
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
-  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public usuario: Usuario = new Usuario(0,"","","","","","");
+  public aux: Usuario = new Usuario(0,"","","","","","");
   public listaUsuarios: Usuario[] = [];
   public listaU2: Usuario[] = [];
   public correoA:string ="";

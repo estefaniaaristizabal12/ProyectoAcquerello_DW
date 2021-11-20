@@ -12,7 +12,7 @@ export class Usuario {
     public carroCompras: CarroCompras[] = [];
     public facturas: Factura[] = [];
     constructor(idUsuario:number,email:string, nombre:string, apellido:string,  
-        direccion:string, contrasenia:string, carroC: CarroCompras[],fact:Factura[], rol:string){
+        direccion:string, contrasenia:string, rol:string){
             this._idUsuario = idUsuario;
             this._email = email;
             this._nombre = nombre;

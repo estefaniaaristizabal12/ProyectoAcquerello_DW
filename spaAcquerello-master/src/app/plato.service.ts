@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class PlatoService {
 
+  idP: string = "1";
+
   platoObtener:Plato =  new Plato(0,'','','',0);
   public listaPlato: Plato[] = [];
   Url = 'http://localhost:8080/plato';
@@ -16,8 +18,9 @@ export class PlatoService {
   constructor(private http: HttpClient) { 
   }
 
+
   createPlato (plato: any): Observable<any> {
-    return this.http.post(this.Url + "/crear", plato);
+    return this.http.post(this.Url +"/crear", plato);
   }
 
   getlistaPlato(){
@@ -25,11 +28,16 @@ export class PlatoService {
   }
 
   updatePlato (plato: Plato){
-    return this.http.post(this.Url +"/actualizarPlato", plato);
+    return this.http.put(this.Url +"/actualizarPlato/"+plato._idPlato, plato);
   }
 
-  deletePlato (plato: Plato){
-    return this.http.post(this.Url + "/eliminar", plato);
+  deletePlato (idplato: any){
+    
+    return this.http.delete(this.Url+"/eliminar/"+idplato);
+    //return this.http.delete(`${this.Url}/eliminar/${this.idP}`,this.idP);
+      
+      //this.Url +"/eliminar/"+idplato, idplato);
   }
-  
+
+
 }

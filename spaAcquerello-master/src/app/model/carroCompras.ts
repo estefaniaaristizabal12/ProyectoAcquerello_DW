@@ -8,7 +8,7 @@ export class CarroCompras {
     auxxf: Factura [] = [];
     public _id_CC: number;
     public _nombreProducto: string = "";
-    public usuarioC: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+    public usuarioC: Usuario = new Usuario(0,"","","","","","");
     public platoC: Plato = new Plato(0,'','','',0);
     public _foto: string = "";
     public _cantidad: number;

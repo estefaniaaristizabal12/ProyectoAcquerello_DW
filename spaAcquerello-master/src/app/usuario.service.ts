@@ -19,8 +19,8 @@ export class UsuarioService {
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
   public listaUsuarios: Usuario[] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
-  public usuarioActual: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public usuario: Usuario = new Usuario(0,"","","","","","");
+  public usuarioActual: Usuario = new Usuario(0,"","","","","","");
   Url = 'http://localhost:8080/usuario';
 
 
@@ -85,6 +85,18 @@ export class UsuarioService {
     return false;
   }
 
+  darRol(emailP:String){
+    for(let usuario of this.listaUsuarios)
+    {
+      if(emailP == usuario._email){
+        return usuario._rol;
+      }
+    }
+
+    return "";
+
+  }
+
   fijarUsuarioActual(emailP:string){
     localStorage.setItem('actual',emailP);
     return this.usuarioActual;
@@ -106,7 +118,7 @@ export class UsuarioService {
         return usuario;
       }
     }
-    return new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+    return new Usuario(0,"","","","","","");
   }
 
   async async_print_personas() {

@@ -53,7 +53,7 @@ class LoadData {
 			usuarioB.set_email("estefaniaAristi@gmail.com");
             usuarioB.set_contrasenia("12345");
             usuarioB.set_direccion("Calle Salitre 1 izqu");
-            usuarioA.set_rol("usuario");
+            usuarioB.set_rol("usuario");
 			repository.save(usuarioB);
 
 
@@ -65,7 +65,7 @@ class LoadData {
 				usuario.set_email("email"+i);
                 usuario.set_contrasenia("contrasenia"+i);
                 usuario.set_direccion("direccion"+i);
-                usuarioA.set_rol("usuario"+i);
+                usuario.set_rol("usuario");
 				repository.save(usuario);
 			}
             System.out.println("Usuarios cargados de manera exitosa");

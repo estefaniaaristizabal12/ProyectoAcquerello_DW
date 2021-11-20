@@ -11,8 +11,6 @@ public interface IPlatoService {
 
     Plato createPlato(Plato newPlato);
 
-    Page<Plato> getPlatos(Pageable pageable);
-
     Plato getPlatoById(Long idPlato);
 
     Iterable<Plato> getPlatosL();

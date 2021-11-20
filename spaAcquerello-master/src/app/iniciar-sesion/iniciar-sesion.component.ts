@@ -16,8 +16,8 @@ export class IniciarSesionComponent implements OnInit {
   public contrasenia: string = "";
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
-  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public usuario: Usuario = new Usuario(0,"","","","","","");
+  public admin: Usuario = new Usuario(0,"","","","","","");
   public listaUsuarios: Usuario[] = [];
   constructor( public _usuarioService: UsuarioService, public router: Router ) { 
     this._usuarioService.getlistaUsuario()
@@ -45,7 +45,7 @@ export class IniciarSesionComponent implements OnInit {
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+      this.admin = new Usuario(0,"","","","","","");
     }
     else{
       this.admin =  JSON.parse(aux);
@@ -60,9 +60,20 @@ export class IniciarSesionComponent implements OnInit {
     if(this.email!= null && this.contrasenia != null && this._usuarioService.buscarPersona(this.email) == true){
       alert("entro al primero");
       if(this._usuarioService.verificarContrasenia(this.email, this.contrasenia)){
-        this.usuario = this._usuarioService.darUsuario(this.email);
-        alert("Bienvenido "+this.usuario._nombre);
-        this.dirigirInicio();
+
+        if(this._usuarioService.darRol(this.email) == "administrador"){
+          this.usuario = this._usuarioService.darUsuario(this.email);
+          localStorage.setItem('administrador', JSON.stringify(this.usuario));
+          alert("Bienvenido "+this.usuario._nombre);
+          this.dirigirInicioAdmon();
+
+        } else if(this._usuarioService.darRol(this.email) == "usuario"){
+          this.usuario = this._usuarioService.darUsuario(this.email);
+          alert("Bienvenido "+this.usuario._nombre);
+          this.dirigirInicio();
+        } else{
+          alert("Se genero un error, intente más tarde... "+this.usuario._nombre);
+        }  
       }
       else{
         alert("Contraseña incorrecta");
@@ -81,8 +92,6 @@ export class IniciarSesionComponent implements OnInit {
 
   dirigirInicioAdmon(){
     this.router.navigateByUrl('/perfilAdmin'); 
-
-    
   }
 
 

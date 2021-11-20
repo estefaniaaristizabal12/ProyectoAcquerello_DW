@@ -53,7 +53,7 @@ public class PlatoREST {
 		return platoService.createPlato(newPlato);
 	}
 
-	//http://localhost:8080/plato/listarPlatosEst
+	//http://localhost:8080/plato/listaPlatosEst
 
 	@GetMapping("/listaPlatosEst")
 	public List<PlatoDTO> getPlatos() {
@@ -70,25 +70,9 @@ public class PlatoREST {
 	}
 
 
-	//http://localhost:8080/platos/listarPlatos?page=1
-	@GetMapping("/listarPlatos")
-	public List<PlatoDTO> getPlatos(@RequestParam(name="page") int page, 
-			@RequestParam(name="size", required = false, defaultValue = "10") int size) {
-	
-		Page<Plato> platos = platoService.getPlatos(PageRequest.of(page,size));
-		List<PlatoDTO> result = new ArrayList<>();
-		ModelMapper mapper = new ModelMapper();
-		
-		for (Plato plato : platos) {
-			result.add(mapper.map(plato, PlatoDTO.class));
-		}
-		return result;
-	}
-
 	//http://localhost:8080/darPlato?idUPlato=14 
 
-	//OJO> falta ver impresiones de los ERRORES!
-
+	//OJO-- falta ver impresiones de los ERRORES!
 	@GetMapping("/darPlato")
 	public PlatoDTO getPlatoById(@RequestParam(name = "idPlato") Long idPlato){
 		ModelMapper mapper = new ModelMapper();
@@ -100,8 +84,13 @@ public class PlatoREST {
 	}
 
 
+	// @PutMapping("/equipos/actualizar/{id}")
+	// public Equipo actualizarEquipo(@RequestBody Equipo newEquipo, @PathVariable Long id) {
+	// 	return equipoService.actualizarEquipo(newEquipo, id);
+	// }
 
-    @PostMapping("/actualizarPlato")
+
+	@PutMapping("/actualizarPlato/{idPlato}")
 	public Plato actualizarPlato(@RequestBody PlatoDTO newPlato) {
 		Plato plato = new Plato();
 		ModelMapper mapper = new ModelMapper();
@@ -110,9 +99,21 @@ public class PlatoREST {
 	}
 
 
-    @DeleteMapping("/eliminar")
-	public void deletePlato(@PathVariable Long id) {
-		platoService.deletePlato(id);
+
+
+    // @PostMapping("/actualizarPlato")
+	// public Plato actualizarPlato(@RequestBody PlatoDTO newPlato) {
+	// 	Plato plato = new Plato();
+	// 	ModelMapper mapper = new ModelMapper();
+	// 	plato = mapper.map(newPlato, Plato.class);
+	// 	return platoService.updatePlato(plato);
+	// }
+
+
+    @DeleteMapping("/eliminar/{idPlato}")
+	public void deletePlato(@PathVariable String id) {
+		System.out.println("MIRAAA ESTEFANIA"+id);
+		platoService.deletePlato(Long.valueOf(id));
 	}
 	
 

@@ -12,7 +12,7 @@ export class IniciarGuard implements CanActivate {
 
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public admin: Usuario = new Usuario(0,"","","","","","");
   public correoA: string = "";
   canActivate(){
 
@@ -21,7 +21,7 @@ export class IniciarGuard implements CanActivate {
     var auxa= localStorage.getItem('administrador');
 
     if(auxa== null){
-      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+      this.admin = new Usuario(0,"","","","","","");
     }
     else{
       this.admin = JSON.parse(auxa);

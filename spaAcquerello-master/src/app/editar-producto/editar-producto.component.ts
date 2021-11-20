@@ -12,8 +12,7 @@ import { PlatoService } from '../plato.service';
 })
 export class EditarProductoComponent implements OnInit {
 
-
-
+  public platoA:any;
   platoObtener: Plato = new Plato (0,'','','',0);
   aux: Plato = new Plato (0,'','','',0);
   public listaPlatos: Plato[] = [];
@@ -30,7 +29,9 @@ export class EditarProductoComponent implements OnInit {
 
   actualizar(){
 
-    this._platoService.updatePlato(this.platoObtener);
+    this.platoA = this.platoObtener;
+
+    this._platoService.updatePlato(this.platoA).subscribe();
 
     this._platoService.getlistaPlato()
     .subscribe(data =>{

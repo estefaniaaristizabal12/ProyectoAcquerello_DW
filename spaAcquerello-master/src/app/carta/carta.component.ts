@@ -22,12 +22,12 @@ export class CartaComponent implements OnInit {
   public listaUsuarios: Usuario[] = [];
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public aux1: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
-  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public aux1: Usuario = new Usuario(0,"","","","","","");
+  public admin: Usuario = new Usuario(0,"","","","","","");
   public carroCompras: CarroCompras =  new CarroCompras(0,"",0,0,"");
   public listaU2: Usuario[] = [];
   public listacarroCompras: CarroCompras[] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public usuario: Usuario = new Usuario(0,"","","","","","");
   public correoA:string ="";
   public validacion: boolean = false;
   public vAdmon: boolean = false;
@@ -57,7 +57,7 @@ export class CartaComponent implements OnInit {
 
     var auxa= localStorage.getItem('administrador');
     if(auxa== null){
-      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+      this.admin = new Usuario(0,"","","","","","");
     }
     else{
       this.admin = JSON.parse(auxa);

@@ -16,7 +16,7 @@ export class RegistrarseComponent implements OnInit {
 
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public usuario: Usuario = new Usuario(0,"","","","","","");
   constructor( public _usuarioService: UsuarioService, public router: Router ) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class RegistrarseComponent implements OnInit {
 
   registroSubmit(){
     this._usuarioService.agregar(this.usuario);
-    this.usuario = new Usuario(0,"","","","","cliente",this.auxx,this.auxxf,"");
+    this.usuario = new Usuario(0,"","","","","cliente","");
     alert("lol:" + this.usuario._nombre + " " +this.usuario._apellido);
   }
 

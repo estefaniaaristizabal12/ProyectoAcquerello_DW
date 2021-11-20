@@ -43,9 +43,25 @@ export class AdministrarProductoComponent implements OnInit {
 
   
   borrarDato(platoE: Plato){
-    this._platoService.deletePlato(platoE);
-   //this.actualizar();
+    alert("Mira"+platoE._nombre);
+    this._platoService.deletePlato(platoE._idPlato).subscribe();
+
+
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) ;
+
+    this.async_print_personas();
+
+
+    //this.actualizar();
  }
+
+ async async_print_personas() {
+  await new Promise((f) => setTimeout(f, 1000));
+  console.log(this.listaPlatos);
+}
 
  actualizar(){
   var storageList = localStorage.getItem('localListaPlatos');
