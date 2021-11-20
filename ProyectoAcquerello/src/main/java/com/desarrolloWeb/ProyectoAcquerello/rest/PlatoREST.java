@@ -37,23 +37,25 @@ public class PlatoREST {
 	private IPlatoService platoService;
 
     
-    private List<PlatoDTO> convertDTOs(Page<Plato> platos) {
-		List<PlatoDTO> result = new ArrayList<>();
-		ModelMapper mapper = new ModelMapper();
+    // private List<PlatoDTO> convertDTOs(Page<Plato> platos) {
+	// 	List<PlatoDTO> result = new ArrayList<>();
+	// 	ModelMapper mapper = new ModelMapper();
 		
-		for (Plato plato : platos) {
-			result.add(mapper.map(plato, PlatoDTO.class));
-		}
+	// 	for (Plato plato : platos) {
+	// 		result.add(mapper.map(plato, PlatoDTO.class));
+	// 	}
 		
-		return result;
-	}
+	// 	return result;
+	// }
+
+	// - - - - - - - -  C   R   U  D  - - - - - - - - 
+
 
 	@PostMapping("/crear")
 	public Plato crearPlato(@RequestBody Plato newPlato) {
 		return platoService.createPlato(newPlato);
 	}
 
-	//http://localhost:8080/plato/listaPlatosEst
 
 	@GetMapping("/listaPlatosEst")
 	public List<PlatoDTO> getPlatos() {
@@ -70,18 +72,37 @@ public class PlatoREST {
 	}
 
 
+	@PutMapping("/actualizarPlato/{idPlato}")
+	public PlatoDTO actualizarPlato(@RequestBody PlatoDTO newPlato, @PathVariable Long idPlato){
+		Plato plato = new Plato();
+		ModelMapper mapper = new ModelMapper();
+		plato = mapper.map(newPlato, Plato.class);
+		plato = platoService.updatePlato(plato);
+		newPlato = mapper.map(plato, PlatoDTO.class);
+		return newPlato;
+	}
+
+
+	@DeleteMapping("/eliminar/{idPlato}")
+	public void deletePlato(@PathVariable Long idPlato) {
+		platoService.deletePlato(Long.valueOf(idPlato));
+	}
+
+	
+
+
 	//http://localhost:8080/darPlato?idUPlato=14 
 
 	//OJO-- falta ver impresiones de los ERRORES!
-	@GetMapping("/darPlato")
-	public PlatoDTO getPlatoById(@RequestParam(name = "idPlato") Long idPlato){
-		ModelMapper mapper = new ModelMapper();
-		PlatoDTO plato = new PlatoDTO();
-		Plato plat = new Plato();
-		plat = platoService.getPlatoById(idPlato);
-		plato = mapper.map(plat, PlatoDTO.class);
-		return plato;
-	}
+	// @GetMapping("/darPlato")
+	// public PlatoDTO getPlatoById(@RequestParam(name = "idPlato") Long idPlato){
+	// 	ModelMapper mapper = new ModelMapper();
+	// 	PlatoDTO plato = new PlatoDTO();
+	// 	Plato plat = new Plato();
+	// 	plat = platoService.getPlatoById(idPlato);
+	// 	plato = mapper.map(plat, PlatoDTO.class);
+	// 	return plato;
+	// }
 
 
 	// @PutMapping("/equipos/actualizar/{id}")
@@ -90,13 +111,13 @@ public class PlatoREST {
 	// }
 
 
-	@PutMapping("/actualizarPlato/{idPlato}")
-	public Plato actualizarPlato(@RequestBody PlatoDTO newPlato) {
-		Plato plato = new Plato();
-		ModelMapper mapper = new ModelMapper();
-		plato = mapper.map(newPlato, Plato.class);
-		return platoService.updatePlato(plato);
-	}
+	// @PutMapping("/actualizarPlato/{idPlato}")
+	// public Plato actualizarPlato(@RequestBody PlatoDTO newPlato) {
+	// 	Plato plato = new Plato();
+	// 	ModelMapper mapper = new ModelMapper();
+	// 	plato = mapper.map(newPlato, Plato.class);
+	// 	return platoService.updatePlato(plato);
+	// }
 
 
 
@@ -110,11 +131,10 @@ public class PlatoREST {
 	// }
 
 
-    @DeleteMapping("/eliminar/{idPlato}")
-	public void deletePlato(@PathVariable String id) {
-		System.out.println("MIRAAA ESTEFANIA"+id);
-		platoService.deletePlato(Long.valueOf(id));
-	}
+    // @DeleteMapping("/eliminar/{idPlato}")
+	// public void deletePlato(@PathVariable Long idPlato) {
+	// 	platoService.deletePlato(Long.valueOf(idPlato));
+	// }
 	
 
 }

@@ -41,7 +41,7 @@ public class PlatoService implements IPlatoService{
     }
 
 
-	@Transactional
+	@Override
 	public Plato updatePlato(Plato newPlato) {
 		Plato provider = getPlatoById(newPlato.get_idPlato());
 		provider.set_nombre(newPlato.get_nombre());
@@ -55,15 +55,13 @@ public class PlatoService implements IPlatoService{
 
     @Override
 	public void deletePlato(Long id) {
-		repository.deleteById(id);
-
-		/*
 		Optional<Plato> plato = repository.findById(id);
+		
 		if (plato.isPresent()) {
 			repository.deleteById(id);
 		} else {
 			throw new PlatoNotFoundException(id);
-		}  */
+		}  
 	}
 
 
