@@ -11,7 +11,16 @@ public class UsuarioDTO {
     private String _apellido;
     private String _direccion;
     private String _contrasenia;
+    private String _rol;
 
+    
+
+    public String get_rol() {
+        return _rol;
+    }
+    public void set_rol(String _rol) {
+        this._rol = _rol;
+    }
     public Long get_idUsuario() {
         return _idUsuario;
     }

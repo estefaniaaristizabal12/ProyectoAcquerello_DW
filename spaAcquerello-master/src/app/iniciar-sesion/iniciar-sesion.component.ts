@@ -16,8 +16,8 @@ export class IniciarSesionComponent implements OnInit {
   public contrasenia: string = "";
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
-  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
   public listaUsuarios: Usuario[] = [];
   constructor( public _usuarioService: UsuarioService, public router: Router ) { 
     this._usuarioService.getlistaUsuario()
@@ -39,10 +39,13 @@ export class IniciarSesionComponent implements OnInit {
 
   inicioSesionSubmit(){
 
+
+
+
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
     }
     else{
       this.admin =  JSON.parse(aux);

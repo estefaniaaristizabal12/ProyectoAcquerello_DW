@@ -19,8 +19,8 @@ export class AppComponent {
   public listaPlato2: Plato [] = [];
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
-  public admin2: Usuario = new Usuario(0,"Acquerello", "Ristorante", "acquerello@ristorante.com","admin12345","Cl. 122 #15a-24",this.auxx,this.auxxf);
+  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public admin2: Usuario = new Usuario(0,"Acquerello", "Ristorante", "acquerello@ristorante.com","admin12345","Cl. 122 #15a-24",this.auxx,this.auxxf,"administrador");
   constructor() { 
     let producto1:Plato = new Plato(1,'Pasta Al Pomodoro Fresco', 'Clásica salsa pomodoro, albahaca y aceite de oliva.','assets/plato1.jpg', 19000);
     let producto2:Plato = new Plato(2,'Pasta Al Funghi', 'Salsa cremosa de hongos con adicion de especies y parmigiano.','assets/plato2.jpg', 12000);

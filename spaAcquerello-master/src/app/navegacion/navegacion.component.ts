@@ -15,14 +15,14 @@ export class NavegacionComponent implements OnInit {
   public mostrarInicioA: boolean = true; //Administrador
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public admin: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
 
   constructor() {
 
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+      this.admin = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
     }
     else{
       this.admin = JSON.parse(aux);

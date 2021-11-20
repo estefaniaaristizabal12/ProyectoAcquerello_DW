@@ -8,15 +8,17 @@ export class Usuario {
     public _apellido: string = "";
     public _direccion: string = "";
     public _contrasenia: string = "";
+    public _rol: string = "";
     public carroCompras: CarroCompras[] = [];
     public facturas: Factura[] = [];
     constructor(idUsuario:number,email:string, nombre:string, apellido:string,  
-        direccion:string, contrasenia:string, carroC: CarroCompras[],fact:Factura[]){
+        direccion:string, contrasenia:string, carroC: CarroCompras[],fact:Factura[], rol:string){
             this._idUsuario = idUsuario;
             this._email = email;
             this._nombre = nombre;
             this._apellido = apellido;
             this._direccion = direccion;
             this._contrasenia = contrasenia;        
+            this._rol = rol;
     }
 }

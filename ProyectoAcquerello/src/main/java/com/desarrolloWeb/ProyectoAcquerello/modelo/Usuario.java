@@ -30,6 +30,8 @@ public class Usuario {
     @Basic
     private String _contrasenia;
 
+    @Basic
+    private String _rol;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuariof")
     private List<Factura> facturas;  //Un usuario tiene muchas facturas
@@ -44,6 +46,14 @@ public class Usuario {
 
     public Long get_idUsuario() {
         return _idUsuario;
+    }
+
+    public String get_rol() {
+        return _rol;
+    }
+
+    public void set_rol(String _rol) {
+        this._rol = _rol;
     }
 
     public String get_email() {

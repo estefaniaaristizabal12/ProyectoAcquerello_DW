@@ -18,8 +18,8 @@ export class OrdenesComponent implements OnInit {
   nombreProducto: String = "";
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
-  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
   public listaUsuarios: Usuario[] = [];
   public correoA:string ="";
 

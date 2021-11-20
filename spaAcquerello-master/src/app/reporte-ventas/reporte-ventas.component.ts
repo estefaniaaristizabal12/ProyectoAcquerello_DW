@@ -21,8 +21,8 @@ export class ReporteVentasComponent implements OnInit {
   public aux: Plato = new Plato(0,"","","",0);
   public listaUsuarios: Usuario[] =[];
   public listaOrdenes: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
-  public auxU: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public auxU: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
   public totalVendidos: number = 0; 
   public precioTotal: number = 0; 
 

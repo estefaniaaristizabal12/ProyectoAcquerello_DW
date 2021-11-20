@@ -19,8 +19,8 @@ export class UsuarioService {
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
   public listaUsuarios: Usuario[] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
-  public usuarioActual: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public usuarioActual: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
   Url = 'http://localhost:8080/usuario';
 
 
@@ -51,6 +51,8 @@ export class UsuarioService {
   crearUsuario(){
     localStorage.setItem('user','wilmer');
   }
+
+  
 
   buscarPersona(emailP:string){
     for(let usuario of this.listaUsuarios)
@@ -104,7 +106,7 @@ export class UsuarioService {
         return usuario;
       }
     }
-    return new Usuario(0,"","","","","",this.auxx,this.auxxf);
+    return new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
   }
 
   async async_print_personas() {

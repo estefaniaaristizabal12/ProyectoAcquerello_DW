@@ -13,8 +13,8 @@ export class PerfilAdminComponent implements OnInit {
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
 
-  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
-  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+  public usuario: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
+  public aux: Usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
   public correoA:string ="";
   public numItems: number = 0;
 
@@ -23,7 +23,7 @@ export class PerfilAdminComponent implements OnInit {
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){
-      this.usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf);
+      this.usuario = new Usuario(0,"","","","","",this.auxx,this.auxxf,"");
     }
     else{
       this.usuario = JSON.parse(aux);
