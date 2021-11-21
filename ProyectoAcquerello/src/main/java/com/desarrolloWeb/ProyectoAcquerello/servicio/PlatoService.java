@@ -58,7 +58,7 @@ public class PlatoService implements IPlatoService{
 		Optional<Plato> plato = repository.findById(id);
 		
 		if (plato.isPresent()) {
-			repository.deleteById(id);
+			repository.delete(plato.get());
 		} else {
 			throw new PlatoNotFoundException(id);
 		}  

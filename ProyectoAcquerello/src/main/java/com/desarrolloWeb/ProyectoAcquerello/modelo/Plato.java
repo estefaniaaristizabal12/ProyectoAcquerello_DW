@@ -9,6 +9,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 
 @Entity
 public class Plato {
@@ -30,11 +31,11 @@ public class Plato {
     private float _precio;
 
   
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "platof")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "platof", cascade = CascadeType.ALL)
     private List<Factura> facturas;  //Un usuario tiene muchas facturas
 
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "platoc")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "platoc", cascade = CascadeType.ALL)
     private List<CarroCompras> carroCompras;  //Un usuario tiene muchos productos en un carro de compras 
 
 

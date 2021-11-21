@@ -84,8 +84,9 @@ public class PlatoREST {
 
 
 	@DeleteMapping("/eliminar/{idPlato}")
-	public void deletePlato(@PathVariable Long idPlato) {
-		platoService.deletePlato(Long.valueOf(idPlato));
+	public Boolean deletePlato(@PathVariable Long idPlato) {
+		platoService.deletePlato(idPlato);
+		return true;
 	}
 
 	

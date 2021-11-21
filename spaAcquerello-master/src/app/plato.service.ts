@@ -35,8 +35,9 @@ export class PlatoService {
   //   return this.http.put(this.Url +"/actualizarPlato/"+plato._idPlato, plato);
   // }
 
-  deletePlato (idplato: any){
+  deletePlato (idplato: number){
     return this.http.delete(this.Url+"/eliminar/"+idplato);
+
     //return this.http.delete(`${this.Url}/eliminar/${this.idP}`,this.idP);
       
       //this.Url +"/eliminar/"+idplato, idplato);
