@@ -36,7 +36,7 @@ export class EditarProductoComponent implements OnInit {
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;
-    }) ;
+    });
 
     this.async_print_personas();
     this.router.navigateByUrl("/administrarProductos");

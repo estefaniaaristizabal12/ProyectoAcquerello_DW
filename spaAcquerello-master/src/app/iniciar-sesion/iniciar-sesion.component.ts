@@ -19,6 +19,8 @@ export class IniciarSesionComponent implements OnInit {
   public usuario: Usuario = new Usuario(0,"","","","","","");
   public admin: Usuario = new Usuario(0,"","","","","","");
   public listaUsuarios: Usuario[] = [];
+
+  
   constructor( public _usuarioService: UsuarioService, public router: Router ) { 
     this._usuarioService.getlistaUsuario()
     .subscribe(data =>{

@@ -11,7 +11,6 @@ public class CarroComprasDTO {
     private Integer _cantidad;
     private float _precio;
 
-    
     public Long get_id_CC() {
         return _id_CC;
     }
@@ -53,11 +52,5 @@ public class CarroComprasDTO {
     }
     public void set_precio(float _precio) {
         this._precio = _precio;
-    }
-
-    
-
-
-    
-    
+    }  
 }

@@ -54,9 +54,7 @@ export class ReporteVentasComponent implements OnInit {
 
 
   totalVendidosF(plato: Plato){
-
     this.totalVendidos = 0;
-  
     for(let auxU of this.listaUsuarios){
       this.listaOrdenes = auxU.facturas;
       for(var i = 0; i < this.listaOrdenes.length; i++){
@@ -72,7 +70,4 @@ export class ReporteVentasComponent implements OnInit {
     this.precioTotal = 0;
     this.precioTotal = plato._precio * this.totalVendidos;
   }
-
-
-
 }

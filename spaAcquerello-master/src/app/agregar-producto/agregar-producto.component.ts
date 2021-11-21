@@ -29,10 +29,9 @@ export class AgregarProductoComponent implements OnInit {
       alert("El plato se almacenó correctamente!");
       this.irAEditar();
     }, () => {
-      alert("Error: no se pudo guardar correctamente")
+      alert("Error: no se pudo guardar correctamente");
     });
 
-    
     this.async_print_personas();
   }
 

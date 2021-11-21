@@ -27,7 +27,7 @@ export class PlatoService {
     return this.http.get<Plato[]>(this.Url+"/listaPlatos");
   }
 
-  updatePlato (plato: Plato){
+  updatePlato (plato: Plato){ //{idPla}
     return this.http.put(this.Url +"/actualizarPlato/"+plato._idPlato, plato);
   }
 

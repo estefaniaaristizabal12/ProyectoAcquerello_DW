@@ -64,15 +64,12 @@ public class PlatoREST {
 
 	@GetMapping("/listaPlatos")
 	public List<PlatoDTO> getPlatos() {
-
 		Iterable<Plato> platos = platoService.getPlatosL();
 		List<PlatoDTO> result = new ArrayList<>();
 		ModelMapper mapper = new ModelMapper();
-		
 		for (Plato plato : platos) {
 			result.add(mapper.map(plato, PlatoDTO.class));
 		}
-
 		return result;
 	}
 
@@ -93,54 +90,5 @@ public class PlatoREST {
 		platoService.deletePlato(idPlato);
 		return true;
 	}
-
-	
-
-
-	//http://localhost:8080/darPlato?idUPlato=14 
-
-	//OJO-- falta ver impresiones de los ERRORES!
-	// @GetMapping("/darPlato")
-	// public PlatoDTO getPlatoById(@RequestParam(name = "idPlato") Long idPlato){
-	// 	ModelMapper mapper = new ModelMapper();
-	// 	PlatoDTO plato = new PlatoDTO();
-	// 	Plato plat = new Plato();
-	// 	plat = platoService.getPlatoById(idPlato);
-	// 	plato = mapper.map(plat, PlatoDTO.class);
-	// 	return plato;
-	// }
-
-
-	// @PutMapping("/equipos/actualizar/{id}")
-	// public Equipo actualizarEquipo(@RequestBody Equipo newEquipo, @PathVariable Long id) {
-	// 	return equipoService.actualizarEquipo(newEquipo, id);
-	// }
-
-
-	// @PutMapping("/actualizarPlato/{idPlato}")
-	// public Plato actualizarPlato(@RequestBody PlatoDTO newPlato) {
-	// 	Plato plato = new Plato();
-	// 	ModelMapper mapper = new ModelMapper();
-	// 	plato = mapper.map(newPlato, Plato.class);
-	// 	return platoService.updatePlato(plato);
-	// }
-
-
-
-
-    // @PostMapping("/actualizarPlato")
-	// public Plato actualizarPlato(@RequestBody PlatoDTO newPlato) {
-	// 	Plato plato = new Plato();
-	// 	ModelMapper mapper = new ModelMapper();
-	// 	plato = mapper.map(newPlato, Plato.class);
-	// 	return platoService.updatePlato(plato);
-	// }
-
-
-    // @DeleteMapping("/eliminar/{idPlato}")
-	// public void deletePlato(@PathVariable Long idPlato) {
-	// 	platoService.deletePlato(Long.valueOf(idPlato));
-	// }
-	
 
 }

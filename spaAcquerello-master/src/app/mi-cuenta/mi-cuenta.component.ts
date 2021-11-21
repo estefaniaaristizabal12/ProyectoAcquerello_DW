@@ -25,7 +25,6 @@ export class MiCuentaComponent implements OnInit {
 
   constructor(private router:Router,public _usuarioService:UsuarioService ) { 
 
-
     this._usuarioService.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;

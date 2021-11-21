@@ -35,7 +35,7 @@ public class PlatoService implements IPlatoService{
 			return plato.get();
 		}
         else{
-            System.out.println("ERRORRR");
+            System.out.println("ERROR");
             return plato.get();
         }
     }
@@ -56,7 +56,6 @@ public class PlatoService implements IPlatoService{
     @Override
 	public void deletePlato(Long id) {
 		Optional<Plato> plato = repository.findById(id);
-		
 		if (plato.isPresent()) {
 			repository.delete(plato.get());
 		} else {
