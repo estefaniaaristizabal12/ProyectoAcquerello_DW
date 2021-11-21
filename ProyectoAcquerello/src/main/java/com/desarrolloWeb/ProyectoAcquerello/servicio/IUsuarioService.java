@@ -1,25 +1,18 @@
 package com.desarrolloWeb.ProyectoAcquerello.servicio;
-import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
 
 public interface IUsuarioService {
 
     Usuario createUsuario(Usuario newUsuario);
 
-    //Usuario getUsuarioById(String email);
+    Usuario getUsuarioById(Long idUsuario);
 
-    Usuario getUsuarioById(Long idPlato);
-
-    Boolean deleteUsuario(String email);
-
-    Page<Usuario> getUsuarios(Pageable pageable);
+    Iterable<Usuario> getUsuariosLista();
 
     Usuario updateUsuario(Usuario usuario);
 
-    Iterable<Usuario> getUsuariosL();
-
-
+    Boolean deleteUsuario(String email);
+   
     
 }

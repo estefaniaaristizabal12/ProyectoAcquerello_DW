@@ -28,19 +28,6 @@ public class FacturaREST {
 	private IFacturaService facturaService;
 
 
-	
-
-    // private List<FacturaDTO> convertirDTOs(Page<Factura> facturas) {
-	// 	List<FacturaDTO> result = new ArrayList<>();
-	// 	ModelMapper mapper = new ModelMapper();
-		
-	// 	for (Factura factura : facturas) {
-	// 		result.add(mapper.map(factura, FacturaDTO.class));
-	// 	}
-		
-	// 	return result;
-	// }
-
 	// - - - - - - - -  C   R   U  D  - - - - - - - - 
 
     @PostMapping("/crear")

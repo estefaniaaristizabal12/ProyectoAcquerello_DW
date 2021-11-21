@@ -36,18 +36,6 @@ public class PlatoREST {
     @Autowired
 	private IPlatoService platoService;
 
-    
-    // private List<PlatoDTO> convertDTOs(Page<Plato> platos) {
-	// 	List<PlatoDTO> result = new ArrayList<>();
-	// 	ModelMapper mapper = new ModelMapper();
-		
-	// 	for (Plato plato : platos) {
-	// 		result.add(mapper.map(plato, PlatoDTO.class));
-	// 	}
-		
-	// 	return result;
-	// }
-
 	// - - - - - - - -  C   R   U  D  - - - - - - - - 
 
 

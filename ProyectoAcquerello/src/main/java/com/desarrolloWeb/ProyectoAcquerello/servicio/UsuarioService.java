@@ -26,29 +26,11 @@ public class UsuarioService implements IUsuarioService {
 
 
     @Override
-	public Page<Usuario> getUsuarios(Pageable pageable) {
-		return repository.findAll(pageable);
-	}
-
-    @Override
-    public Iterable<Usuario> getUsuariosL(){
+    public Iterable<Usuario> getUsuariosLista(){
         return repository.findAll();
     }
 
-    /*
-    @Override
-    public Usuario getUsuarioById(String email){
-        long id = 0;
-        Optional<Usuario> usuario = repository.findById(id);
-        if (usuario.isPresent()) {
-			return usuario.get();
-		}
-        else{
-            System.out.println("ERRORRR");
-            return usuario.get();
-        }
-    }
-    */
+   
     @Override
     public Usuario getUsuarioById(Long idUsuario){
         Optional<Usuario> usuario = repository.findById(idUsuario);
@@ -63,22 +45,6 @@ public class UsuarioService implements IUsuarioService {
 
 
     @Override
-    public Boolean deleteUsuario (String emai){
-        Boolean delet = false;
-        long id = 0;
-        Optional<Usuario> usuario = repository.findById(id);
-		if (usuario.isPresent()) {
-			repository.delete(usuario.get());
-            delet = true;
-		} else {
-            System.out.println("ERRORRR");
-			//throw new EquipoNotFoundException(idUsuario);
-		}
-
-        return delet;
-    }
-
-    @Override
 	public Usuario updateUsuario(Usuario newUsuario) {
 
         Usuario provider = getUsuarioById(newUsuario.get_idUsuario());
@@ -91,6 +57,24 @@ public class UsuarioService implements IUsuarioService {
         return provider;
 	}
 
+
+
+    @Override
+    public Boolean deleteUsuario (String emai){
+        Boolean delet = false;
+        long id = 0;
+        Optional<Usuario> usuario = repository.findById(id);
+		if (usuario.isPresent()) {
+			repository.delete(usuario.get());
+            delet = true;
+		} else {
+            System.out.println("ERROR");
+			//throw new EquipoNotFoundException(idUsuario);
+		}
+        return delet;
+    }
+
+    
 
   
 }

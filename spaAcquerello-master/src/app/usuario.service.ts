@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   getlistaUsuario(){
-    return this.http.get<Usuario[]>(this.Url+"/listaUsuariosEst");
+    return this.http.get<Usuario[]>(this.Url+"/listaUsuarios");
   }
 
   agregar(usuario :Usuario){
