@@ -16,7 +16,7 @@ export class RegistrarseComponent implements OnInit {
 
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","","");
+  public usuario: Usuario = new Usuario(0,"","","","","","usuario");
   public listaUsuarios: Usuario[] = [];
 
   constructor( public _usuarioService: UsuarioService, public router: Router ) { 
