@@ -1,11 +1,12 @@
 package com.desarrolloWeb.ProyectoAcquerello.servicio;
+import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IUsuarioService {
 
-    Usuario createUsuario(Usuario nuevoUsuario);
+    Usuario createUsuario(Usuario newUsuario);
 
     Usuario getUsuarioById(String email);
 

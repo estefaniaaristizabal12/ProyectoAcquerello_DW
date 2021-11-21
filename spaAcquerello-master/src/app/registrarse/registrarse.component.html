@@ -32,7 +32,7 @@
             <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido a Acquerello</h2>
 
             
-            <form (ngSubmit)="registroSubmit()" #listaForm="ngForm" novalidate>
+            <form (ngSubmit)="agregarUsuario()" #listaForm="ngForm" novalidate>
                 <div class="mb-4">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" class="form-control" name ="email" id="email" placeholder="example@example.com" [(ngModel)]="usuario._email"  #email="ngModel" required minlength="3"  email="true" >

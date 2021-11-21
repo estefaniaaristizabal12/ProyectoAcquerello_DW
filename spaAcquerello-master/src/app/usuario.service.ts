@@ -3,6 +3,7 @@ import { Usuario } from './model/usuario';
 import { HttpClient } from '@angular/common/http';
 import { Factura } from './model/factura';
 import { CarroCompras } from './model/carroCompras';
+import { Observable } from 'rxjs';
 
 /*
 import { Injectable } from '@angular/core';
@@ -42,6 +43,11 @@ export class UsuarioService {
     this.listaUsuarios.push(usuario);
     //Cada que se aniada un nuevo usuario, sobreescribe la lista de localListaUsuarios
     localStorage.setItem('localListaUsuarios', JSON.stringify(this.listaUsuarios));
+  }
+
+
+  createUsuario (usuario: any): Observable<any> {
+    return this.http.post(this.Url +"/crear", usuario);
   }
 
   modificarUsuario(nListaUsuarios:Usuario[]){

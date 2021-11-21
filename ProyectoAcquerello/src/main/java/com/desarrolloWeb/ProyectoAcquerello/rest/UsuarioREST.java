@@ -102,11 +102,19 @@ public class UsuarioREST {
 			return "Se genero un error ";
 		}
 	}
+//
 
-    @PostMapping("/crear")
-	public Usuario createUsuario(@RequestBody Usuario nuevoUsuario) {
-		return usuarioService.createUsuario(nuevoUsuario);
+
+	@PostMapping("/crear")
+	public UsuarioDTO crearUsuario(@RequestBody UsuarioDTO newUsuario) {
+		Usuario usuario = new Usuario();
+		ModelMapper mapper = new ModelMapper();
+		usuario = mapper.map(newUsuario, Usuario.class);
+		usuario = usuarioService.createUsuario(usuario);
+		newUsuario = mapper.map(usuario, UsuarioDTO.class);
+		return newUsuario;
 	}
+
 
 	
 	@PostMapping("/actualizarUsuario")

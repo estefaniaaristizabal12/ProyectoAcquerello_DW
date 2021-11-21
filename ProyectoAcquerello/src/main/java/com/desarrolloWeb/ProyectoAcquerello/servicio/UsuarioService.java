@@ -20,9 +20,10 @@ public class UsuarioService implements IUsuarioService {
     private UsuarioRepository repository;
 
     @Override
-	public Usuario createUsuario (Usuario nuevoUsuario) {
-		return repository.save(nuevoUsuario);
+	public Usuario createUsuario (Usuario newUsuario) {
+		return repository.save(newUsuario);
 	}
+
 
     @Override
 	public Page<Usuario> getUsuarios(Pageable pageable) {

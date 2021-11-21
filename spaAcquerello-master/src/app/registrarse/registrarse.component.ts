@@ -17,8 +17,15 @@ export class RegistrarseComponent implements OnInit {
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
   public usuario: Usuario = new Usuario(0,"","","","","","");
-  constructor( public _usuarioService: UsuarioService, public router: Router ) { }
+  public listaUsuarios: Usuario[] = [];
 
+  constructor( public _usuarioService: UsuarioService, public router: Router ) { 
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+
+  }
   ngOnInit(): void {
   }
 
@@ -26,6 +33,21 @@ export class RegistrarseComponent implements OnInit {
     this._usuarioService.agregar(this.usuario);
     this.usuario = new Usuario(0,"","","","","cliente","");
     alert("lol:" + this.usuario._nombre + " " +this.usuario._apellido);
+  }
+
+  agregarUsuario(){
+  
+    this._usuarioService.createUsuario(this.usuario).subscribe(() => {
+      alert("El usuario se registro correctamente!");
+      this.irAMiCuenta();
+    }, () => {
+      alert("Error: no se pudo registrar correctamente");
+    });
+
+  }
+
+  irAMiCuenta(){
+    this.router.navigateByUrl("/iniciarSesion");
   }
 
 }
