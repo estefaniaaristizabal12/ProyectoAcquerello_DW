@@ -17,16 +17,16 @@ export class CarroComprasService {
    }
 
 
-  createCarrroCompras (carrroCompras : any): Observable<any> {
-    return this.http.post(this.Url +"/crear", carrroCompras);
+  createCarroCompras (carroCompras : any): Observable<any> {
+    return this.http.post(this.Url +"/crear", carroCompras);
   }
 
-  getlistaCarrroCompras (){
-    return this.http.get<CarroCompras[]>(this.Url+"/listaCarrrosCompras");
+  getlistaCarroCompras (){
+    return this.http.get<CarroCompras[]>(this.Url+"/listaCarrosCompras");
   }
 
-  updateCarrroCompras  (carrroCompras: CarroCompras){ //{idPla}
-    return this.http.put(this.Url +"/actualizarFactura/"+carrroCompras._id_CC, CarroCompras);
+  updateCarroCompras  (carroCompras: CarroCompras){ //{idPla}
+    return this.http.put(this.Url +"/actualizarCarro/"+carroCompras._id_CC, CarroCompras);
   }
 
   /*

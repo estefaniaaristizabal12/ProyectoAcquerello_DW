@@ -15,20 +15,20 @@ export class FacturaService {
   }
 
 
-  createPlato (plato: any): Observable<any> {
-    return this.http.post(this.Url +"/crear", plato);
+  createFactura (factura: any): Observable<any> {
+    return this.http.post(this.Url +"/crear", factura);
   }
 
-  getlistaPlato(){
+  getlistaFactura(){
     return this.http.get<Factura[]>(this.Url+"/listaFacturas");
   }
 
-  updatePlato (factura: Factura){ //{idPla}
+  updateFactura (factura: Factura){ //{idPla}
     return this.http.put(this.Url +"/actualizarFactura/"+factura.idFactura, factura);
   }
 
 
-  deletePlato (idFactura: number){
+  deleteFactura (idFactura: number){
     return this.http.delete(this.Url+"/eliminar/"+idFactura);
   }
 
