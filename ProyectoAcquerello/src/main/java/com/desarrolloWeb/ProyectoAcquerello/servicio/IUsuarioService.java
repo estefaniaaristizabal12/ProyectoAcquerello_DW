@@ -8,6 +8,8 @@ public interface IUsuarioService {
 
     Usuario getUsuarioById(Long idUsuario);
 
+    Usuario getUsuarioByEmail(String emailUsuario);
+
     Iterable<Usuario> getUsuariosLista();
 
     Usuario updateUsuario(Usuario usuario);

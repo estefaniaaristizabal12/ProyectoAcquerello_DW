@@ -27,6 +27,12 @@ export class IniciarSesionComponent implements OnInit {
       this.listaUsuarios = data;
     }) ;
 
+
+    for(let usuario of this.listaUsuarios)
+    {
+        alert("SAPOOO "+ usuario._nombre);
+    }
+
     this.async_print_personas();
     
   }
@@ -60,7 +66,6 @@ export class IniciarSesionComponent implements OnInit {
       this.dirigirInicioAdmon();
     } */
     if(this.email!= null && this.contrasenia != null && this._usuarioService.buscarPersona(this.email) == true){
-      alert("entro al primero");
       if(this._usuarioService.verificarContrasenia(this.email, this.contrasenia)){
 
         if(this._usuarioService.darRol(this.email) == "administrador"){
@@ -72,6 +77,7 @@ export class IniciarSesionComponent implements OnInit {
         } else if(this._usuarioService.darRol(this.email) == "usuario"){
           this.usuario = this._usuarioService.darUsuario(this.email);
           alert("Bienvenido "+this.usuario._nombre);
+          localStorage.setItem('actual',this.email);
           this.dirigirInicio();
         } else{
           alert("Se genero un error, intente más tarde... "+this.usuario._nombre);
@@ -89,6 +95,7 @@ export class IniciarSesionComponent implements OnInit {
   }
 
   dirigirInicio(){
+    
     this.router.navigateByUrl('/miCuenta'); 
   }
 

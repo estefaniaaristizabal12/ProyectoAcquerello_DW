@@ -39,7 +39,6 @@ export class UsuarioService {
   }
 
   agregar(usuario :Usuario){
-    
     //excepto esto
     this.listaUsuarios.push(usuario);
     //Cada que se aniada un nuevo usuario, sobreescribe la lista de localListaUsuarios

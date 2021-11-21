@@ -27,7 +27,7 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Iterable<Usuario> getUsuariosLista(){
-        return repository.findAll();
+      return repository.findAll();
     }
 
    
@@ -41,6 +41,20 @@ public class UsuarioService implements IUsuarioService {
             System.out.println("ERROR");
             return usuario.get();
         }
+    }
+
+    @Override
+    public Usuario getUsuarioByEmail(String emailUsuario){
+
+        Optional<Usuario> usuario = repository.findByEmail(emailUsuario);
+        if (usuario.isPresent()) {
+			return usuario.get();
+		}
+        else{
+            System.out.println("ERROR");
+            return usuario.get();
+        }
+
     }
 
 

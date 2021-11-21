@@ -37,6 +37,7 @@ public class UsuarioREST {
 		return newUsuario;
 	}
 
+
 	@GetMapping("/listaUsuarios")
 	public List<UsuarioDTO> getUsuarios() {
 		Iterable<Usuario> usuarios = usuarioService.getUsuariosLista();
@@ -56,6 +57,16 @@ public class UsuarioREST {
 		UsuarioDTO usuario = new UsuarioDTO();
 		Usuario usu = new Usuario();
 		usu = usuarioService.getUsuarioById(idUsuario);
+		usuario = mapper.map(usu, UsuarioDTO.class);
+		return usuario;
+	}
+
+	@GetMapping("/darUsuario/{emailUsuario}")
+	public UsuarioDTO getUsuarioById(@PathVariable String emailUsuario){
+		ModelMapper mapper = new ModelMapper();
+		UsuarioDTO usuario = new UsuarioDTO();
+		Usuario usu = new Usuario();
+		usu = usuarioService.getUsuarioByEmail(emailUsuario);
 		usuario = mapper.map(usu, UsuarioDTO.class);
 		return usuario;
 	}

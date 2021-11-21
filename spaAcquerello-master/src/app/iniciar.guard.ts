@@ -27,7 +27,7 @@ export class IniciarGuard implements CanActivate {
       this.admin = JSON.parse(auxa);
     }
 
-    if(auxu==null ||auxu==""){
+    if(auxu==null||auxu==""){
       return false;
     }
     else{

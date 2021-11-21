@@ -22,31 +22,44 @@ export class MiCuentaComponent implements OnInit {
   public correoA:string ="";
   public numItems: number = 0;
 
-  public usuarioA:any;
-  usuarioObtener: Usuario = new Usuario(0,"","","","","","");
-
-
-  constructor(private router:Router,public _usuarioService:UsuarioService ) { 
-
+  constructor( public _usuarioService: UsuarioService, public router: Router ) { 
     this._usuarioService.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;
     }) ;
 
-    if(this._usuarioService.usuarioObtener)
-        this.usuarioObtener = this._usuarioService.usuarioObtener;
+    this.async_print_personas();
+
+    
+  }
 
 
-    var aux = localStorage.getItem('actual');
-    //Se debe validar que no sea nulo el string.
-    if(aux== null){
-      this.correoA = "";
-    }
-    else{
-      this.correoA = aux;
-    }
+  // constructor(private router:Router, public _usuarioService: UsuarioService ) { 
 
-    this.buscarPersona(this.correoA);
+  //   this._usuarioService.getlistaUsuario()
+  //   .subscribe(data =>{
+  //     this.listaUsuarios = data;
+  //   }) ;
+
+
+  //   for(let usuario of this.listaUsuarios)
+  //   {
+  //     alert("SAPOOO "+ usuario._nombre);
+  //   }
+
+
+  //   this.async_print_personas();
+
+  //   var aux = localStorage.getItem('actual');
+  //   if(aux== null) this.correoA = "";
+  //   else this.correoA = aux;
+
+  //   this.buscarPersona(this.correoA);
+  // }
+
+  async async_print_personas() {
+    await new Promise((f) => setTimeout(f, 1000));
+    console.log(this.listaUsuarios);
   }
 
   ngOnInit(): void {
@@ -55,11 +68,12 @@ export class MiCuentaComponent implements OnInit {
   buscarPersona(correoA:string){
     for(let aux of this.listaUsuarios)
     {
+      alert("mira "+aux._email);
       if(correoA == aux._email){
+        alert("Holiii, entre aca xd ");
         this.usuario = aux;
       }
     }
-  
   }
 
   darNumItem(){
@@ -73,34 +87,12 @@ export class MiCuentaComponent implements OnInit {
   }
 
   actualizar(){
-   
-    /*
-    for(let aux of this.listaUsuarios)
-    {
-      if(this.usuario._email != aux._email){
-        this.listaU2.push(aux);
-      }else{
-        this.listaU2.push(this.usuario);
-      }
-    }
-    */
-   
-    /*
-    localStorage.setItem('localListaUsuarios',JSON.stringify(this.listaU2));
-    this.listaU2=[];
-
-    */
-
-    this.usuarioA = this.usuarioObtener;
-
-    this._usuarioService.updateUsuario(this.usuarioA).subscribe();
-
+    this._usuarioService.updateUsuario(this.usuario).subscribe();
     this._usuarioService.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;
     });
 
     this.router.navigateByUrl("/miCuenta");
-
   }
 }
