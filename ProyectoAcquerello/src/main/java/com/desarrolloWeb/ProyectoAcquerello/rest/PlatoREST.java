@@ -52,12 +52,17 @@ public class PlatoREST {
 
 
 	@PostMapping("/crear")
-	public Plato crearPlato(@RequestBody Plato newPlato) {
-		return platoService.createPlato(newPlato);
+	public PlatoDTO crearPlato(@RequestBody PlatoDTO newPlato) {
+		Plato plato = new Plato();
+		ModelMapper mapper = new ModelMapper();
+		plato = mapper.map(newPlato, Plato.class);
+		plato = platoService.createPlato(plato);
+		newPlato = mapper.map(plato, PlatoDTO.class);
+		return newPlato;
 	}
 
 
-	@GetMapping("/listaPlatosEst")
+	@GetMapping("/listaPlatos")
 	public List<PlatoDTO> getPlatos() {
 
 		Iterable<Plato> platos = platoService.getPlatosL();

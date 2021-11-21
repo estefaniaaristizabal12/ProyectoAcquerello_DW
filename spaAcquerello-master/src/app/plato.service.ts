@@ -24,16 +24,13 @@ export class PlatoService {
   }
 
   getlistaPlato(){
-    return this.http.get<Plato[]>(this.Url+"/listaPlatosEst");
+    return this.http.get<Plato[]>(this.Url+"/listaPlatos");
   }
 
   updatePlato (plato: Plato){
     return this.http.put(this.Url +"/actualizarPlato/"+plato._idPlato, plato);
   }
 
-  // updatePlato (plato: Plato){
-  //   return this.http.put(this.Url +"/actualizarPlato/"+plato._idPlato, plato);
-  // }
 
   deletePlato (idplato: number){
     return this.http.delete(this.Url+"/eliminar/"+idplato);
@@ -42,25 +39,5 @@ export class PlatoService {
       
       //this.Url +"/eliminar/"+idplato, idplato);
   }
-
-
-  /* FUNCIONES GENERALES */
-
-  private extractData(res: Response) {
-    const body = res;
-    return body || {};
-}
-
-private handleError(error: Response | any) {
-    let errMsg: string;
-    if (error instanceof Response) {
-        const err = error || '';
-        errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-        errMsg = error.message ? error.message : error.toString();
-    }
-
-    return throwError(errMsg);
-}
 
 }
