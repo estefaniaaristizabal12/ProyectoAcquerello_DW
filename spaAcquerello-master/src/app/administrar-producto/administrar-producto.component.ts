@@ -15,7 +15,6 @@ export class AdministrarProductoComponent implements OnInit {
   public aux: Plato = new Plato(0,"","","",0);
 
   constructor( public _platoService: PlatoService, public router: Router ) {
-
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;

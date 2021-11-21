@@ -7,13 +7,18 @@ import org.springframework.data.domain.Pageable;
 
 public interface IFacturaService {
 
-    Factura createFactura(Factura nuevoUsuario);
+    
+    Factura createFactura(Factura newFactura);
 
     Factura getFacturaById(Long idFactura);
 
-    Boolean deleteFactura(Long idFactura);
+    Iterable<Factura> getFacturaLista();
 
-    Page<Factura> getFacturas(Pageable pageable);
+    Factura updateFactura(Factura factura);
+
+    void deleteFactura(Long idFactura);
+
+    // Page<Factura> getFacturas(Pageable pageable);
 
     
 }

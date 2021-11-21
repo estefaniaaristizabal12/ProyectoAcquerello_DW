@@ -15,32 +15,10 @@ public class FacturaService implements IFacturaService{
     @Autowired
     private FacturaRepository repository;
 
-    @Override
-	public Factura createFactura (Factura nuevoUsuario) {
-		return repository.save(nuevoUsuario);
-	}
-
-    /*
-    @Override
-    public Factura getFacturaById(Long idFactura){
-        return repository.findById(idFactura).orElseThrow();
-    }
-    */
-
 
     @Override
-    public Boolean deleteFactura (Long idFactura){
-        Boolean delet = false;
-        Optional<Factura> factura = repository.findById(idFactura);
-		if (factura.isPresent()) {
-			repository.delete(factura.get());
-            delet = true;
-		} else {
-            System.out.println("ERRORRR");
-			//throw new EquipoNotFoundException(idUsuario);
-		}
-
-        return delet;
+    public Factura createFactura(Factura newFactura){
+        return repository.save(newFactura);
     }
 
     @Override
@@ -50,16 +28,45 @@ public class FacturaService implements IFacturaService{
 			return factura.get();
 		}
         else{
-            System.out.println("ERRORRR");
+            System.out.println("ERROR");
             return factura.get();
         }
     }
 
     @Override
-	public Page<Factura> getFacturas(Pageable pageable) {
-		return repository.findAll(pageable);
-	}
+    public Iterable<Factura> getFacturaLista(){
+        return repository.findAll();
+    }
 
-  
+    @Override
+    public Factura updateFactura(Factura newFactura){
+        Factura provider = getFacturaById(newFactura.getIdFactura());
+		provider.setCantidad(newFactura.getCantidad());
+        provider.setFecha(newFactura.getFecha());
+        provider.setFoto(newFactura.getFoto());
+        provider.setPlatof(newFactura.getPlatof());
+        provider.setTotal(newFactura.getTotal());
+        provider.setUsuariof(newFactura.getUsuariof());
+		repository.save(provider);
+		return provider;
+
+    }
+
+    @Override
+    public void deleteFactura(Long idFactura){
+        Optional<Factura> factura = repository.findById(idFactura);
+		if (factura.isPresent()) {
+			repository.delete(factura.get());
+		} else {
+			System.out.println("ERROR");
+		} 
+
+    }
+
+    // @Override
+	// public Page<Factura> getFacturas(Pageable pageable) {
+	// 	return repository.findAll(pageable);
+	// }
+
     
 }
