@@ -35,7 +35,7 @@ public class UsuarioService implements IUsuarioService {
         return repository.findAll();
     }
 
-
+    /*
     @Override
     public Usuario getUsuarioById(String email){
         long id = 0;
@@ -48,6 +48,19 @@ public class UsuarioService implements IUsuarioService {
             return usuario.get();
         }
     }
+    */
+    @Override
+    public Usuario getUsuarioById(Long idUsuario){
+        Optional<Usuario> usuario = repository.findById(idUsuario);
+        if (usuario.isPresent()) {
+			return usuario.get();
+		}
+        else{
+            System.out.println("ERROR");
+            return usuario.get();
+        }
+    }
+
 
     @Override
     public Boolean deleteUsuario (String emai){
@@ -65,16 +78,19 @@ public class UsuarioService implements IUsuarioService {
         return delet;
     }
 
-    @Transactional
+    @Override
 	public Usuario updateUsuario(Usuario newUsuario) {
-		Optional<Usuario> pro = repository.findById(newUsuario.get_idUsuario());
-		Usuario provider = pro.get();
+
+        Usuario provider = getUsuarioById(newUsuario.get_idUsuario());
         provider.set_nombre(newUsuario.get_nombre());
         provider.set_apellido(newUsuario.get_apellido());
         provider.set_direccion(newUsuario.get_direccion());
         provider.set_contrasenia(newUsuario.get_contrasenia());
         provider.set_email(newUsuario.get_email());
-		return repository.save(provider);
+        repository.save(provider);
+        return provider;
 	}
+
+
   
 }

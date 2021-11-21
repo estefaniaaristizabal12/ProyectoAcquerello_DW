@@ -22,6 +22,7 @@ export class UsuarioService {
   public listaUsuarios: Usuario[] = [];
   public usuario: Usuario = new Usuario(0,"","","","","","");
   public usuarioActual: Usuario = new Usuario(0,"","","","","","");
+  usuarioObtener:Usuario =  new Usuario(0,"","","","","","");
   Url = 'http://localhost:8080/usuario';
 
 
@@ -46,9 +47,22 @@ export class UsuarioService {
   }
 
 
+
+  ///______________________ nuevo __________________________
+
   createUsuario (usuario: any): Observable<any> {
     return this.http.post(this.Url +"/crear", usuario);
   }
+
+  updateUsuario  (usuario: Usuario){ //{idPla}
+    return this.http.put(this.Url +"/actualizarUsuario/"+usuario._idUsuario, usuario);
+  }
+
+
+
+
+
+
 
   modificarUsuario(nListaUsuarios:Usuario[]){
     localStorage.setItem('localListaUsuarios', JSON.stringify(nListaUsuarios));

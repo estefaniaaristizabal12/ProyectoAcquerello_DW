@@ -22,6 +22,9 @@ export class MiCuentaComponent implements OnInit {
   public correoA:string ="";
   public numItems: number = 0;
 
+  public usuarioA:any;
+  usuarioObtener: Usuario = new Usuario(0,"","","","","","");
+
 
   constructor(private router:Router,public _usuarioService:UsuarioService ) { 
 
@@ -30,6 +33,8 @@ export class MiCuentaComponent implements OnInit {
       this.listaUsuarios = data;
     }) ;
 
+    if(this._usuarioService.usuarioObtener)
+        this.usuarioObtener = this._usuarioService.usuarioObtener;
 
 
     var aux = localStorage.getItem('actual');
@@ -69,6 +74,7 @@ export class MiCuentaComponent implements OnInit {
 
   actualizar(){
    
+    /*
     for(let aux of this.listaUsuarios)
     {
       if(this.usuario._email != aux._email){
@@ -77,9 +83,22 @@ export class MiCuentaComponent implements OnInit {
         this.listaU2.push(this.usuario);
       }
     }
-
+    */
+   
+    /*
     localStorage.setItem('localListaUsuarios',JSON.stringify(this.listaU2));
     this.listaU2=[];
+
+    */
+
+    this.usuarioA = this.usuarioObtener;
+
+    this._usuarioService.updateUsuario(this.usuarioA).subscribe();
+
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    });
 
     this.router.navigateByUrl("/miCuenta");
 

@@ -8,7 +8,9 @@ public interface IUsuarioService {
 
     Usuario createUsuario(Usuario newUsuario);
 
-    Usuario getUsuarioById(String email);
+    //Usuario getUsuarioById(String email);
+
+    Usuario getUsuarioById(Long idPlato);
 
     Boolean deleteUsuario(String email);
 
