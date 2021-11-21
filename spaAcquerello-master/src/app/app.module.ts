@@ -23,6 +23,8 @@ import { AgregarProductoComponent } from './agregar-producto/agregar-producto.co
 import { PlatoService } from '../app/plato.service'
 import { HttpClientModule } from '@angular/common/http';
 import { UsuarioService } from '../app/usuario.service';
+import { CarroComprasService } from './carro-compras.service';
+import { FacturaService } from './factura.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { UsuarioService } from '../app/usuario.service';
     HttpClientModule
   ],
   providers: [ PlatoService,
-    UsuarioService],
+    UsuarioService,
+    CarroComprasService,
+    FacturaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
