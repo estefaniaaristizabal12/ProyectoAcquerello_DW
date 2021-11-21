@@ -28,31 +28,48 @@ public class CarroComprasService implements ICarroComprasService{
 	}
 
 	@Override
-	public CarroCompras actualizarCarroCompras(CarroCompras newCarroCompras, Long id) {
-
-		return repository.findById(id).map(provider -> {
-
-			provider.set_cantidad(newCarroCompras.get_cantidad());
-			provider.set_precio(newCarroCompras.get_precio());
-
-			return repository.save(provider);
-            
-		}).orElseGet(() -> {
-			throw new PlatoNotFoundException(id);
-		});
-	}
+    public CarroCompras getCarroComprasById(Long idCarroCompras){
+        Optional<CarroCompras> carroCompras = repository.findById(idCarroCompras);
+        if (carroCompras.isPresent()) {
+			return carroCompras.get();
+		}
+        else{
+            System.out.println("ERROR");
+            return carroCompras.get();
+        }
+    }
 
 
-    @Override
-	public Boolean deleteCarroCompras(Long id) {
-		Optional<CarroCompras> carroCompras = repository.findById(id);
+	@Override
+    public CarroCompras updateCarroCompras(CarroCompras newCarroCompras){
+        CarroCompras provider = getCarroComprasById(newCarroCompras.get_id_CC());
+		provider.setPlatoc(newCarroCompras.getPlatoc());
+		provider.setUsuarioc(newCarroCompras.getUsuarioc());
+		provider.set_cantidad(newCarroCompras.get_cantidad());
+		provider.set_foto(newCarroCompras.get_foto());
+		provider.set_id_CC(newCarroCompras.get_id_CC());
+		provider.set_nombreProducto(newCarroCompras.get_foto());
+		provider.set_precio(newCarroCompras.get_precio());
+		repository.save(provider);
+		return provider;
 
+    }
+
+
+	@Override
+    public void deleteCarroCompras(Long idCarroCompras){
+        Optional<CarroCompras> carroCompras = repository.findById(idCarroCompras);
 		if (carroCompras.isPresent()) {
 			repository.delete(carroCompras.get());
-			return true;
 		} else {
-			throw new PlatoNotFoundException(id);
-		}
-	}
-    
+			System.out.println("ERROR");
+		} 
+
+    }
+
+	@Override
+    public Iterable<CarroCompras> getCarroComprasLista(){
+        return repository.findAll();
+    }
+
 }

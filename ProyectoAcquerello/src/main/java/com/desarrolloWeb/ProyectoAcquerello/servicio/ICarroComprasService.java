@@ -11,9 +11,13 @@ public interface ICarroComprasService {
 
     List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario);
 
-    CarroCompras actualizarCarroCompras(CarroCompras carroCompras, Long id);
+    CarroCompras updateCarroCompras(CarroCompras carroCompras);
 
-    Boolean deleteCarroCompras(Long id);
+    Iterable<CarroCompras> getCarroComprasLista();
+
+    void deleteCarroCompras(Long idCarroCompras);
+
+    CarroCompras getCarroComprasById(Long idCarroCompras);
 
 
 
