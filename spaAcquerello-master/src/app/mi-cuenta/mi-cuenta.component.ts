@@ -30,32 +30,17 @@ export class MiCuentaComponent implements OnInit {
 
     this.async_print_personas();
 
+    var aux = localStorage.getItem('actual');
+    if(aux== null) this.correoA = "";
+    else this.correoA = aux;
+
+    this._usuarioService.getUsuarioXEmail(this.correoA)
+    .subscribe(data =>{
+      this.usuario = data;
+    }) ;
     
   }
 
-
-  // constructor(private router:Router, public _usuarioService: UsuarioService ) { 
-
-  //   this._usuarioService.getlistaUsuario()
-  //   .subscribe(data =>{
-  //     this.listaUsuarios = data;
-  //   }) ;
-
-
-  //   for(let usuario of this.listaUsuarios)
-  //   {
-  //     alert("SAPOOO "+ usuario._nombre);
-  //   }
-
-
-  //   this.async_print_personas();
-
-  //   var aux = localStorage.getItem('actual');
-  //   if(aux== null) this.correoA = "";
-  //   else this.correoA = aux;
-
-  //   this.buscarPersona(this.correoA);
-  // }
 
   async async_print_personas() {
     await new Promise((f) => setTimeout(f, 1000));
@@ -65,16 +50,6 @@ export class MiCuentaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buscarPersona(correoA:string){
-    for(let aux of this.listaUsuarios)
-    {
-      alert("mira "+aux._email);
-      if(correoA == aux._email){
-        alert("Holiii, entre aca xd ");
-        this.usuario = aux;
-      }
-    }
-  }
 
   darNumItem(){
     return this.numItems;
@@ -87,12 +62,15 @@ export class MiCuentaComponent implements OnInit {
   }
 
   actualizar(){
-    this._usuarioService.updateUsuario(this.usuario).subscribe();
+    this._usuarioService.updateUsuario(this.usuario).subscribe(() => {
+      alert("Se actualizó correctamente la información!");
+    }, () => {
+      alert("ERROR: no se pudo actualizar la información.");
+    });
     this._usuarioService.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;
     });
-
     this.router.navigateByUrl("/miCuenta");
   }
 }

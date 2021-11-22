@@ -68,7 +68,7 @@ public class PlatoREST {
 		Plato plato = new Plato();
 		ModelMapper mapper = new ModelMapper();
 		plato = mapper.map(newPlato, Plato.class);
-		plato = platoService.updatePlato(plato);
+		plato = platoService.updatePlato(plato,idPlato);
 		newPlato = mapper.map(plato, PlatoDTO.class);
 		return newPlato;
 	}

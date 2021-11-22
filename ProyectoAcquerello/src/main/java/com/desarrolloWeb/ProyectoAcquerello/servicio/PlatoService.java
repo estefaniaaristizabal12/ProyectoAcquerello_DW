@@ -29,8 +29,8 @@ public class PlatoService implements IPlatoService{
 	}
 
 	@Override
-    public Plato getPlatoById(Long idUsuario){
-        Optional<Plato> plato = repository.findById(idUsuario);
+    public Plato getPlatoById(Long idPlato){
+        Optional<Plato> plato = repository.findById(idPlato);
         if (plato.isPresent()) {
 			return plato.get();
 		}
@@ -42,8 +42,8 @@ public class PlatoService implements IPlatoService{
 
 
 	@Override
-	public Plato updatePlato(Plato newPlato) {
-		Plato provider = getPlatoById(newPlato.get_idPlato());
+	public Plato updatePlato(Plato newPlato, Long idPlato) {
+		Plato provider = getPlatoById(idPlato);
 		provider.set_nombre(newPlato.get_nombre());
 		provider.set_descripcion(newPlato.get_descripcion());
 		provider.set_imagen(newPlato.get_imagen());

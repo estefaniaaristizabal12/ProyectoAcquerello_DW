@@ -27,12 +27,6 @@ export class IniciarSesionComponent implements OnInit {
       this.listaUsuarios = data;
     }) ;
 
-
-    for(let usuario of this.listaUsuarios)
-    {
-        alert("SAPOOO "+ usuario._nombre);
-    }
-
     this.async_print_personas();
     
   }
@@ -46,10 +40,6 @@ export class IniciarSesionComponent implements OnInit {
   }
 
   inicioSesionSubmit(){
-
-
-
-
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
     if(aux== null){

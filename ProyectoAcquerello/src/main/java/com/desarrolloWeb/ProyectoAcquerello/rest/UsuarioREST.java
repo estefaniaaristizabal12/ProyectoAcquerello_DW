@@ -51,7 +51,7 @@ public class UsuarioREST {
 
 
 
-	@GetMapping("/darUsuario/{idUsuario}")
+	@GetMapping("/darUsuarioXId/{idUsuario}")
 	public UsuarioDTO getUsuarioById(@PathVariable Long idUsuario){
 		ModelMapper mapper = new ModelMapper();
 		UsuarioDTO usuario = new UsuarioDTO();
@@ -61,7 +61,7 @@ public class UsuarioREST {
 		return usuario;
 	}
 
-	@GetMapping("/darUsuario/{emailUsuario}")
+	@GetMapping("/darUsuarioXEmail/{emailUsuario}")
 	public UsuarioDTO getUsuarioById(@PathVariable String emailUsuario){
 		ModelMapper mapper = new ModelMapper();
 		UsuarioDTO usuario = new UsuarioDTO();
@@ -77,7 +77,7 @@ public class UsuarioREST {
 		Usuario usuario = new Usuario();
 		ModelMapper mapper = new ModelMapper();
 		usuario = mapper.map(newUsuario, Usuario.class);
-		usuario = usuarioService.updateUsuario(usuario);
+		usuario = usuarioService.updateUsuario(usuario,idUsuario);
 		newUsuario = mapper.map(usuario, UsuarioDTO.class);
 		return newUsuario;
 	}

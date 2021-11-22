@@ -1,11 +1,6 @@
 package com.desarrolloWeb.ProyectoAcquerello.servicio;
 
-import java.util.List;
-
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 public interface IPlatoService {
 
@@ -15,7 +10,7 @@ public interface IPlatoService {
 
     Iterable<Plato> getPlatosL();
 
-    Plato updatePlato(Plato plato);
+    Plato updatePlato(Plato plato, Long idPlato);
 
     void deletePlato(Long id);
 

@@ -12,7 +12,7 @@ public interface IUsuarioService {
 
     Iterable<Usuario> getUsuariosLista();
 
-    Usuario updateUsuario(Usuario usuario);
+    Usuario updateUsuario(Usuario usuario, Long idUsuario);
 
     Boolean deleteUsuario(String email);
    

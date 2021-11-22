@@ -20,7 +20,7 @@ export class UsuarioService {
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
   public listaUsuarios: Usuario[] = [];
-  public usuario: Usuario = new Usuario(0,"","","","","","");
+  public res: Usuario = new Usuario(0,"","","","","","");
   public usuarioActual: Usuario = new Usuario(0,"","","","","","");
   usuarioObtener:Usuario =  new Usuario(0,"","","","","","");
   Url = 'http://localhost:8080/usuario';
@@ -53,25 +53,15 @@ export class UsuarioService {
     return this.http.post(this.Url +"/crear", usuario);
   }
 
-  updateUsuario  (usuario: Usuario){ //{idPla}
+  updateUsuario(usuario: Usuario){ 
     return this.http.put(this.Url +"/actualizarUsuario/"+usuario._idUsuario, usuario);
   }
 
 
-
-
-
-
-
-  modificarUsuario(nListaUsuarios:Usuario[]){
-    localStorage.setItem('localListaUsuarios', JSON.stringify(nListaUsuarios));
+  getUsuarioXEmail(correo: string){
+    return this.http.get<Usuario>(this.Url+"/darUsuarioXEmail/"+correo);
   }
 
-  crearUsuario(){
-    localStorage.setItem('user','wilmer');
-  }
-
-  
 
   buscarPersona(emailP:string){
     for(let usuario of this.listaUsuarios)
@@ -84,17 +74,12 @@ export class UsuarioService {
   }
 
   verificarContrasenia(emailP:string, contrasenaP:string){
-
     this.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;
     }) ;
 
-    this.async_print_personas();
-
-
-    for(let usuario of this.listaUsuarios)
-    {
+    for(let usuario of this.listaUsuarios){
       if(emailP == usuario._email){
         if(contrasenaP == usuario._contrasenia){
           return true;
@@ -113,7 +98,6 @@ export class UsuarioService {
     }
 
     return "";
-
   }
 
   fijarUsuarioActual(emailP:string){

@@ -59,9 +59,8 @@ public class UsuarioService implements IUsuarioService {
 
 
     @Override
-	public Usuario updateUsuario(Usuario newUsuario) {
-
-        Usuario provider = getUsuarioById(newUsuario.get_idUsuario());
+	public Usuario updateUsuario(Usuario newUsuario, Long idUsuario) {
+        Usuario provider = getUsuarioById(idUsuario);
         provider.set_nombre(newUsuario.get_nombre());
         provider.set_apellido(newUsuario.get_apellido());
         provider.set_direccion(newUsuario.get_direccion());

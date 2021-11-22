@@ -15,7 +15,6 @@ export class IniciarGuard implements CanActivate {
   public admin: Usuario = new Usuario(0,"","","","","","");
   public correoA: string = "";
   canActivate(){
-
     //Aca se valida que el que este dentro sea un usuario para poder acceder a las pantallas
     var auxu= localStorage.getItem('actual');
     var auxa= localStorage.getItem('administrador');
@@ -35,7 +34,6 @@ export class IniciarGuard implements CanActivate {
       if(this.admin._email == this.correoA){
         return false;
       }else{
-        console.log("SI entree");
         return true;
       }
 
