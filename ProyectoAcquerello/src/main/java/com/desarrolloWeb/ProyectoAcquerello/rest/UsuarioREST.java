@@ -1,11 +1,13 @@
 package com.desarrolloWeb.ProyectoAcquerello.rest;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.ICarroComprasService;
+import com.desarrolloWeb.ProyectoAcquerello.servicio.IFacturaService;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
+import com.desarrolloWeb.ProyectoAcquerello.modelo.Factura;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +29,9 @@ public class UsuarioREST {
 
 	@Autowired
 	private ICarroComprasService carroCService;
+
+	@Autowired
+	private IFacturaService facturaService;
 
     // - - - - - - - -  C   R   U  D  - - - - - - - - 
 
@@ -62,12 +67,10 @@ public class UsuarioREST {
 	// 	UsuarioDTO usuario = new UsuarioDTO();
 	// 	Usuario usu = new Usuario();
 	// 	usu = usuarioService.getUsuarioById(idUsuario);
-
-	// 	List<CarroCompras> cc = carroCService.g(persona.getCarrito().getId());
-    // 	persona.setCompras(compras);
-
-
-
+	// 	List<CarroCompras> cc = carroCService.getCarroComprasByUsuario(idUsuario);
+    // 	usu.setCarroCompras(cc);
+	// 	List<Factura> fact = facturaService.getFacturaByUsuario(idUsuario);
+    // 	usu.setFacturas(fact);
 	// 	usuario = mapper.map(usu, UsuarioDTO.class);
 	// 	return usuario;
 	// }
