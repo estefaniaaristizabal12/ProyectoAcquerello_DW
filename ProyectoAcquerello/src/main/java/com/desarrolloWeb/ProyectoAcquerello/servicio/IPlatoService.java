@@ -8,8 +8,6 @@ public interface IPlatoService {
 
     Plato getPlatoById(Long idPlato);
 
-    Plato getPlatoByNombre(String nombrePlato);
-
     Iterable<Plato> getPlatosL();
 
     Plato updatePlato(Plato plato, Long idPlato);

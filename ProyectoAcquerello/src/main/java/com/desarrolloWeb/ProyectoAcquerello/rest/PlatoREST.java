@@ -39,6 +39,7 @@ public class PlatoREST {
 
 	// - - - - - - - -  C   R   U  D  - - - - - - - - 
 
+
 	@PostMapping("/crear")
 	public PlatoDTO crearPlato(@RequestBody PlatoDTO newPlato) {
 		Plato plato = new Plato();
@@ -63,21 +64,11 @@ public class PlatoREST {
 
 
 	@GetMapping("/darPlatoXId/{idPlato}")
-	public PlatoDTO getPlatoById(@PathVariable Long idPlato){
+	public PlatoDTO getUsuarioById(@PathVariable Long idPlato){
 		ModelMapper mapper = new ModelMapper();
 		PlatoDTO plato = new PlatoDTO();
 		Plato plat = new Plato();
 		plat = platoService.getPlatoById(idPlato);
-		plato = mapper.map(plat, PlatoDTO.class);
-		return plato;
-	}
-
-	@GetMapping("/darPlatoXNombre/{nombrePlato}")
-	public PlatoDTO getPlatoByNombre(@PathVariable String nombrePlato){
-		ModelMapper mapper = new ModelMapper();
-		PlatoDTO plato = new PlatoDTO();
-		Plato plat = new Plato();
-		plat = platoService.getPlatoByNombre(nombrePlato);
 		plato = mapper.map(plat, PlatoDTO.class);
 		return plato;
 	}

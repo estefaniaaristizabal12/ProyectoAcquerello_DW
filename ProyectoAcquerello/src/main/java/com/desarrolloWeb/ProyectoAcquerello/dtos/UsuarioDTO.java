@@ -12,22 +12,9 @@ public class UsuarioDTO {
     private String _direccion;
     private String _contrasenia;
     private String _rol;
-    private List<CarroComprasDTO> carroCompras;
-    private List<FacturaDTO> facturas;
 
     
-    public List<CarroComprasDTO> getCarroCompras() {
-        return carroCompras;
-    }
-    public void setCarroCompras(List<CarroComprasDTO> carroCompras) {
-        this.carroCompras = carroCompras;
-    }
-    public List<FacturaDTO> getFacturas() {
-        return facturas;
-    }
-    public void setFacturas(List<FacturaDTO> facturas) {
-        this.facturas = facturas;
-    }
+
     public String get_rol() {
         return _rol;
     }

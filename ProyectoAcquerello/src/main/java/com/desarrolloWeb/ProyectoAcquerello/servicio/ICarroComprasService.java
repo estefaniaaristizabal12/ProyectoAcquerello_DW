@@ -9,19 +9,18 @@ public interface ICarroComprasService {
 
     CarroCompras createCarroCompras(CarroCompras newCarroCompras);
 
+    List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario);
+
     CarroCompras updateCarroCompras(CarroCompras carroCompras);
 
     CarroCompras getCarroComprasById(Long idCarroCompras);
-
-    Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras);
 
     Iterable<CarroCompras> getCarroComprasLista();
 
     void deleteCarroCompras(Long idCarroCompras);
 
-    void deleteCarroComprasXidUsuario(Long idUsuario);
+    Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras);
 
-    
 
 
 

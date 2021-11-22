@@ -17,26 +17,21 @@ export class CarroComprasService {
    }
 
 
-  createCarroCompras (carroCompras: CarroCompras): Observable<any> {
-    alert("Holiiiiiiiiiiiiiiiii "+carroCompras._nombreProducto);
+  createCarroCompras (carroCompras : any): Observable<any> {
     return this.http.post(this.Url +"/crear", carroCompras);
   }
 
-  getlistaCarroCompras(){
+  getlistaCarroCompras (){
     return this.http.get<CarroCompras[]>(this.Url+"/listaCarrosCompras");
   }
 
-  getlistaCCXUsuario(idCarro:number){
-    return this.http.get<CarroCompras[]>(this.Url+"/listaCarroComprasXUsuario/"+idCarro);
-  }
-
-  updateCarroCompras  (carroCompras: CarroCompras){
+  updateCarroCompras  (carroCompras: CarroCompras){ //{idPla}
     return this.http.put(this.Url +"/actualizarCarro/"+carroCompras._id_CC, CarroCompras);
   }
 
   /*
-  deleteCarroCompras (id_CC: number){
+  deleteCarrroCompras  (idFactura: number){
     return this.http.delete(this.Url+"/eliminar/"+id_CC);
-  }*/
-  
+  }
+  */
 }

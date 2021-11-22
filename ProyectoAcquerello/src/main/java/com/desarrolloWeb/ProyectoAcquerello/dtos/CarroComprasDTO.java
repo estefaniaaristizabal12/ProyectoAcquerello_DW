@@ -5,8 +5,8 @@ public class CarroComprasDTO {
 
     private Long _id_CC;
     private String _nombreProducto;
-    private UsuarioDTO usuarioC;
-    private PlatoDTO platoC;
+    private UsuarioDTO usuarioc;
+    private PlatoDTO platoc;
     private String _foto;
     private Integer _cantidad;
     private float _precio;
@@ -23,18 +23,17 @@ public class CarroComprasDTO {
     public void set_nombreProducto(String _nombreProducto) {
         this._nombreProducto = _nombreProducto;
     }
-    
-    public UsuarioDTO getUsuarioC() {
-        return usuarioC;
+    public UsuarioDTO getUsuarioc() {
+        return usuarioc;
     }
-    public void setUsuarioC(UsuarioDTO usuarioC) {
-        this.usuarioC = usuarioC;
+    public void setUsuarioc(UsuarioDTO usuarioc) {
+        this.usuarioc = usuarioc;
     }
-    public PlatoDTO getPlatoC() {
-        return platoC;
+    public PlatoDTO getPlatoc() {
+        return platoc;
     }
-    public void setPlatoC(PlatoDTO platoC) {
-        this.platoC = platoC;
+    public void setPlatoc(PlatoDTO platoc) {
+        this.platoc = platoc;
     }
     public String get_foto() {
         return _foto;

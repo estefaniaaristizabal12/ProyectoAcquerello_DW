@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
-import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 import com.desarrolloWeb.ProyectoAcquerello.repositorio.CarroComprasRepository;
-import com.desarrolloWeb.ProyectoAcquerello.repositorio.UsuarioRepository;
+import com.desarrolloWeb.ProyectoAcquerello.util.PlatoNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +17,14 @@ public class CarroComprasService implements ICarroComprasService{
     @Autowired
 	private CarroComprasRepository repository;
 
-	@Autowired
-	private UsuarioRepository repositoryU;
-
     @Override
 	public CarroCompras createCarroCompras(CarroCompras newCarroCompras) {
 		return repository.save(newCarroCompras);
+	}
+
+	@Override
+	public List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario){
+		return repository.findByUsuarioc(idUsuario);
 	}
 
 	@Override
@@ -36,16 +37,6 @@ public class CarroComprasService implements ICarroComprasService{
             System.out.println("ERROR");
             return carroCompras.get();
         }
-    }
-
-	@Override
-    public Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras){
-        return repository.findByUsuarioc(carroCompras.getUsuarioc());
-    }
-
-	@Override
-    public Iterable<CarroCompras> getCarroComprasLista(){
-        return repository.findAll();
     }
 
 
@@ -76,13 +67,16 @@ public class CarroComprasService implements ICarroComprasService{
 
     }
 
+	@Override
+    public Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras){
+        return repository.findByUsuarioc(carroCompras.getUsuarioc());
+    }
+
+
 
 	@Override
-	public void deleteCarroComprasXidUsuario(Long idUsuario){
-/*
-		Usuario newUsuario = repositoryU.findById(idUsuario);
-		Iterable<CarroCompras> carroCompraU = repository.findByUsuarioc(repositoryU.findById(idUsuario));*/
-
-	}
+    public Iterable<CarroCompras> getCarroComprasLista(){
+        return repository.findAll();
+    }
 
 }

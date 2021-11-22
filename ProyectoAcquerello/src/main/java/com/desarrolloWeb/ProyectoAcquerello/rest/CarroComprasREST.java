@@ -21,11 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("carroCompras")
+@RequestMapping("carroC")
 public class CarroComprasREST {
 
+	
     @Autowired
 	private ICarroComprasService carroComprasService;
+
+
+
 
 	// - - - - - - - -  C   R   U  D  - - - - - - - - 
 
@@ -53,21 +57,22 @@ public class CarroComprasREST {
 
 
 
-	// @GetMapping("/listaCarroComprasXUsuario/{idUsuario}")
-	// public List<CarroComprasDTO> getCarroXUsuario(@PathVariable Long idUsuario) {
-	// 	CarroCompras carroCompras = carroComprasService.getCarroComprasByIdU(id_CC);
-	// 	ModelMapper mapper = new ModelMapper();
-	// 	Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasListaXUsuario(carroCompras);
-	// 	List<CarroComprasDTO> result = new ArrayList<>();
-	// 	for (CarroCompras car : carrosCompras) {
-	// 		result.add(mapper.map(car, CarroComprasDTO.class));
-	// 	}
-	// 	return result;
-	// }
+	@GetMapping("/listaCarroComprasXUsuario/{id_CC}")
+	public List<CarroComprasDTO> getFacturasXUsuario(@PathVariable Long idCarroCompras) {
+		CarroCompras carroCompras = carroComprasService.getCarroComprasById(idCarroCompras);
+		ModelMapper mapper = new ModelMapper();
+		Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasListaXUsuario(carroCompras);
+		List<CarroComprasDTO> result = new ArrayList<>();
+		for (CarroCompras fact : carrosCompras) {
+			result.add(mapper.map(fact, CarroComprasDTO.class));
+		}
+		return result;
+	}
+
 
 
 	@PutMapping("/actualizarCarroCompras/{idCarroCompras}")
-	public CarroComprasDTO actualizarCarroC(@RequestBody CarroComprasDTO newCarroCompras, @PathVariable Long idCarroCompras){
+	public CarroComprasDTO actualizarPlato(@RequestBody CarroComprasDTO newCarroCompras, @PathVariable Long idCarroCompras){
 		CarroCompras carrosCompras = new CarroCompras();
 		ModelMapper mapper = new ModelMapper();
 		carrosCompras = mapper.map(newCarroCompras, CarroCompras.class);
@@ -78,15 +83,45 @@ public class CarroComprasREST {
 
 
 	@DeleteMapping("/eliminar/{idCarroCompras}")
-	public Boolean deleteCarroC(@PathVariable Long idCarroCompras) {
+	public Boolean deletePlato(@PathVariable Long idCarroCompras) {
 		carroComprasService.deleteCarroCompras(idCarroCompras);
 		return true;
 	}
 
-	@DeleteMapping("/eliminar/{idUsuario}")
-	public Boolean deleteCarroCXidUsuario(@PathVariable Long idUsuario) {
-		carroComprasService.deleteCarroCompras(idUsuario);
-		return true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//Falta probar!
+	@GetMapping("/darCCUsuario")
+	public List<CarroComprasDTO> getUsuarioById(@RequestParam(name = "idUsuario") Long idUsuario){
+		List<CarroCompras> carroscompras = new ArrayList<>();
+		carroscompras = carroComprasService.getCarroComprasByIdUsuario(idUsuario);
+		List<CarroComprasDTO> result = new ArrayList<>();
+
+		ModelMapper mapper = new ModelMapper();
+		
+		for (CarroCompras carroCompras : carroscompras) {
+			result.add(mapper.map(carroCompras, CarroComprasDTO.class));
+		}
+		return result;
 	}
+
+	
+	
+
+
+
       
 }
