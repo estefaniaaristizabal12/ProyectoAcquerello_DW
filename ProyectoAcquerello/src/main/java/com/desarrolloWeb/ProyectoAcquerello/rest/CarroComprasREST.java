@@ -34,19 +34,32 @@ public class CarroComprasREST {
 		// - - - - - - - -  C   R   U  D  - - - - - - - - 
 
 		@PostMapping("/crear")
-		public CarroComprasDTO createFactura(@RequestBody CarroComprasDTO nuevaFactura) {
+		public CarroComprasDTO createCarroCompras(@RequestBody CarroComprasDTO nuevoCarroCompras) {
 			CarroCompras carroCompras = new CarroCompras();
 			ModelMapper mapper = new ModelMapper();
-			carroCompras = mapper.map(nuevaFactura, CarroCompras.class);
+			carroCompras = mapper.map(nuevoCarroCompras, CarroCompras.class);
 			carroCompras = carroComprasService.createCarroCompras(carroCompras);
-			nuevaFactura = mapper.map(carroCompras, CarroComprasDTO.class);
-			return nuevaFactura;
+			nuevoCarroCompras = mapper.map(carroCompras, CarroComprasDTO.class);
+			return nuevoCarroCompras;
 		}
 
 
 		@GetMapping("/listaCarroCompras")
-		public List<CarroComprasDTO> getFacturas() {
+		public List<CarroComprasDTO> getCarroCompras() {
 			Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasLista();
+			List<CarroComprasDTO> result = new ArrayList<>();
+			ModelMapper mapper = new ModelMapper();
+			for (CarroCompras carroCompras : carrosCompras) {
+				result.add(mapper.map(carroCompras, CarroComprasDTO.class));
+			}
+			return result;
+		}
+
+
+
+		@GetMapping("/listaCarroComprasXUsuario")
+		public List<CarroComprasDTO> getCarroComprasXUsuario() {
+			Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasByIdUsuario(idUsuario);
 			List<CarroComprasDTO> result = new ArrayList<>();
 			ModelMapper mapper = new ModelMapper();
 			for (CarroCompras carroCompras : carrosCompras) {
