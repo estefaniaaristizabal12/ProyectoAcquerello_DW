@@ -47,32 +47,46 @@ public class UsuarioREST {
 
 	@GetMapping("/listaUsuarios")
 	public List<UsuarioDTO> getUsuarios() {
-		UsuarioDTO usuDTO = new UsuarioDTO();
 		Iterable<Usuario> usuarios = usuarioService.getUsuariosLista();
-		Iterable<CarroCompras> cc = new ArrayList<>();
-		List<CarroComprasDTO> lcc = new ArrayList<>();
 		List<UsuarioDTO> result = new ArrayList<>();
 		ModelMapper mapper = new ModelMapper();
 		for (Usuario usuario : usuarios) {
 			usuario.setCarroCompras(null);
-			usuDTO = mapper.map(usuario, UsuarioDTO.class);
-			cc = carroCService.getCarroComprasByIdUsuario(usuario.get_idUsuario());
-			for (CarroCompras c : cc) {
-				lcc.add(mapper.map(c, CarroComprasDTO.class));
-			}
-			if(lcc.size()!=0){
-				usuDTO.setCarroCompras(lcc);
-				result.add(usuDTO);
-				lcc.clear();
-			}else{
-				usuDTO.setCarroCompras(null);
-				result.add(usuDTO);
-			}
-			
+			result.add(mapper.map(usuario, UsuarioDTO.class));			
 		}
 
 		return result;
 	}
+
+	// @GetMapping("/listaUsuarios")
+	// public List<UsuarioDTO> getUsuarios() {
+	// 	//UsuarioDTO usuDTO = new UsuarioDTO();
+	// 	Iterable<Usuario> usuarios = usuarioService.getUsuariosLista();
+	// 	List<CarroComprasDTO> lCarroDTO = new ArrayList<>();
+	// 	List<UsuarioDTO> result = new ArrayList<>();
+	// 	ModelMapper mapper = new ModelMapper();
+	// 	for (Usuario usuario : usuarios) {
+	// 		Iterable<CarroCompras> carrosCompras = carroCService.getCarroComprasByIdUsuario(usuario.get_idUsuario());
+	// 		UsuarioDTO usuDTO = mapper.map(usuario, UsuarioDTO.class);
+
+	// 		for (CarroCompras c : carrosCompras) {
+	// 			lCarroDTO.add(mapper.map(c, CarroComprasDTO.class));
+	// 		}
+
+	// 		if(lCarroDTO.size()!=0){
+	// 			usuDTO.setCarroCompras(lCarroDTO);
+	// 		}else{
+	// 			usuDTO.setCarroCompras(null);
+	// 		}
+
+	// 		result.add(usuDTO);			
+	// 	}
+
+	// 	return result;
+	// }
+
+	
+
 
 
 	@GetMapping("/darUsuarioXId/{idUsuario}")
@@ -97,6 +111,10 @@ public class UsuarioREST {
 		return usuario;
 	}
 
+	@GetMapping("/darIdXEmail/{emailUsuario}")
+	public Long getIdXEmail(@PathVariable String emailUsuario){
+		return usuarioService.getIdXEmail(emailUsuario);
+	}
 
 	@PutMapping("/actualizarUsuario/{idUsuario}")
 	public UsuarioDTO actualizarUsuario(@RequestBody UsuarioDTO newUsuario, @PathVariable Long idUsuario){

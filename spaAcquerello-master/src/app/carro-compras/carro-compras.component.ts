@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarroComprasService } from '../carro-compras.service';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
@@ -23,6 +24,7 @@ export class CarroComprasComponent implements OnInit {
   aux2: CarroCompras = new CarroCompras(0,"",0,0,"");
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
+  idUsuario: number = 0;
   public usuario: Usuario = new Usuario(0,"","","","","","");
   public aux: Usuario = new Usuario(0,"","","","","","");
   public listaUsuarios: Usuario[] = [];
@@ -35,7 +37,9 @@ export class CarroComprasComponent implements OnInit {
   public mostrarT: boolean = false;
 
 
-  constructor(public _usuarioService: UsuarioService,public router: Router) { 
+
+
+  constructor(public _usuarioService: UsuarioService,public router: Router, public _carroCCService: CarroComprasService) { 
     this.total = 0;
 
     this._usuarioService.getlistaUsuario()
@@ -52,19 +56,32 @@ export class CarroComprasComponent implements OnInit {
     this._usuarioService.getUsuarioXEmail(this.correoA)
     .subscribe(data =>{
       this.usuario = data;
+    },() =>{
+      alert("Error");
+    },() =>{
+      this.pedirCarroCompras()
     }) ;
+ 
+  }
+
+  pedirCarroCompras(){
+
+    alert("LO LOGREEE "+ this.usuario._idUsuario);
+
+    this._carroCCService.getlistaCarroComprasXIdUsuario(this.usuario._idUsuario).subscribe(data3 =>{
+      this.listaCC = data3;
+    },() =>{
+      alert("Error: No se pudieron cargar correctamente los datos");
+    });
 
 
-    //Aca toca cambiar a this.usuario.ordenes
+    // if(this.listaCC.length>0){
+    //   this.mostrar =  true;
+    // }else{
+    //   this.mostrarT = true;
+    // }
+    // this.numItems = this.listaCC.length;
 
-    console.log(this.usuario._nombre);
-    this.listaCC = this.usuario.carroCompras;
-    if(this.listaCC.length>0){
-      this.mostrar =  true;
-    }else{
-      this.mostrarT = true;
-    }
-    this.numItems = this.listaCC.length;
   }
 
   ngOnInit(): void {

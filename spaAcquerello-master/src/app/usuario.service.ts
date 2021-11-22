@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
+  id: number = 0;
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
   public listaUsuarios: Usuario[] = [];
@@ -60,6 +61,10 @@ export class UsuarioService {
 
   getUsuarioXEmail(correo: string){
     return this.http.get<Usuario>(this.Url+"/darUsuarioXEmail/"+correo);
+  }
+
+  getIdXEmail(correo: string): Observable<any>{
+    return this.http.get<number>(this.Url+"/darIdXEmail/"+correo);
   }
 
 
@@ -106,7 +111,6 @@ export class UsuarioService {
   }
 
   darUsuario(emailP:string){
-
     this.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;
@@ -123,6 +127,7 @@ export class UsuarioService {
     }
     return new Usuario(0,"","","","","","");
   }
+
 
   async async_print_personas() {
     await new Promise((f) => setTimeout(f, 1000));

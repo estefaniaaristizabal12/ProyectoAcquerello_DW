@@ -16,6 +16,7 @@ import javax.persistence.Basic;
 @Entity
 public class CarroCompras {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long _id_CC;

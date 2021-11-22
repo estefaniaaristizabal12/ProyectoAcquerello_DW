@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.desarrolloWeb.ProyectoAcquerello.dtos.CarroComprasDTO;
+import com.desarrolloWeb.ProyectoAcquerello.dtos.PlatoDTO;
+import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.ICarroComprasService;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IPlatoService;
@@ -84,9 +86,12 @@ public class CarroComprasREST {
 		Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasByIdUsuario(idUsuario);
 		ModelMapper mapper = new ModelMapper();
 		List<CarroComprasDTO> result = new ArrayList<>();
-
+		CarroComprasDTO cd = new CarroComprasDTO();
 		for (CarroCompras cc : carrosCompras) {
-		  result.add(mapper.map(cc, CarroComprasDTO.class));
+			cd = mapper.map(cc, CarroComprasDTO.class);
+			cd.setUsuarioc(null);
+			cd.setPlatoc( null);
+		    result.add(cd);
 		}
 		return result;
 	}

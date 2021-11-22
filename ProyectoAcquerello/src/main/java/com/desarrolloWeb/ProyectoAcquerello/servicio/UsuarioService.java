@@ -57,6 +57,11 @@ public class UsuarioService implements IUsuarioService {
 
     }
 
+    @Override
+    public Long getIdXEmail(String emailUsuario){
+        return repository.findIdXEmail(emailUsuario);
+    }
+
 
     @Override
 	public Usuario updateUsuario(Usuario newUsuario, Long idUsuario) {

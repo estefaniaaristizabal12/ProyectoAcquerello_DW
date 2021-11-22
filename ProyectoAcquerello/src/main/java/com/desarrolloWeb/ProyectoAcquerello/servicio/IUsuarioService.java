@@ -10,6 +10,8 @@ public interface IUsuarioService {
 
     Usuario getUsuarioByEmail(String emailUsuario);
 
+    Long getIdXEmail(String emailUsuario);
+
     Iterable<Usuario> getUsuariosLista();
 
     Usuario updateUsuario(Usuario usuario, Long idUsuario);
