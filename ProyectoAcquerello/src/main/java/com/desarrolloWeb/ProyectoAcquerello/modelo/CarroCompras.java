@@ -2,7 +2,6 @@ package com.desarrolloWeb.ProyectoAcquerello.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +23,9 @@ public class CarroCompras {
     private String _nombreProducto;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
     private Usuario usuarioc;
 
     @ManyToOne
-    @JoinColumn(name = "plato_id")
     private Plato platoc;
     
     @Basic

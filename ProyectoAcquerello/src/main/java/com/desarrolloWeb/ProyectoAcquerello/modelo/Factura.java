@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,11 +25,9 @@ public class Factura {
     private Long idFactura;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
     private Usuario usuariof;
 
     @ManyToOne
-    @JoinColumn(name = "plato_id")
     private Plato platof;
 
     @Basic
