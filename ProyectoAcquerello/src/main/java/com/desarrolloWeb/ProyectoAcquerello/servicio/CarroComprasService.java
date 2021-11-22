@@ -68,6 +68,13 @@ public class CarroComprasService implements ICarroComprasService{
     }
 
 	@Override
+    public Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras){
+        return repository.findByUsuarioc(carroCompras.getUsuarioc());
+    }
+
+
+
+	@Override
     public Iterable<CarroCompras> getCarroComprasLista(){
         return repository.findAll();
     }

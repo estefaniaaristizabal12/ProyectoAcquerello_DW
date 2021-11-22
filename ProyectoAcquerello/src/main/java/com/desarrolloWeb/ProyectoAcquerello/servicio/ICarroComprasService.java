@@ -13,11 +13,14 @@ public interface ICarroComprasService {
 
     CarroCompras updateCarroCompras(CarroCompras carroCompras);
 
+    CarroCompras getCarroComprasById(Long idCarroCompras);
+
     Iterable<CarroCompras> getCarroComprasLista();
 
     void deleteCarroCompras(Long idCarroCompras);
 
-    CarroCompras getCarroComprasById(Long idCarroCompras);
+    Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras);
+
 
 
 

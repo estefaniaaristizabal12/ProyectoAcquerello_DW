@@ -57,13 +57,14 @@ public class CarroComprasREST {
 
 
 
-	@GetMapping("/listaCarroComprasXUsuario")
-	public List<CarroComprasDTO> getCarroComprasXUsuario(@RequestBody CarroComprasDTO newCarroCompras) {
-		Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasByIdUsuario(idUsuario);
-		List<CarroComprasDTO> result = new ArrayList<>();
+	@GetMapping("/listaCarroComprasXUsuario/{id_CC}")
+	public List<CarroComprasDTO> getFacturasXUsuario(@PathVariable Long idCarroCompras) {
+		CarroCompras carroCompras = carroComprasService.getCarroComprasById(idCarroCompras);
 		ModelMapper mapper = new ModelMapper();
-		for (CarroCompras carroCompras : carrosCompras) {
-			result.add(mapper.map(carroCompras, CarroComprasDTO.class));
+		Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasListaXUsuario(carroCompras);
+		List<CarroComprasDTO> result = new ArrayList<>();
+		for (CarroCompras fact : carrosCompras) {
+			result.add(mapper.map(fact, CarroComprasDTO.class));
 		}
 		return result;
 	}
