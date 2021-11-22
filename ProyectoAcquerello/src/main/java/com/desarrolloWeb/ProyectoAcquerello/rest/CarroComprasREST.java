@@ -53,17 +53,16 @@ public class CarroComprasREST {
 
 
 
-	// @GetMapping("/listaCarroComprasXUsuario/{idUsuario}")
-	// public List<CarroComprasDTO> getCarroXUsuario(@PathVariable Long idUsuario) {
-	// 	CarroCompras carroCompras = carroComprasService.getCarroComprasByIdU(id_CC);
-	// 	ModelMapper mapper = new ModelMapper();
-	// 	Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasListaXUsuario(carroCompras);
-	// 	List<CarroComprasDTO> result = new ArrayList<>();
-	// 	for (CarroCompras car : carrosCompras) {
-	// 		result.add(mapper.map(car, CarroComprasDTO.class));
-	// 	}
-	// 	return result;
-	// }
+	@GetMapping("/listaCarroComprasXUsuario/{idUsuario}")
+	public List<CarroComprasDTO> getCarroXUsuario(@PathVariable Long idUsuario) {
+		ModelMapper mapper = new ModelMapper();
+		Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasListaXUsuario(idUsuario);
+		List<CarroComprasDTO> result = new ArrayList<>();
+		for (CarroCompras car : carrosCompras) {
+			result.add(mapper.map(car, CarroComprasDTO.class));
+		}
+		return result;
+	}
 
 
 	@PutMapping("/actualizarCarroCompras/{idCarroCompras}")
