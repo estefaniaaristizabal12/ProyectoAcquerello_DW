@@ -1,6 +1,5 @@
 package com.desarrolloWeb.ProyectoAcquerello.dtos;
 
-import java.util.List;
 
 public class UsuarioDTO {
     
@@ -13,7 +12,6 @@ public class UsuarioDTO {
     private String _contrasenia;
     private String _rol;
 
-    
 
     public String get_rol() {
         return _rol;
