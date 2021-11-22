@@ -23,10 +23,13 @@ export class FacturaService {
     return this.http.get<Factura[]>(this.Url+"/listaFacturas");
   }
 
+  getlistaFacturaXUsuario(idFactura:number){
+    return this.http.get<Factura[]>(this.Url+"/listaFacturasXUsuario"+idFactura);
+  }
+
   updateFactura (factura: Factura){ //{idPla}
     return this.http.put(this.Url +"/actualizarFactura/"+factura.idFactura, factura);
   }
-
 
   deleteFactura (idFactura: number){
     return this.http.delete(this.Url+"/eliminar/"+idFactura);

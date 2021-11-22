@@ -48,11 +48,10 @@ public class FacturaREST {
 		return result;
 	}
 
-	@GetMapping("/listaFacturaXUsuario")
-	public List<FacturaDTO> getFacturasXUsuario(@RequestBody FacturaDTO newFactura) {
-		Factura factura = new Factura();
+	@GetMapping("/listaFacturasXUsuario/{idFactura}")
+	public List<FacturaDTO> getFacturasXUsuario(@PathVariable Long idFactura) {
+		Factura factura = facturaService.getFacturaById(idFactura);
 		ModelMapper mapper = new ModelMapper();
-		factura = mapper.map(newFactura, Factura.class);
 		Iterable<Factura> facturas = facturaService.getFacturaListaXUsuario(factura);
 		List<FacturaDTO> result = new ArrayList<>();
 		for (Factura fact : facturas) {
