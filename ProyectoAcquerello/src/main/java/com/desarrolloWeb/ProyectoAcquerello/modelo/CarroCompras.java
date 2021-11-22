@@ -28,7 +28,7 @@ public class CarroCompras {
     private Usuario usuarioc;
 
     @ManyToOne
-    @JoinColumn(name = "platodd", referencedColumnName = "_idPlato")
+    @JoinColumn(name = "platoid", referencedColumnName = "_idPlato")
     private Plato platoc;
     
     @Basic

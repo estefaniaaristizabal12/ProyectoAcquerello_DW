@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.CarroComprasDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.ICarroComprasService;
+import com.desarrolloWeb.ProyectoAcquerello.servicio.IPlatoService;
+import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,31 +18,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("carroC")
+@RequestMapping("carroCompras")
 public class CarroComprasREST {
 
 	
     @Autowired
 	private ICarroComprasService carroComprasService;
 
+	@Autowired
+	private IPlatoService platoService;
+
+	@Autowired
+	private IUsuarioService usuarioService;
+
 
 
 
 	// - - - - - - - -  C   R   U  D  - - - - - - - - 
 
-	@PostMapping("/crear")
-	public CarroComprasDTO createCarroCompras(@RequestBody CarroComprasDTO nuevoCarroCompras) {
+	@PostMapping("/crear/{emailUsuario}")
+	public Boolean createCarroCompras(@RequestBody CarroComprasDTO nuevoCarroCompras, @PathVariable String emailUsuario) {
 		CarroCompras carroCompras = new CarroCompras();
 		ModelMapper mapper = new ModelMapper();
 		carroCompras = mapper.map(nuevoCarroCompras, CarroCompras.class);
+		carroCompras.setUsuarioc(usuarioService.getUsuarioByEmail(emailUsuario));
+		carroCompras.setPlatoc(platoService.getPlatoByNombre(carroCompras.get_nombreProducto()));
 		carroCompras = carroComprasService.createCarroCompras(carroCompras);
-		nuevoCarroCompras = mapper.map(carroCompras, CarroComprasDTO.class);
-		return nuevoCarroCompras;
+		if(!carroCompras.equals(null)) return true;
+		else return false;
 	}
 
 

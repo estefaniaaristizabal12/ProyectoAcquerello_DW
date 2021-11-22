@@ -40,6 +40,18 @@ public class PlatoService implements IPlatoService{
         }
     }
 
+	@Override
+	public Plato getPlatoByNombre(String nombrePlato){
+		Optional<Plato> plato = repository.findByNombre(nombrePlato);
+        if (plato.isPresent()) {
+			return plato.get();
+		}
+        else{
+            System.out.println("ERROR");
+            return plato.get();
+        }
+	}
+
 
 	@Override
 	public Plato updatePlato(Plato newPlato, Long idPlato) {

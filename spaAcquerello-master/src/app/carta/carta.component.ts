@@ -104,21 +104,9 @@ export class CartaComponent implements OnInit {
     this.listacarroCompras = this.usuario.carroCompras;
     this.carroCompras = new CarroCompras(0,platoE._nombre,1,platoE._precio, platoE._imagen);
 
-    //Se inicializa el usuario en CC
-    this._usuarioService.getUsuarioXEmail(this.correoA)
-    .subscribe(data =>{
-      this.carroCompras.usuarioC = data;
-    }) ;
-
-    //Se inicializa el plato en CC
-    this._platoService.getPlatoXId(this._platoService.darPlatoXNombre(platoE._nombre))
-    .subscribe(data =>{
-      this.carroCompras.platoC = data;
-    }) ;
-
-
+  
     //Se agrega ese carro de compras
-    this._carroCCService.createCarroCompras(this._carroCCService.createCarroCompras(this.carroCompras)).subscribe(() =>{
+    this._carroCCService.createCarroCompras(this.carroCompras,this.correoA).subscribe(() =>{
       alert("Se agregó al carrito de compras correctamente!");
     },() =>{
       alert("Error: No se pudo agregar correctamente");

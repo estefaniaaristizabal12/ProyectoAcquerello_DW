@@ -53,10 +53,10 @@ public class UsuarioREST {
 		for (Usuario usuario : usuarios) {
 			cc = carroCService.getCarroComprasByIdUsuario(usuario.get_idUsuario());
 			
-			for(CarroCompras c: cc){
-				lcc.add(mapper.map(c, CarroCompras.class));
-				System.out.println("JAYYYY"+c.get_nombreProducto());
-			}
+			// for(CarroCompras c: cc){
+			// 	lcc.add(mapper.map(c, CarroCompras.class));
+			// 	System.out.println("JAYYYY"+c.get_nombreProducto());
+			// }
 
 			usuario.setCarroCompras(null);
 			result.add(mapper.map(usuario, UsuarioDTO.class));
@@ -66,14 +66,13 @@ public class UsuarioREST {
 	}
 
 
-
-
 	@GetMapping("/darUsuarioXId/{idUsuario}")
 	public UsuarioDTO getUsuarioById(@PathVariable Long idUsuario){
 		ModelMapper mapper = new ModelMapper();
 		UsuarioDTO usuario = new UsuarioDTO();
 		Usuario usu = new Usuario();
 		usu = usuarioService.getUsuarioById(idUsuario);
+		usu.setCarroCompras(null);
 		usuario = mapper.map(usu, UsuarioDTO.class);
 		return usuario;
 	}
@@ -84,6 +83,7 @@ public class UsuarioREST {
 		UsuarioDTO usuario = new UsuarioDTO();
 		Usuario usu = new Usuario();
 		usu = usuarioService.getUsuarioByEmail(emailUsuario);
+		usu.setCarroCompras(null);
 		usuario = mapper.map(usu, UsuarioDTO.class);
 		return usuario;
 	}

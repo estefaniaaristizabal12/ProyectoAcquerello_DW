@@ -19,6 +19,7 @@ public class CarroComprasService implements ICarroComprasService{
 
     @Override
 	public CarroCompras createCarroCompras(CarroCompras newCarroCompras) {
+		System.out.println("Alerta 3> "+newCarroCompras.get_cantidad());
 		return repository.save(newCarroCompras);
 	}
 
