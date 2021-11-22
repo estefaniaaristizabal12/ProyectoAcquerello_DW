@@ -12,12 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 @Repository
 public interface CarroComprasRepository extends JpaRepository <CarroCompras, Long>{
 
-
-    @Query(value = "SELECT m.* FROM CarroCompras m  WHERE m.usuario_id = ?1")
-    List<CarroCompras> findByUsuarioc (Long idUsuario);   
-
-    @Query(value = "SELECT m.* FROM CarroCompras m  WHERE m.plato_id = ?1")
-    List<CarroCompras> findByPlatoc (Long idPlato);   
+    List<CarroCompras> findByUsuarioc (Usuario usuario);   
     
 
 }
