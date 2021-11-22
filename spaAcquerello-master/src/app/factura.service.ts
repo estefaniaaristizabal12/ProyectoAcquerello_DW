@@ -24,7 +24,7 @@ export class FacturaService {
   }
 
   getlistaFacturaXUsuario(idFactura:number){
-    return this.http.get<Factura[]>(this.Url+"/listaFacturasXUsuario"+idFactura);
+    return this.http.get<Factura[]>(this.Url+"/listaFacturasXUsuario/"+idFactura);
   }
 
   updateFactura (factura: Factura){ //{idPla}
