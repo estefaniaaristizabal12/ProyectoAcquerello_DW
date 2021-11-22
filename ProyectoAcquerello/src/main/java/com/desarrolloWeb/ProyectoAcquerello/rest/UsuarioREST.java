@@ -5,8 +5,6 @@ import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
-
-import com.desarrolloWeb.ProyectoAcquerello.dtos.CarroComprasDTO;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Factura;
@@ -63,31 +61,19 @@ public class UsuarioREST {
 
 
 
-
-	@GetMapping("/darUsuarioXId/{idUsuario}")
-	public UsuarioDTO getUsuarioById(@PathVariable Long idUsuario){
-		ModelMapper mapper = new ModelMapper();
-		UsuarioDTO usuario = new UsuarioDTO();
-		Usuario usu = new Usuario();
-		usu = usuarioService.getUsuarioById(idUsuario);
-		Iterable<CarroCompras> cc = carroCService.getCarroComprasListaXUsuario(idUsuario);
-		List<CarroCompras> ccResult = new ArrayList<>();
-		for (CarroCompras carroCompras : cc) {
-			ccResult.add(mapper.map(carroCompras, CarroCompras.class));
-		}
-
-
-
-
-
-
-    	usu.setCarroCompras(ccResult);
-		List<Factura> fact = facturaService.getFacturaByUsuario(idUsuario);
-    	usu.setFacturas(fact);
-		usuario = mapper.map(usu, UsuarioDTO.class);
-		usu.setCarroCompras(ccResult);
-		return usuario;
-	}
+	// @GetMapping("/darUsuarioXId/{idUsuario}")
+	// public UsuarioDTO getUsuarioById(@PathVariable Long idUsuario){
+	// 	ModelMapper mapper = new ModelMapper();
+	// 	UsuarioDTO usuario = new UsuarioDTO();
+	// 	Usuario usu = new Usuario();
+	// 	usu = usuarioService.getUsuarioById(idUsuario);
+	// 	List<CarroCompras> cc = carroCService.getCarroComprasByUsuario(idUsuario);
+    // 	usu.setCarroCompras(cc);
+	// 	List<Factura> fact = facturaService.getFacturaByUsuario(idUsuario);
+    // 	usu.setFacturas(fact);
+	// 	usuario = mapper.map(usu, UsuarioDTO.class);
+	// 	return usuario;
+	// }
 
 	@GetMapping("/darUsuarioXEmail/{emailUsuario}")
 	public UsuarioDTO getUsuarioById(@PathVariable String emailUsuario){

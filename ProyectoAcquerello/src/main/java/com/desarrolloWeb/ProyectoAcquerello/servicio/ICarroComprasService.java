@@ -13,11 +13,19 @@ public interface ICarroComprasService {
 
     CarroCompras getCarroComprasById(Long idCarroCompras);
 
-    Iterable<CarroCompras> getCarroComprasListaXUsuario(Long idUsuario);
+    Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras);
 
     Iterable<CarroCompras> getCarroComprasLista();
 
     void deleteCarroCompras(Long idCarroCompras);
 
     void deleteCarroComprasXidUsuario(Long idUsuario);
+
+    
+
+
+
+
+
+    
 }
