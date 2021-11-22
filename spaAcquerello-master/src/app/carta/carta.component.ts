@@ -118,25 +118,11 @@ export class CartaComponent implements OnInit {
 
 
     //Se agrega ese carro de compras
-    this._carroCCService.createCarroCompras(this._carroCCService.createCarroCompras(this.carroCompras)).subscribe();
-
-
-    this.listacarroCompras.push(this.carroCompras);
-    this.usuario.carroCompras = this.listacarroCompras;
-
-    for(let aux1 of this.listaUsuarios)
-    {
-      if(this.usuario._email != aux1._email){
-        this.listaU2.push(aux1);
-      }else{
-        this.listaU2.push(this.usuario);
-      }
-    }
-
-    localStorage.setItem ('localListaUsuarios',JSON.stringify(this.listaU2));
-    this.listaU2 = [];
-
-    alert("Se agregó al carrito de compras correctamente!");
+    this._carroCCService.createCarroCompras(this._carroCCService.createCarroCompras(this.carroCompras)).subscribe(() =>{
+      alert("Se agregó al carrito de compras correctamente!");
+    },() =>{
+      alert("Error: No se pudo agregar correctamente");
+    });
    }
 
   }

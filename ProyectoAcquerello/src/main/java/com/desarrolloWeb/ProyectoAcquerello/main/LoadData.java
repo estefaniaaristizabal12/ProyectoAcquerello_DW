@@ -118,7 +118,7 @@ class LoadData {
             // ____ CarroCompras 1 ______
 
 
-            carroCompras1.setUsuarioc(usuarioA);
+            carroCompras1.setUsuarioc(usuarioB);
             carroCompras1.setPlatoc(platoA);
             carroCompras1.set_cantidad(2);
             carroCompras1.set_precio(120000);
@@ -129,7 +129,7 @@ class LoadData {
 
             // ____ CarroCompras 2 ______
 
-            carroCompras2.setUsuarioc(usuarioA);
+            carroCompras2.setUsuarioc(usuarioB);
             carroCompras2.setPlatoc(platoB);
             carroCompras2.set_cantidad(1);
             carroCompras2.set_precio(50000);

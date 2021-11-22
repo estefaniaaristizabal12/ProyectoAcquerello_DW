@@ -69,6 +69,19 @@ public class CarroComprasREST {
 		return result;
 	}
 
+	//OJO ACA
+	@GetMapping("/listaCarroComprasXidUsuario/{idUsuario}")
+	public List<CarroComprasDTO> getCarroComprasXIdUsuario(@PathVariable Long idUsuario) {
+		Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasByIdUsuario(idUsuario);
+		ModelMapper mapper = new ModelMapper();
+		List<CarroComprasDTO> result = new ArrayList<>();
+
+		for (CarroCompras cc : carrosCompras) {
+		  result.add(mapper.map(cc, CarroComprasDTO.class));
+		}
+		return result;
+	}
+
 
 
 	@PutMapping("/actualizarCarroCompras/{idCarroCompras}")

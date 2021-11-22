@@ -1,9 +1,11 @@
 package com.desarrolloWeb.ProyectoAcquerello.rest;
+import com.desarrolloWeb.ProyectoAcquerello.servicio.ICarroComprasService;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
+import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,9 @@ public class UsuarioREST {
     @Autowired
 	private IUsuarioService usuarioService;
 
+	@Autowired
+	private ICarroComprasService carroCService;
+
     // - - - - - - - -  C   R   U  D  - - - - - - - - 
 
 
@@ -41,13 +46,25 @@ public class UsuarioREST {
 	@GetMapping("/listaUsuarios")
 	public List<UsuarioDTO> getUsuarios() {
 		Iterable<Usuario> usuarios = usuarioService.getUsuariosLista();
+		Iterable<CarroCompras> cc = new ArrayList<>();
+		List<CarroCompras> lcc = new ArrayList<>();
 		List<UsuarioDTO> result = new ArrayList<>();
 		ModelMapper mapper = new ModelMapper();
 		for (Usuario usuario : usuarios) {
+			cc = carroCService.getCarroComprasByIdUsuario(usuario.get_idUsuario());
+			
+			for(CarroCompras c: cc){
+				lcc.add(mapper.map(c, CarroCompras.class));
+				System.out.println("JAYYYY"+c.get_nombreProducto());
+			}
+
+			usuario.setCarroCompras(null);
 			result.add(mapper.map(usuario, UsuarioDTO.class));
 		}
+
 		return result;
 	}
+
 
 
 

@@ -24,11 +24,11 @@ public class CarroCompras {
     private String _nombreProducto;
 
     @ManyToOne
-    @JoinColumn(name = "usuarioId", referencedColumnName = "_idUsuario")
+    @JoinColumn(name = "usuarioid", referencedColumnName = "_idUsuario")
     private Usuario usuarioc;
 
     @ManyToOne
-    @JoinColumn(name = "platoId", referencedColumnName = "_idPlato")
+    @JoinColumn(name = "platodd", referencedColumnName = "_idPlato")
     private Plato platoc;
     
     @Basic

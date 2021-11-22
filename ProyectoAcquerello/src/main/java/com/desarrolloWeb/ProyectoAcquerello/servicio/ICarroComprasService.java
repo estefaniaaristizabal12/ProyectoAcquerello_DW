@@ -15,6 +15,10 @@ public interface ICarroComprasService {
 
     CarroCompras getCarroComprasById(Long idCarroCompras);
 
+
+    //OJO ACA
+    Iterable<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario);
+
     Iterable<CarroCompras> getCarroComprasLista();
 
     void deleteCarroCompras(Long idCarroCompras);

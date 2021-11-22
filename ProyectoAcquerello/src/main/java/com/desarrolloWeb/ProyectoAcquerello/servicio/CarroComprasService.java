@@ -39,6 +39,12 @@ public class CarroComprasService implements ICarroComprasService{
         }
     }
 
+	//OJO ACA
+	@Override
+	public Iterable<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario){
+		return repository.findByUsuarioCC(idUsuario);
+	}
+
 
 	@Override
     public CarroCompras updateCarroCompras(CarroCompras newCarroCompras){

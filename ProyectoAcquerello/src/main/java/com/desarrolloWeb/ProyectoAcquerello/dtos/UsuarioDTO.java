@@ -1,5 +1,6 @@
 package com.desarrolloWeb.ProyectoAcquerello.dtos;
 
+import java.util.List;
 
 public class UsuarioDTO {
     
@@ -11,8 +12,14 @@ public class UsuarioDTO {
     private String _direccion;
     private String _contrasenia;
     private String _rol;
+    private List<CarroComprasDTO> carroCompras;
 
-
+    public List<CarroComprasDTO> getCarroCompras() {
+        return carroCompras;
+    }
+    public void setCarroCompras(List<CarroComprasDTO> carroCompras) {
+        this.carroCompras = carroCompras;
+    }
     public String get_rol() {
         return _rol;
     }
