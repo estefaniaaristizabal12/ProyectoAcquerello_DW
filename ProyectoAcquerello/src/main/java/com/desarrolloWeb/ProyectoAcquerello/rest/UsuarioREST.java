@@ -62,31 +62,30 @@ public class UsuarioREST {
 	}
 
 
+
+
 	@GetMapping("/darUsuarioXId/{idUsuario}")
 	public UsuarioDTO getUsuarioById(@PathVariable Long idUsuario){
 		ModelMapper mapper = new ModelMapper();
 		UsuarioDTO usuario = new UsuarioDTO();
 		Usuario usu = new Usuario();
 		usu = usuarioService.getUsuarioById(idUsuario);
-
-		//Se pide la lista de carro de compras
 		Iterable<CarroCompras> cc = carroCService.getCarroComprasListaXUsuario(idUsuario);
 		List<CarroCompras> ccResult = new ArrayList<>();
 		for (CarroCompras carroCompras : cc) {
 			ccResult.add(mapper.map(carroCompras, CarroCompras.class));
 		}
+
+
+
+
+
+
     	usu.setCarroCompras(ccResult);
-
-		//Se pide la lista de factura
-		Iterable<Factura> fact = facturaService.getFacturaListaXUsuario(idUsuario);
-		List<Factura> faResult = new ArrayList<>();
-		for (Factura factura : fact) {
-			faResult.add(mapper.map(factura, Factura.class));
-		}
-    	usu.setFacturas(faResult);
-
-		//Se convierte
+		List<Factura> fact = facturaService.getFacturaByUsuario(idUsuario);
+    	usu.setFacturas(fact);
 		usuario = mapper.map(usu, UsuarioDTO.class);
+		usu.setCarroCompras(ccResult);
 		return usuario;
 	}
 

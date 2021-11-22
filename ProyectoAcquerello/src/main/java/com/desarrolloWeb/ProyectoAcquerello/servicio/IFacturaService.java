@@ -14,7 +14,7 @@ public interface IFacturaService {
 
     Iterable<Factura> getFacturaLista();
 
-    Iterable<Factura> getFacturaListaXUsuario(Long idUsuario);
+    Iterable<Factura> getFacturaListaXUsuario(Factura factura);
 
     Factura updateFactura(Factura factura);
 

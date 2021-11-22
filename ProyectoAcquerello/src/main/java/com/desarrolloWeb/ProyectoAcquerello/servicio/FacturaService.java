@@ -39,8 +39,8 @@ public class FacturaService implements IFacturaService{
     }
 
     @Override
-    public Iterable<Factura> getFacturaListaXUsuario(Long idUsuario){
-        return repository.findByUsuarioc(idUsuario);
+    public Iterable<Factura> getFacturaListaXUsuario(Factura factura){
+        return repository.findByUsuariof(factura.getUsuariof());
     }
 
     @Override

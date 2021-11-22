@@ -48,28 +48,18 @@ public class FacturaREST {
 		return result;
 	}
 
-
-	// @GetMapping("/listaCarroComprasXUsuario/{idUsuario}")
-	// public List<CarroComprasDTO> getCarroXUsuario(@PathVariable Long idUsuario) {
-	// 	ModelMapper mapper = new ModelMapper();
-	// 	Iterable<CarroCompras> carrosCompras = carroComprasService.getCarroComprasListaXUsuario(idUsuario);
-	// 	List<CarroComprasDTO> result = new ArrayList<>();
-	// 	for (CarroCompras car : carrosCompras) {
-	// 		result.add(mapper.map(car, CarroComprasDTO.class));
-	// 	}
-	// 	return result;
-	// }
-
-	@GetMapping("/listaFacturasXUsuario/{idUsuario}")
-	public List<FacturaDTO> getFacturasXUsuario(@PathVariable Long idUsuario) {
+	@GetMapping("/listaFacturasXUsuario/{idFactura}")
+	public List<FacturaDTO> getFacturasXUsuario(@PathVariable Long idFactura) {
+		Factura factura = facturaService.getFacturaById(idFactura);
 		ModelMapper mapper = new ModelMapper();
-		Iterable<Factura> facturas = facturaService.getFacturaListaXUsuario(idUsuario);
+		Iterable<Factura> facturas = facturaService.getFacturaListaXUsuario(factura);
 		List<FacturaDTO> result = new ArrayList<>();
 		for (Factura fact : facturas) {
 			result.add(mapper.map(fact, FacturaDTO.class));
 		}
 		return result;
 	}
+
 
 
 	@PutMapping("/actualizarFactura/{idFactura}")
