@@ -22,10 +22,10 @@ public class CarroComprasService implements ICarroComprasService{
 		return repository.save(newCarroCompras);
 	}
 
-	@Override
-	public List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario){
-		return repository.findByUsuarioc(idUsuario);
-	}
+	// @Override
+	// public List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario){
+	// 	return repository.findByUsuarioc(idUsuario);
+	// }
 
 	@Override
     public CarroCompras getCarroComprasById(Long idCarroCompras){

@@ -87,41 +87,5 @@ public class CarroComprasREST {
 		carroComprasService.deleteCarroCompras(idCarroCompras);
 		return true;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//Falta probar!
-	@GetMapping("/darCCUsuario")
-	public List<CarroComprasDTO> getUsuarioById(@RequestParam(name = "idUsuario") Long idUsuario){
-		List<CarroCompras> carroscompras = new ArrayList<>();
-		carroscompras = carroComprasService.getCarroComprasByIdUsuario(idUsuario);
-		List<CarroComprasDTO> result = new ArrayList<>();
-
-		ModelMapper mapper = new ModelMapper();
-		
-		for (CarroCompras carroCompras : carroscompras) {
-			result.add(mapper.map(carroCompras, CarroComprasDTO.class));
-		}
-		return result;
-	}
-
-	
-	
-
-
-
       
 }

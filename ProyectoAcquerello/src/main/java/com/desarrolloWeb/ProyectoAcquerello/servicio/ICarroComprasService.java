@@ -9,7 +9,7 @@ public interface ICarroComprasService {
 
     CarroCompras createCarroCompras(CarroCompras newCarroCompras);
 
-    List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario);
+    // List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario);
 
     CarroCompras updateCarroCompras(CarroCompras carroCompras);
 
