@@ -104,37 +104,10 @@ public class CarroComprasREST {
 			return result;
 		}
 
-	@DeleteMapping("/eliminarCC")
-	public String deleteCC(@RequestParam (name = "idCC") Long idCC) {
-		Boolean res = carroComprasService.deleteCarroCompras(idCC);
-		if(res == true){
-			return "Se elimino correctamente";
-		}
-		else{
-			return "Se genero un error ";
-		}
-	}
-
+	
 	
 
 
-	/*
-    @PostMapping("/carroCompras/crear")
-	public CarroCompras createUsuario(@RequestBody CarroCompras newCarroCompras) {
-		return carroComprasService.crearCarroCompras(newCarroCompras);
-	}
-
-
-    @PutMapping("/carroCompras/actualizar/{id}")
-	public CarroCompras actualizarCarroCompras(@RequestBody CarroCompras newCarroCompras, @PathVariable Long id) {
-		return carroComprasService.actualizarCarroCompras(newCarroCompras, id);
-	}
-
-
-    @DeleteMapping("/carroCompras/eliminar/{id}")
-	public void deleteCarroCompras(@PathVariable Long id) {
-		carroComprasService.deleteCarroCompras(id);
-	}*/
 
       
 }

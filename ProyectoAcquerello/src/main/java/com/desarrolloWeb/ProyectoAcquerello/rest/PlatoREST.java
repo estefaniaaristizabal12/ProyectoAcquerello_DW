@@ -63,6 +63,17 @@ public class PlatoREST {
 	}
 
 
+	@GetMapping("/darPlatoXId/{idPlato}")
+	public PlatoDTO getUsuarioById(@PathVariable Long idPlato){
+		ModelMapper mapper = new ModelMapper();
+		PlatoDTO plato = new PlatoDTO();
+		Plato plat = new Plato();
+		plat = platoService.getPlatoById(idPlato);
+		plato = mapper.map(plat, PlatoDTO.class);
+		return plato;
+	}
+
+
 	@PutMapping("/actualizarPlato/{idPlato}")
 	public PlatoDTO actualizarPlato(@RequestBody PlatoDTO newPlato, @PathVariable Long idPlato){
 		Plato plato = new Plato();

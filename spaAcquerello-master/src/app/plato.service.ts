@@ -11,11 +11,16 @@ export class PlatoService {
   idP: string = "1";
 
   platoObtener:Plato =  new Plato(0,'','','',0);
+  plato:Plato =  new Plato(0,'','','',0);
   public listaPlato: Plato[] = [];
   Url = 'http://localhost:8080/plato';
 
 
   constructor(private http: HttpClient) { 
+    this.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlato = data;
+    }) ;  
   }
 
 
@@ -25,6 +30,10 @@ export class PlatoService {
 
   getlistaPlato(){
     return this.http.get<Plato[]>(this.Url+"/listaPlatos");
+  }
+
+  getPlatoXId(idPlato: number){
+    return this.http.get<Plato>(this.Url+"/darPlatoXId/"+idPlato);
   }
 
   updatePlato (plato: Plato){
@@ -38,6 +47,15 @@ export class PlatoService {
     //return this.http.delete(`${this.Url}/eliminar/${this.idP}`,this.idP);
       
       //this.Url +"/eliminar/"+idplato, idplato);
+  }
+
+  darPlatoXNombre (nombrePlato: string){
+    for(let plato of this.listaPlato){
+      if(nombrePlato == plato._nombre){
+        return plato._idPlato;
+      }
+    }
+    return 0;
   }
 
 }

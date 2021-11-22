@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { __values } from 'tslib';
+import { CarroComprasService } from '../carro-compras.service';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Plato } from '../model/plato';
@@ -33,8 +34,7 @@ export class CartaComponent implements OnInit {
   public vAdmon: boolean = false;
 
 
-  constructor( public _platoService: PlatoService, public router: Router, public _usuarioService: UsuarioService ) { 
-    var aux = localStorage.getItem('localListaPlatos');
+  constructor( public _platoService: PlatoService, public router: Router, public _usuarioService: UsuarioService, public _carroCCService: CarroComprasService ) { 
 
     this._platoService.getlistaPlato()
     .subscribe(data =>{
@@ -103,6 +103,23 @@ export class CartaComponent implements OnInit {
 
     this.listacarroCompras = this.usuario.carroCompras;
     this.carroCompras = new CarroCompras(0,platoE._nombre,1,platoE._precio, platoE._imagen);
+    //Se inicializa el usuario
+    this._usuarioService.getUsuarioXEmail(this.correoA)
+    .subscribe(data =>{
+      this.carroCompras.usuarioC = data;
+    }) ;
+
+    //Se inicializa el plato
+    this._platoService.getPlatoXId(this._platoService.darPlatoXNombre(platoE._nombre))
+    .subscribe(data =>{
+      this.carroCompras.platoC = data;
+    }) ;
+
+
+    //Se agrega ese carro de compras
+    this._carroCCService.createCarroCompras(this._carroCCService.createCarroCompras(this.carroCompras)).subscribe();
+
+
     this.listacarroCompras.push(this.carroCompras);
     this.usuario.carroCompras = this.listacarroCompras;
 

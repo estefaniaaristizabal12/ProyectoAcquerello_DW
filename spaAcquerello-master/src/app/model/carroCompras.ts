@@ -16,10 +16,10 @@ export class CarroCompras {
 
 
     constructor(id_CC: number, nombre:string, cantidad:number,  precio:number,  foto:string){
-            this._id_CC = id_CC;
-            this._nombreProducto = nombre;
-            this._cantidad = cantidad;
-            this._precio = precio;   
-            this._foto = foto;
+        this._id_CC = id_CC;
+        this._nombreProducto = nombre;
+        this._cantidad = cantidad;
+        this._precio = precio;   
+        this._foto = foto;
     }
 }

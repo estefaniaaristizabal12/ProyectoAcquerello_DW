@@ -10,6 +10,8 @@ import { PlatoService } from '../plato.service';
 })
 export class InicioComponent implements OnInit {
 
+  i:number =0;
+  public plato: Plato = new Plato(0,"","","",0);
   public plato1: Plato = new Plato(0,"","","",0);
   public plato2: Plato = new Plato(0,"","","",0);
   public plato3: Plato = new Plato(0,"","","",0);
@@ -23,18 +25,12 @@ export class InicioComponent implements OnInit {
       this.listaPlatos = data;
     }) ;
 
-
-    if(this.listaPlatos.length >= 3){
-    this.plato1 = this.listaPlatos[0];
-    this.plato2 = this.listaPlatos[1];
-    this.plato3 = this.listaPlatos[2];
-    }
-
+    this.ngOnInit();
   }
+
 
   ngOnInit(): void {
   }
-
 
   enviarCarta(){
     this.route.navigateByUrl("/carta");
