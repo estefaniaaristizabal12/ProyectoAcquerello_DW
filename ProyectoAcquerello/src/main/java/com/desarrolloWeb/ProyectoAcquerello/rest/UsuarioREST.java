@@ -4,6 +4,8 @@ import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
+
+import com.desarrolloWeb.ProyectoAcquerello.dtos.CarroComprasDTO;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
@@ -45,21 +47,28 @@ public class UsuarioREST {
 
 	@GetMapping("/listaUsuarios")
 	public List<UsuarioDTO> getUsuarios() {
+		UsuarioDTO usuDTO = new UsuarioDTO();
 		Iterable<Usuario> usuarios = usuarioService.getUsuariosLista();
 		Iterable<CarroCompras> cc = new ArrayList<>();
-		List<CarroCompras> lcc = new ArrayList<>();
+		List<CarroComprasDTO> lcc = new ArrayList<>();
 		List<UsuarioDTO> result = new ArrayList<>();
 		ModelMapper mapper = new ModelMapper();
 		for (Usuario usuario : usuarios) {
-			cc = carroCService.getCarroComprasByIdUsuario(usuario.get_idUsuario());
-			
-			// for(CarroCompras c: cc){
-			// 	lcc.add(mapper.map(c, CarroCompras.class));
-			// 	System.out.println("JAYYYY"+c.get_nombreProducto());
-			// }
-
 			usuario.setCarroCompras(null);
-			result.add(mapper.map(usuario, UsuarioDTO.class));
+			usuDTO = mapper.map(usuario, UsuarioDTO.class);
+			cc = carroCService.getCarroComprasByIdUsuario(usuario.get_idUsuario());
+			for (CarroCompras c : cc) {
+				lcc.add(mapper.map(c, CarroComprasDTO.class));
+			}
+			if(lcc.size()!=0){
+				usuDTO.setCarroCompras(lcc);
+				result.add(usuDTO);
+				lcc.clear();
+			}else{
+				usuDTO.setCarroCompras(null);
+				result.add(usuDTO);
+			}
+			
 		}
 
 		return result;

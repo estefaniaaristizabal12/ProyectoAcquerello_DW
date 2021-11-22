@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { __values } from 'tslib';
+import { CarroComprasService } from '../carro-compras.service';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Plato } from '../model/plato';
 import { Usuario } from '../model/usuario';
 import { PlatoService } from '../plato.service';
+import { UsuarioService } from '../usuario.service';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class InfoPlatoComponent implements OnInit {
 
   platoObtener: Plato = new Plato (0,"","","",0);
   public plato: Plato = new Plato(0,"","","",0);
+  public platoE: Plato = new Plato(0,"","","",0);
   public listaPlatos: Plato[] = [];
   public mostrar:boolean=true;
   public listaUsuarios: Usuario[] = [];
@@ -30,78 +33,69 @@ export class InfoPlatoComponent implements OnInit {
   public admin: Usuario = new Usuario(0,"","","","","","");
   public correoA:string ="";
   public validacion: boolean = false;
+  public vAdmon: boolean = false;
 
-  constructor(public _servicioProducto: PlatoService, private router:Router) {
+  constructor(public _platoService: PlatoService, private router:Router, public _usuarioService: UsuarioService, public _carroCCService: CarroComprasService ) {
 
-      if(this._servicioProducto.platoObtener)
-          this.platoObtener = this._servicioProducto.platoObtener;
+    if(this._platoService.platoObtener)
+          this.platoObtener = this._platoService.platoObtener;
 
+    this._platoService.getlistaPlato()
+    .subscribe(data =>{
+      this.listaPlatos = data;
+    }) ;
 
-      this._servicioProducto.getlistaPlato()
-      .subscribe(data =>{
-        this.listaPlatos = data;
-      }) ;
-      
-  
-      var storageList = localStorage.getItem('localListaUsuarios');
-      if(storageList== null){
-        this.listaUsuarios = [];
-      }
-      else{
-        this.listaUsuarios = JSON.parse(storageList);
-      }
-  
-      this.darCorreo();
-      this.buscarPersona(this.correoA);
+    this._usuarioService.getlistaUsuario()
+    .subscribe(data =>{
+      this.listaUsuarios = data;
+    }) ;
+    
+    this.darCorreo();
+    this.buscarPersona(this.correoA);
 
-     
-      var auxa= localStorage.getItem('administrador');
+    var auxa= localStorage.getItem('administrador');
+    if(auxa== null){
+      this.admin = new Usuario(0,"","","","","","");
+    }
+    else{
+      this.admin = JSON.parse(auxa);
+    }
 
-      if(auxa== null){
-        this.admin = new Usuario(0,"","","","","","");
-      }
-      else{
-        this.admin = JSON.parse(auxa);
-      }
-
-      if(this.correoA == ""){
-        this.validacion =false;
-      }
-      else if(this.admin._email == this.correoA){
-        this.validacion = false;
-      }
-      else{
-        this.validacion = true;
-      }
+    if(this.correoA == ""){
+      this.validacion =false;
+    }
+    else if(this.admin._email == this.correoA){
+      this.validacion = false;
+      this.vAdmon = true;
+    }
+    else{
+      this.validacion = true;
+    }
   }
   ngOnInit(): void {
   }
 
   agregarProducto(){
-    if(this.validacion ==false){
-      alert("No se puede añadir al carrito, inicie sesión....");
-      this.router.navigateByUrl("/iniciarSesion");
-    }
 
+    if(this.validacion ==false && this.vAdmon == false){
+      alert("No se puede añadir al carrito, inicie sesión....");
+      this.router.navigateByUrl("iniciarSesion");
+    }
+    else if(this.validacion ==false && this.vAdmon == true){
+      alert("No se pueden realizar pedidos desde el administrador!");
+    }
     else{
+
     this.listacarroCompras = this.usuario.carroCompras;
     this.carroCompras = new CarroCompras(0,this.platoObtener._nombre,1,this.platoObtener._precio, this.platoObtener._imagen);
-    this.listacarroCompras.push(this.carroCompras);
-    this.usuario.carroCompras = this.listacarroCompras;
 
-    for(let aux1 of this.listaUsuarios)
-    {
-      if(this.usuario._email != aux1._email){
-        this.listaU2.push(aux1);
-      }else{
-        this.listaU2.push(this.usuario);
-      }
-    }
-
-    localStorage.setItem ('localListaUsuarios',JSON.stringify(this.listaU2));
-    this.listaU2 = [];
-
-    alert("Se agregó al carrito de compras correctamente!");
+  
+    //Se agrega ese carro de compras
+    this._carroCCService.createCarroCompras(this.carroCompras,this.correoA).subscribe(() =>{
+      alert("Se agregó al carrito de compras correctamente!");
+    },() =>{
+      alert("Error: No se pudo agregar correctamente");
+    });
    }
   }
 
@@ -118,13 +112,8 @@ export class InfoPlatoComponent implements OnInit {
 
   darCorreo(){
     var aux = localStorage.getItem('actual');
-    //Se debe validar que no sea nulo el string.
-    if(aux== null){
-      this.correoA = "";
-    }
-    else{
-      this.correoA = aux;
-    }
+    if(aux== null) this.correoA = "";
+    else this.correoA = aux;
   }
 
 

@@ -10,7 +10,7 @@ export class PlatoService {
 
   idP: string = "1";
 
-  platoObtener:Plato =  new Plato(0,'','','',0);
+  public platoObtener:Plato =  new Plato(0,'','','',0);
   plato:Plato =  new Plato(0,'','','',0);
   public listaPlato: Plato[] = [];
   Url = 'http://localhost:8080/plato';
