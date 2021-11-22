@@ -39,6 +39,11 @@ public class FacturaService implements IFacturaService{
     }
 
     @Override
+    public Iterable<Factura> getFacturaListaXUsuario(Factura factura){
+        return repository.findByUsuariof(factura.getUsuariof());
+    }
+
+    @Override
     public Factura updateFactura(Factura newFactura){
         Factura provider = getFacturaById(newFactura.getIdFactura());
 		provider.setCantidad(newFactura.getCantidad());

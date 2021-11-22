@@ -35,21 +35,6 @@ export class CarroComprasComponent implements OnInit {
   public mostrarT: boolean = false;
 
 
-  /*
-
-  constructor( public _usuarioService: UsuarioService, public router: Router ) { 
-    this._usuarioService.getlistaUsuario()
-    .subscribe(data =>{
-      this.listaUsuarios = data;
-    }) ;
-
-    this.async_print_personas();
-    
-  }
-
-
-  */
-
   constructor(public _usuarioService: UsuarioService,public router: Router) { 
     this.total = 0;
 
@@ -58,17 +43,17 @@ export class CarroComprasComponent implements OnInit {
       this.listaUsuarios = data;
     }) ;
 
+    //Información del usuario actual
     var aux = localStorage.getItem('actual');
-    //Se debe validar que no sea nulo el string.
-    if(aux== null){
-      this.correoA = "";
-    }
-    else{
-      this.correoA = aux;
-    }
+    if(aux== null) this.correoA = "";
+    else this.correoA = aux;
+    
+    //Se obtiene la información del usuario actual
+    this._usuarioService.getUsuarioXEmail(this.correoA)
+    .subscribe(data =>{
+      this.usuario = data;
+    }) ;
 
-
-    this.buscarPersona(this.correoA);
 
     //Aca toca cambiar a this.usuario.ordenes
 

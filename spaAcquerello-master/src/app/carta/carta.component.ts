@@ -103,13 +103,14 @@ export class CartaComponent implements OnInit {
 
     this.listacarroCompras = this.usuario.carroCompras;
     this.carroCompras = new CarroCompras(0,platoE._nombre,1,platoE._precio, platoE._imagen);
-    //Se inicializa el usuario
+
+    //Se inicializa el usuario en CC
     this._usuarioService.getUsuarioXEmail(this.correoA)
     .subscribe(data =>{
       this.carroCompras.usuarioC = data;
     }) ;
 
-    //Se inicializa el plato
+    //Se inicializa el plato en CC
     this._platoService.getPlatoXId(this._platoService.darPlatoXNombre(platoE._nombre))
     .subscribe(data =>{
       this.carroCompras.platoC = data;

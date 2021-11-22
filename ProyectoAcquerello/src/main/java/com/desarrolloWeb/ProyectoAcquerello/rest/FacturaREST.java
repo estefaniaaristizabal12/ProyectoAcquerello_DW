@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.ArrayList;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.FacturaDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Factura;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +47,20 @@ public class FacturaREST {
 		}
 		return result;
 	}
+
+	@GetMapping("/listaFacturaXUsuario")
+	public List<FacturaDTO> getFacturasXUsuario(@RequestBody FacturaDTO newFactura) {
+		Factura factura = new Factura();
+		ModelMapper mapper = new ModelMapper();
+		factura = mapper.map(newFactura, Factura.class);
+		Iterable<Factura> facturas = facturaService.getFacturaListaXUsuario(factura);
+		List<FacturaDTO> result = new ArrayList<>();
+		for (Factura fact : facturas) {
+			result.add(mapper.map(fact, FacturaDTO.class));
+		}
+		return result;
+	}
+
 
 
 	@PutMapping("/actualizarFactura/{idFactura}")

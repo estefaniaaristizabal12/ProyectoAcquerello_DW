@@ -14,6 +14,8 @@ public interface IFacturaService {
 
     Iterable<Factura> getFacturaLista();
 
+    Iterable<Factura> getFacturaListaXUsuario(Factura factura);
+
     Factura updateFactura(Factura factura);
 
     void deleteFactura(Long idFactura);
