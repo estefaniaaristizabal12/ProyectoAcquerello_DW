@@ -10,6 +10,7 @@ export class PlatoService {
 
   idP: string = "1";
 
+  plaa: any;
   platoObtener:Plato =  new Plato(0,'','','',0);
   plato:Plato =  new Plato(0,'','','',0);
   public listaPlato: Plato[] = [];
@@ -22,6 +23,8 @@ export class PlatoService {
       this.listaPlato = data;
     }) ;  
   }
+
+  // - - - - - - - -  C   R   U  D  - - - - - - - - 
 
 
   createPlato (plato: any): Observable<any> {
@@ -36,24 +39,25 @@ export class PlatoService {
     return this.http.get<Plato>(this.Url+"/darPlatoXId/"+idPlato);
   }
 
+  getPlatoXNombre(nombre: string){
+    return this.http.get<Plato>(this.Url+"/darPlatoXNombre/"+nombre);
+  }
+
+
   updatePlato (plato: Plato){
     return this.http.put(this.Url +"/actualizarPlato/"+plato._idPlato, plato);
   }
 
-
   deletePlato (idplato: number){
     return this.http.delete(this.Url+"/eliminar/"+idplato);
-
-    //return this.http.delete(`${this.Url}/eliminar/${this.idP}`,this.idP);
-      
-      //this.Url +"/eliminar/"+idplato, idplato);
   }
+
+
+  // - - - - - - - -  Funciones adicionales  - - - - - - - - 
 
   darPlatoXNombre (nombrePlato: string){
     for(let plato of this.listaPlato){
-      if(nombrePlato == plato._nombre){
-        return plato._idPlato;
-      }
+      if(nombrePlato == plato._nombre) return plato._idPlato;
     }
     return 0;
   }

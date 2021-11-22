@@ -46,22 +46,22 @@ export class CartaComponent implements OnInit {
       this.listaUsuarios = data;
     }) ;
 
+    var aux = localStorage.getItem('actual');
+    if(aux== null) this.correoA = "";
+    else this.correoA = aux;
 
-    this.async_print_personas();
-    
-  
-
-    this.darCorreo();
-    this.buscarPersona(this.correoA);
-
+    //Se pide el usuario actual
+    this._usuarioService.getUsuarioXEmail(this.correoA)
+    .subscribe(data =>{
+      this.usuario = data;
+    }) ;
 
     var auxa= localStorage.getItem('administrador');
-    if(auxa== null){
-      this.admin = new Usuario(0,"","","","","","");
-    }
-    else{
-      this.admin = JSON.parse(auxa);
-    }
+    if(auxa== null) this.admin = new Usuario(0,"","","","","","");
+    else this.admin = JSON.parse(auxa);
+    
+
+    //Se validan los tipos de datos
 
     if(this.correoA == ""){
       this.validacion =false;
@@ -76,10 +76,6 @@ export class CartaComponent implements OnInit {
 
   }
 
-  async async_print_personas() {
-    await new Promise((f) => setTimeout(f, 1000));
-    console.log(this.listaPlatos);
-  }
 
   ngOnInit(): void {
   }
@@ -101,65 +97,39 @@ export class CartaComponent implements OnInit {
     }
     else{
 
-    this.listacarroCompras = this.usuario.carroCompras;
-    this.carroCompras = new CarroCompras(0,platoE._nombre,1,platoE._precio, platoE._imagen);
+      this.listacarroCompras = this.usuario.carroCompras;
+      alert(platoE._nombre);
+      this.carroCompras = new CarroCompras(0,platoE._nombre,1,platoE._precio, platoE._imagen);
 
-    //Se inicializa el usuario en CC
-    this._usuarioService.getUsuarioXEmail(this.correoA)
-    .subscribe(data =>{
-      this.carroCompras.usuarioC = data;
-    }) ;
+      //Se inicializa el usuario en CC
+      // this._usuarioService.getUsuarioXEmail(this.correoA)
+      // .subscribe(data =>{
+      //   this.carroCompras.usuarioC = data;
+      // }) ;
 
-    //Se inicializa el plato en CC
-    this._platoService.getPlatoXId(this._platoService.darPlatoXNombre(platoE._nombre))
-    .subscribe(data =>{
-      this.carroCompras.platoC = data;
-    }) ;
-
-
-    //Se agrega ese carro de compras
-    this._carroCCService.createCarroCompras(this._carroCCService.createCarroCompras(this.carroCompras)).subscribe();
+      this._usuarioService.getUsuarioXEmail(this.correoA)
+      .subscribe(data =>{
+        this.carroCompras.usuarioC = data;
+      });
 
 
-    this.listacarroCompras.push(this.carroCompras);
-    this.usuario.carroCompras = this.listacarroCompras;
+  
 
-    for(let aux1 of this.listaUsuarios)
-    {
-      if(this.usuario._email != aux1._email){
-        this.listaU2.push(aux1);
-      }else{
-        this.listaU2.push(this.usuario);
-      }
-    }
+      //Se inicializa el plato en CC
+      this._platoService.getPlatoXNombre(platoE._nombre)
+      .subscribe(data =>{
+        this.carroCompras.platoC = data;
+      }) ;
 
-    localStorage.setItem ('localListaUsuarios',JSON.stringify(this.listaU2));
-    this.listaU2 = [];
-
-    alert("Se agregó al carrito de compras correctamente!");
+  
+      //Se agrega ese carro de compras
+      this._carroCCService.createCarroCompras(this.carroCompras).subscribe(() => {
+        alert("Se agregó al carrito de compras correctamente!");
+      }, () => {
+        alert("Error: no se pudo agregar correctamente");
+      });
+     
    }
 
   }
-
-  buscarPersona(correoA:string){
-    for(let aux of this.listaUsuarios)
-    {
-      if(correoA == aux._email){
-        this.usuario = aux;
-      }
-    }
-  }
-
-  darCorreo(){
-    var aux = localStorage.getItem('actual');
-    //Se debe validar que no sea nulo el string.
-    if(aux== null){
-      this.correoA = "";
-    }
-    else{
-      this.correoA = aux;
-    }
-  }
-
-  
 }

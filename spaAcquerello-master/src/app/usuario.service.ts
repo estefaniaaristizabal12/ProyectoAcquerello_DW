@@ -34,41 +34,36 @@ export class UsuarioService {
 
   }
 
+  // - - - - - - - -  C   R   U  D  - - - - - - - - 
+
+  createUsuario (usuario: any): Observable<any> {
+    return this.http.post(this.Url +"/crear", usuario);
+  }
+
   getlistaUsuario(){
     return this.http.get<Usuario[]>(this.Url+"/listaUsuarios");
   }
 
-  agregar(usuario :Usuario){
-    //excepto esto
-    this.listaUsuarios.push(usuario);
-    //Cada que se aniada un nuevo usuario, sobreescribe la lista de localListaUsuarios
-    localStorage.setItem('localListaUsuarios', JSON.stringify(this.listaUsuarios));
-  }
-
-
-
-  ///______________________ nuevo __________________________
-
-  createUsuario (usuario: any): Observable<any> {
-    return this.http.post(this.Url +"/crear", usuario);
+  getUsuarioXEmail(correo: string){
+    return this.http.get<Usuario>(this.Url+"/darUsuarioXEmail/"+correo);
   }
 
   updateUsuario(usuario: Usuario){ 
     return this.http.put(this.Url +"/actualizarUsuario/"+usuario._idUsuario, usuario);
   }
 
+  // - - - - - - - -  Funciones adicionales  - - - - - - - - 
 
-  getUsuarioXEmail(correo: string){
-    return this.http.get<Usuario>(this.Url+"/darUsuarioXEmail/"+correo);
-  }
-
-
+  agregar(usuario :Usuario){
+    //excepto esto
+    this.listaUsuarios.push(usuario);
+    //Cada que se aniada un nuevo usuario, sobreescribe la lista de localListaUsuarios
+    localStorage.setItem('localListaUsuarios', JSON.stringify(this.listaUsuarios));
+    }
+  
   buscarPersona(emailP:string){
-    for(let usuario of this.listaUsuarios)
-    {
-      if(emailP == usuario._email){
-        return true;
-      }
+    for(let usuario of this.listaUsuarios){
+      if(emailP == usuario._email) return true;
     }
     return false;
   }
@@ -81,20 +76,16 @@ export class UsuarioService {
 
     for(let usuario of this.listaUsuarios){
       if(emailP == usuario._email){
-        if(contrasenaP == usuario._contrasenia){
-          return true;
-        }
+        if(contrasenaP == usuario._contrasenia) return true;  
       }
     }
     return false;
   }
 
   darRol(emailP:String){
-    for(let usuario of this.listaUsuarios)
-    {
-      if(emailP == usuario._email){
+    for(let usuario of this.listaUsuarios){
+      if(emailP == usuario._email)
         return usuario._rol;
-      }
     }
 
     return "";

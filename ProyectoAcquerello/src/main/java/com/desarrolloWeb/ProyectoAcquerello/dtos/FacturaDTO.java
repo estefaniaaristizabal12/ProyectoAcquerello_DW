@@ -2,20 +2,24 @@ package com.desarrolloWeb.ProyectoAcquerello.dtos;
 
 import java.util.Date;
 
-import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
-import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
-
 public class FacturaDTO {
 
     private Long idFactura;
-    private Usuario usuariof;
-    private Plato platof;
+    private String nombreProducto;
+    private UsuarioDTO usuariof;
+    private PlatoDTO platof;
     private Date fecha;
     private Integer cantidad;
     private float total;
     private String foto;
 
     
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
     public String getFoto() {
         return foto;
     }
@@ -28,16 +32,16 @@ public class FacturaDTO {
     public void setIdFactura(Long idFactura) {
         this.idFactura = idFactura;
     }
-    public Usuario getUsuariof() {
+    public UsuarioDTO getUsuariof() {
         return usuariof;
     }
-    public void setUsuariof(Usuario usuariof) {
+    public void setUsuariof(UsuarioDTO usuariof) {
         this.usuariof = usuariof;
     }
-    public Plato getPlatof() {
+    public PlatoDTO getPlatof() {
         return platof;
     }
-    public void setPlatof(Plato platof) {
+    public void setPlatof(PlatoDTO platof) {
         this.platof = platof;
     }
     public Date getFecha() {
