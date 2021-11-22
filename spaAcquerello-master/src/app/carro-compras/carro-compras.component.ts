@@ -57,7 +57,7 @@ export class CarroComprasComponent implements OnInit {
     .subscribe(data =>{
       this.usuario = data;
     },() =>{
-      alert("Error");
+      alert("ERROR: Se generó un error cargando el carro de compras.");
     },() =>{
       this.pedirCarroCompras()
     }) ;
@@ -65,23 +65,20 @@ export class CarroComprasComponent implements OnInit {
   }
 
   pedirCarroCompras(){
-
-    alert("LO LOGREEE "+ this.usuario._idUsuario);
-
     this._carroCCService.getlistaCarroComprasXIdUsuario(this.usuario._idUsuario).subscribe(data3 =>{
       this.listaCC = data3;
     },() =>{
-      alert("Error: No se pudieron cargar correctamente los datos");
+      alert("ERROR: Se generó un error cargando el carro de compras.");
+    },() =>{
+      this.modificarDatos()
     });
+  }
 
+  modificarDatos(){
+    if(this.listaCC.length>0) this.mostrar =  true;
+    else this.mostrarT = true;
 
-    // if(this.listaCC.length>0){
-    //   this.mostrar =  true;
-    // }else{
-    //   this.mostrarT = true;
-    // }
-    // this.numItems = this.listaCC.length;
-
+    this.numItems = this.listaCC.length;
   }
 
   ngOnInit(): void {
