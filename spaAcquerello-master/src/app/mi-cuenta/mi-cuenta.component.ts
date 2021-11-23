@@ -28,8 +28,6 @@ export class MiCuentaComponent implements OnInit {
       this.listaUsuarios = data;
     }) ;
 
-    this.async_print_personas();
-
     var aux = localStorage.getItem('actual');
     if(aux== null) this.correoA = "";
     else this.correoA = aux;
@@ -39,12 +37,6 @@ export class MiCuentaComponent implements OnInit {
       this.usuario = data;
     }) ;
     
-  }
-
-
-  async async_print_personas() {
-    await new Promise((f) => setTimeout(f, 1000));
-    console.log(this.listaUsuarios);
   }
 
   ngOnInit(): void {

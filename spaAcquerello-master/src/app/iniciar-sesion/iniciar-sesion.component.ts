@@ -14,8 +14,6 @@ export class IniciarSesionComponent implements OnInit {
 
   public email: string = "";
   public contrasenia: string = "";
-  auxx: CarroCompras[] = [];
-  auxxf: Factura [] = [];
   public usuario: Usuario = new Usuario(0,"","","","","","");
   public admin: Usuario = new Usuario(0,"","","","","","");
   public listaUsuarios: Usuario[] = [];
@@ -25,36 +23,20 @@ export class IniciarSesionComponent implements OnInit {
     this._usuarioService.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;
-    }) ;
-
-    this.async_print_personas();
-    
+    }) ; 
   }
-  //@Output() informacionUsuario: EventEmitter<Usuario>= new EventEmitter();
+
   ngOnInit(): void {
-  }
-
-  async async_print_personas() {
-    await new Promise((f) => setTimeout(f, 1000));
-    console.log(this.listaUsuarios);
   }
 
   inicioSesionSubmit(){
     var aux = localStorage.getItem('administrador');
     //Se debe validar que no sea nulo el string.
-    if(aux== null){
-      this.admin = new Usuario(0,"","","","","","");
-    }
-    else{
-      this.admin =  JSON.parse(aux);
-    }
+    if(aux== null) this.admin = new Usuario(0,"","","","","","");
+    else this.admin =  JSON.parse(aux);
+    
 
-/*
-    if(this.email!= null && this.contrasenia != null && this.admin._email == this.email && this.admin._contrasenia == this.contrasenia){
-      alert("Bienvenido "+this.admin._nombre);
-      localStorage.setItem('actual',this.admin._email);
-      this.dirigirInicioAdmon();
-    } */
+
     if(this.email!= null && this.contrasenia != null && this._usuarioService.buscarPersona(this.email) == true){
       if(this._usuarioService.verificarContrasenia(this.email, this.contrasenia)){
 

@@ -12,7 +12,6 @@ export class AgregarProductoComponent implements OnInit {
 
   public foto:string="";
   public listaPlatos: Plato[] = [];
-  public listaP2: Plato[] = [];
   public plato: Plato = new Plato(0,"","","assets/imagenVacia.png",0);
   
   constructor(public _platoService: PlatoService, private router:Router) { 
@@ -32,7 +31,6 @@ export class AgregarProductoComponent implements OnInit {
       alert("Error: no se pudo guardar correctamente");
     });
 
-    this.async_print_personas();
   }
 
   cerrar(){
@@ -44,9 +42,5 @@ export class AgregarProductoComponent implements OnInit {
     this.router.navigateByUrl("/administrarProductos");
   }
   
-  async async_print_personas() {
-    await new Promise((f) => setTimeout(f, 1000));
-    console.log(this.listaPlatos);
-  }
 
 }

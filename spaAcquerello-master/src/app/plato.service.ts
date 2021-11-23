@@ -24,6 +24,9 @@ export class PlatoService {
   }
 
 
+  // - - - - - - - -  C   R   U  D  - - - - - - - - 
+
+
   createPlato (plato: any): Observable<any> {
     return this.http.post(this.Url +"/crear", plato);
   }
@@ -48,6 +51,9 @@ export class PlatoService {
   deletePlato (idplato: number){
     return this.http.delete(this.Url+"/eliminar/"+idplato);
   }
+
+
+  // Funciones adicionales 
 
   darPlatoXNombre (nombrePlato: string){
     for(let plato of this.listaPlato){

@@ -18,16 +18,10 @@ import { UsuarioService } from '../usuario.service';
 export class InfoPlatoComponent implements OnInit {
 
   platoObtener: Plato = new Plato (0,"","","",0);
-  public plato: Plato = new Plato(0,"","","",0);
-  public platoE: Plato = new Plato(0,"","","",0);
   public listaPlatos: Plato[] = [];
   public mostrar:boolean=true;
   public listaUsuarios: Usuario[] = [];
-  auxx: CarroCompras[] = [];
-  auxxf: Factura [] = [];
-  public aux1: Usuario = new Usuario(0,"","","","","","");
   public carroCompras: CarroCompras =  new CarroCompras(0,"",0,0,"");
-  public listaU2: Usuario[] = [];
   public listacarroCompras: CarroCompras[] = [];
   public usuario: Usuario = new Usuario(0,"","","","","","");
   public admin: Usuario = new Usuario(0,"","","","","","");
@@ -38,7 +32,7 @@ export class InfoPlatoComponent implements OnInit {
   constructor(public _platoService: PlatoService, private router:Router, public _usuarioService: UsuarioService, public _carroCCService: CarroComprasService ) {
 
     if(this._platoService.platoObtener)
-          this.platoObtener = this._platoService.platoObtener;
+      this.platoObtener = this._platoService.platoObtener;
 
     this._platoService.getlistaPlato()
     .subscribe(data =>{
@@ -101,7 +95,6 @@ export class InfoPlatoComponent implements OnInit {
    
   }
 
-
   
   buscarPersona(correoA:string){
     for(let aux of this.listaUsuarios)
@@ -117,8 +110,6 @@ export class InfoPlatoComponent implements OnInit {
     if(aux== null) this.correoA = "";
     else this.correoA = aux;
   }
-
-
 
 
 }

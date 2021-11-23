@@ -17,16 +17,11 @@ import { UsuarioService } from '../usuario.service';
 export class CartaComponent implements OnInit {
   
 
-  public plato: Plato = new Plato(0,"","","",0);
   public listaPlatos: Plato[] = [];
   public mostrar:boolean=true;
   public listaUsuarios: Usuario[] = [];
-  auxx: CarroCompras[] = [];
-  auxxf: Factura [] = [];
-  public aux1: Usuario = new Usuario(0,"","","","","","");
   public admin: Usuario = new Usuario(0,"","","","","","");
   public carroCompras: CarroCompras =  new CarroCompras(0,"",0,0,"");
-  public listaU2: Usuario[] = [];
   public listacarroCompras: CarroCompras[] = [];
   public usuario: Usuario = new Usuario(0,"","","","","","");
   public correoA:string ="";
@@ -45,11 +40,6 @@ export class CartaComponent implements OnInit {
     .subscribe(data =>{
       this.listaUsuarios = data;
     }) ;
-
-
-    this.async_print_personas();
-    
-  
 
     this.darCorreo();
     this.buscarPersona(this.correoA);
@@ -76,10 +66,6 @@ export class CartaComponent implements OnInit {
 
   }
 
-  async async_print_personas() {
-    await new Promise((f) => setTimeout(f, 1000));
-    console.log(this.listaPlatos);
-  }
 
   ngOnInit(): void {
   }
@@ -89,7 +75,7 @@ export class CartaComponent implements OnInit {
     this.router.navigateByUrl("/infoPlato");
   }
 
-  
+
   agregarProductoCC(platoE:Plato){
 
     if(this.validacion ==false && this.vAdmon == false){

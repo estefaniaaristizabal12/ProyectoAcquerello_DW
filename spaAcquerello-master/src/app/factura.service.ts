@@ -13,6 +13,8 @@ export class FacturaService {
   constructor(private http: HttpClient) { 
   }
 
+  // - - - - - - - -  C   R   U  D  - - - - - - - - 
+
   createFactura (factura: any, correo: string){
     return this.http.post(this.Url +"/crear/"+correo, factura);
   }

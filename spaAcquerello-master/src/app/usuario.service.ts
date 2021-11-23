@@ -35,29 +35,15 @@ export class UsuarioService {
 
   }
 
-  getlistaUsuario(){
-    return this.http.get<Usuario[]>(this.Url+"/listaUsuarios");
-  }
-
-  agregar(usuario :Usuario){
-    //excepto esto
-    this.listaUsuarios.push(usuario);
-    //Cada que se aniada un nuevo usuario, sobreescribe la lista de localListaUsuarios
-    localStorage.setItem('localListaUsuarios', JSON.stringify(this.listaUsuarios));
-  }
-
-
-
-  ///______________________ nuevo __________________________
+  // - - - - - - - -  C   R   U  D  - - - - - - - - 
 
   createUsuario (usuario: any): Observable<any> {
     return this.http.post(this.Url +"/crear", usuario);
   }
 
-  updateUsuario(usuario: Usuario){ 
-    return this.http.put(this.Url +"/actualizarUsuario/"+usuario._idUsuario, usuario);
+  getlistaUsuario(){
+    return this.http.get<Usuario[]>(this.Url+"/listaUsuarios");
   }
-
 
   getUsuarioXEmail(correo: string){
     return this.http.get<Usuario>(this.Url+"/darUsuarioXEmail/"+correo);
@@ -66,6 +52,13 @@ export class UsuarioService {
   getIdXEmail(correo: string): Observable<any>{
     return this.http.get<number>(this.Url+"/darIdXEmail/"+correo);
   }
+
+  updateUsuario(usuario: Usuario){ 
+    return this.http.put(this.Url +"/actualizarUsuario/"+usuario._idUsuario, usuario);
+  }
+
+
+  // Funciones adicionales
 
 
   buscarPersona(emailP:string){

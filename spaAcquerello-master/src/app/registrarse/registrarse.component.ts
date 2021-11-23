@@ -14,8 +14,6 @@ import { UsuarioService } from '../usuario.service';
 })
 export class RegistrarseComponent implements OnInit {
 
-  auxx: CarroCompras[] = [];
-  auxxf: Factura [] = [];
   public usuario: Usuario = new Usuario(0,"","","","","","usuario");
   public listaUsuarios: Usuario[] = [];
 
@@ -27,12 +25,6 @@ export class RegistrarseComponent implements OnInit {
 
   }
   ngOnInit(): void {
-  }
-
-  registroSubmit(){
-    this._usuarioService.agregar(this.usuario);
-    this.usuario = new Usuario(0,"","","","","cliente","");
-    alert("lol:" + this.usuario._nombre + " " +this.usuario._apellido);
   }
 
   agregarUsuario(){

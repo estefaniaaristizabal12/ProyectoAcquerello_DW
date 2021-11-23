@@ -15,18 +15,12 @@ import { UsuarioService } from '../usuario.service';
 })
 export class ReporteVentasComponent implements OnInit {
 
-  fechaL: Date = new Date();
-  factura: Factura = new Factura(0,0,0,this.fechaL,"");
-
-  auxx: CarroCompras[] = [];
-  auxxf: Factura [] = [];
+  public fechaL: Date = new Date();
+  public factura: Factura = new Factura(0,0,0,this.fechaL,"");
   public listaPlatos: Plato[] = [];
-  public listaP2: Plato[] = [];
-  public aux: Plato = new Plato(0,"","","",0);
   public listaUsuarios: Usuario[] =[];
   public listaOrdenes: Factura [] = [];
   public usuario: Usuario = new Usuario(0,"","","","","","");
-  public auxU: Usuario = new Usuario(0,"","","","","","");
   public totalVendidos: number = 0; 
   public precioTotal: number = 0; 
 

@@ -16,36 +16,24 @@ export class EditarProductoComponent implements OnInit {
   platoObtener: Plato = new Plato (0,'','','',0);
   aux: Plato = new Plato (0,'','','',0);
   public listaPlatos: Plato[] = [];
-  public listaP2: Plato[] = [];
+
 
   constructor(public _platoService: PlatoService, private router:Router) {
-
-      if(this._platoService.platoObtener)
-        this.platoObtener = this._platoService.platoObtener;
+    if(this._platoService.platoObtener)
+      this.platoObtener = this._platoService.platoObtener;
    }
 
   ngOnInit(): void {
   }
 
   actualizar(){
-
     this.platoA = this.platoObtener;
-
     this._platoService.updatePlato(this.platoA).subscribe();
-
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;
     });
-
-    this.async_print_personas();
     this.router.navigateByUrl("/administrarProductos");
-
-  }
-
-  async async_print_personas() {
-    await new Promise((f) => setTimeout(f, 1000));
-    console.log(this.listaPlatos);
   }
 
   cerrar(){

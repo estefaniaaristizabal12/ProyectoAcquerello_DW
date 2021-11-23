@@ -21,7 +21,6 @@ export class PerfilAdminComponent implements OnInit {
 
   constructor() { 
     var aux = localStorage.getItem('administrador');
-    //Se debe validar que no sea nulo el string.
     if(aux== null){
       this.usuario = new Usuario(0,"","","","","","");
     }
@@ -38,10 +37,7 @@ export class PerfilAdminComponent implements OnInit {
     localStorage.setItem('administrador',JSON.stringify(this.usuario));
     alert("Se actualizó correctamente la información!");
   }
-
-
   cerrar(){
-    //borro el inicio
     localStorage.setItem('actual',"");
     alert("Se cerró sesión correctamente!");
   }
