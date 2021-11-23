@@ -11,7 +11,7 @@ public interface ICarroComprasService {
 
     // List<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario);
 
-    CarroCompras updateCarroCompras(CarroCompras carroCompras);
+    CarroCompras updateCarroCompras(CarroCompras carroCompras, Long idCC);
 
     CarroCompras getCarroComprasById(Long idCarroCompras);
 

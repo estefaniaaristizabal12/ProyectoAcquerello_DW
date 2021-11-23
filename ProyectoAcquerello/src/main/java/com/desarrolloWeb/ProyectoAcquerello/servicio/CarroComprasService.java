@@ -43,18 +43,12 @@ public class CarroComprasService implements ICarroComprasService{
 
 
 	@Override
-    public CarroCompras updateCarroCompras(CarroCompras newCarroCompras){
+    public CarroCompras updateCarroCompras(CarroCompras newCarroCompras, Long idCC){
         CarroCompras provider = getCarroComprasById(newCarroCompras.get_id_CC());
-		provider.setPlatoc(newCarroCompras.getPlatoc());
-		provider.setUsuarioc(newCarroCompras.getUsuarioc());
 		provider.set_cantidad(newCarroCompras.get_cantidad());
-		provider.set_foto(newCarroCompras.get_foto());
-		provider.set_id_CC(newCarroCompras.get_id_CC());
-		provider.set_nombreProducto(newCarroCompras.get_foto());
 		provider.set_precio(newCarroCompras.get_precio());
 		repository.save(provider);
 		return provider;
-
     }
 
 

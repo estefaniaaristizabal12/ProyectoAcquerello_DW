@@ -6,6 +6,7 @@ import { CarroComprasService } from '../carro-compras.service';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
+import { PlatoService } from '../plato.service';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
@@ -39,7 +40,7 @@ export class CarroComprasComponent implements OnInit {
 
 
 
-  constructor(public _usuarioService: UsuarioService,public router: Router, public _carroCCService: CarroComprasService) { 
+  constructor(public _usuarioService: UsuarioService,public router: Router, public _carroCCService: CarroComprasService, public _platoService: PlatoService) { 
     this.total = 0;
 
     this._usuarioService.getlistaUsuario()
@@ -100,9 +101,8 @@ export class CarroComprasComponent implements OnInit {
   darSubtotal(){
     this.subtotal = 0;
     for(let dato of this.listaCC)
-    {
       this.subtotal = this.subtotal + dato._cantidad * dato._precio;
-    }
+    
     return this.subtotal;
   }
 
@@ -111,79 +111,58 @@ export class CarroComprasComponent implements OnInit {
   }
 
   sumarCantidad(datoE: CarroCompras){
-    for (var i = 0; i < this.listaCC.length; i++) {
 
-      if(datoE == this.listaCC[i]){
-        this.usuario.carroCompras[i]._cantidad = datoE._cantidad +1;
-        this.listaCC[i]._cantidad = this.usuario.carroCompras[i]._cantidad;
-      }
-    }
+    //Se pide la información del plato y del usuario
 
+    datoE.usuarioc = this.usuario;
+    this._platoService.getPlatoXNombre(datoE._nombreProducto)
+    .subscribe(data =>{
+      datoE.platoc = data;
+    },() =>{
+      alert("ERROR: No se pudo obtener el plato");
+    }) ;
 
+    //Se actualiza la base de datos
 
-    for(let aux of this.listaUsuarios)
-    {
-      if(this.usuario._email != aux._email){
-        this.listaU2.push(aux);
-      }else{
-        this.listaU2.push(this.usuario);
-      }
-    }
-
-    localStorage.setItem('localListaUsuarios',JSON.stringify(this.listaU2));
-    this.listaU2 = [];
+    datoE._cantidad = datoE._cantidad+1;
+    this._carroCCService.updateCarroCompras(datoE).subscribe(() =>{
+    },() =>{
+      alert("ERROR: No se pudo modificar la cantidad");
+    });
 
   }
 
   restarCantidad(datoE: CarroCompras){
 
-    for (var i = 0; i < this.listaCC.length; i++) {
+    //Se pide la información del plato y del usuario
 
-      if(datoE == this.listaCC[i]){
-        if(this.usuario.carroCompras[i]._cantidad  != 0){
-          this.usuario.carroCompras[i]._cantidad = datoE._cantidad -1;
-          this.listaCC[i]._cantidad = this.usuario.carroCompras[i]._cantidad;
-        }
-      }
-    }
+    datoE.usuarioc = this.usuario;
+    this._platoService.getPlatoXNombre(datoE._nombreProducto)
+    .subscribe(data =>{
+      datoE.platoc = data;
+    },() =>{
+      alert("ERROR: No se pudo obtener el plato");
+    }) ;
 
-    for(let aux of this.listaUsuarios)
-    {
-      if(this.usuario._email != aux._email){
-        this.listaU2.push(aux);
-      }else{
-        this.listaU2.push(this.usuario);
-      }
-    }
+    //Se actualiza la base de datos
 
-    localStorage.setItem('localListaUsuarios',JSON.stringify(this.listaU2));
-    this.listaU2 = [];
+    datoE._cantidad = datoE._cantidad-1;
+    this._carroCCService.updateCarroCompras(datoE).subscribe(() =>{
+    },() =>{
+      alert("ERROR: No se pudo modificar la cantidad");
+    });
+
   }
 
   borrarDato(datoE: CarroCompras){
-     for (var i = 0; i < this.listaCC.length; i++) {
 
-      if(datoE != this.listaCC[i]){ //Si la lista esta vacia
-        this.listaCC2.push(this.listaCC[i]);
-      }
-    }
+    //Se elimina el producto de la base de datos
 
-    this.usuario.carroCompras = this.listaCC2;
-    this.listaCC = this.listaCC2;
-    this.listaCC2 = [];
-
-    for(let aux of this.listaUsuarios)
-    {
-      if(this.usuario._email != aux._email){
-        this.listaU2.push(aux);
-      }else{
-        this.listaU2.push(this.usuario);
-      }
-    }
-
-    localStorage.setItem('localListaUsuarios',JSON.stringify(this.listaU2));
-    this.listaU2 = [];
-
+    this._carroCCService.deleteProductoCarro(datoE._id_CC).subscribe(() =>{
+      alert("Este producto se eliminó correctamente del carro de compras");
+    },() =>{
+      alert("ERROR: No se pudo eliminar el producto del carro de compras.");
+    });
     window.location.reload();
   }
 

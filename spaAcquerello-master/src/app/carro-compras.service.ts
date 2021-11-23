@@ -27,18 +27,16 @@ export class CarroComprasService {
     return this.http.get<CarroCompras[]>(this.Url+"/listaCarrosCompras");
   }
 
-  //OJO ACA
   getlistaCarroComprasXIdUsuario (idUsuario: number){
     return this.http.get<CarroCompras[]>(this.Url+"/listaCarroComprasXidUsuario/"+idUsuario);
   }
 
-  updateCarroCompras  (carroCompras: CarroCompras){ //{idPla}
-    return this.http.put(this.Url +"/actualizarCarro/"+carroCompras._id_CC, CarroCompras);
+  updateCarroCompras (carroCompras: CarroCompras){ 
+    return this.http.put(this.Url +"/actualizarCarroCompras/"+carroCompras._id_CC, carroCompras);
   }
 
-  /*
-  deleteCarrroCompras  (idFactura: number){
-    return this.http.delete(this.Url+"/eliminar/"+id_CC);
+  deleteProductoCarro (idCC: number){
+    return this.http.delete(this.Url+"/eliminar/"+idCC);
   }
-  */
+
 }

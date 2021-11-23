@@ -7,6 +7,8 @@ import com.desarrolloWeb.ProyectoAcquerello.dtos.CarroComprasDTO;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.PlatoDTO;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
+import com.desarrolloWeb.ProyectoAcquerello.modelo.Plato;
+import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.ICarroComprasService;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IPlatoService;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
@@ -99,13 +101,15 @@ public class CarroComprasREST {
 
 
 	@PutMapping("/actualizarCarroCompras/{idCarroCompras}")
-	public CarroComprasDTO actualizarPlato(@RequestBody CarroComprasDTO newCarroCompras, @PathVariable Long idCarroCompras){
+	public Boolean actualizarPlato(@RequestBody CarroComprasDTO newCarroCompras, @PathVariable Long idCarroCompras){
 		CarroCompras carrosCompras = new CarroCompras();
 		ModelMapper mapper = new ModelMapper();
 		carrosCompras = mapper.map(newCarroCompras, CarroCompras.class);
-		carrosCompras = carroComprasService.updateCarroCompras(carrosCompras);
+		carrosCompras.setPlatoc(null);
+		carrosCompras.setUsuarioc(null);
+		carrosCompras = carroComprasService.updateCarroCompras(carrosCompras, idCarroCompras);
 		newCarroCompras = mapper.map(carrosCompras, CarroComprasDTO.class);
-		return newCarroCompras;
+		return true;
 	}
 
 

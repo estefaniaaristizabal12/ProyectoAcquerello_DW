@@ -36,6 +36,10 @@ export class PlatoService {
     return this.http.get<Plato>(this.Url+"/darPlatoXId/"+idPlato);
   }
 
+  getPlatoXNombre(nombrePlato: string){
+    return this.http.get<Plato>(this.Url+"/darPlatoXNombre/"+nombrePlato);
+  }
+
   updatePlato (plato: Plato){
     return this.http.put(this.Url +"/actualizarPlato/"+plato._idPlato, plato);
   }
