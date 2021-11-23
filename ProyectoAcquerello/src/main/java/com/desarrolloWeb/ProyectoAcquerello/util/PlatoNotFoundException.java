@@ -4,10 +4,10 @@ package com.desarrolloWeb.ProyectoAcquerello.util;
 public class PlatoNotFoundException extends RuntimeException {
 
 	public PlatoNotFoundException(Long id) {
-		super("Could not find team by id:" + id);
+		super("No se encontró el plato con id :" + id);
 	}
 	
 	public PlatoNotFoundException(String identificacion) {
-		super("Could not find team by identificacion:" + identificacion);
+		super("No se encontró el plato con id :" + identificacion);
 	}
 }
