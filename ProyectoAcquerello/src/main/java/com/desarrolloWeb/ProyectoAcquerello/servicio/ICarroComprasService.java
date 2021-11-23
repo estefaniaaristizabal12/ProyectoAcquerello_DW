@@ -19,6 +19,8 @@ public interface ICarroComprasService {
     //OJO ACA
     Iterable<CarroCompras> getCarroComprasByIdUsuario(Long idUsuario);
 
+    void deleteCarroComprasXUsuario(Long idUsuario);
+
     Iterable<CarroCompras> getCarroComprasLista();
 
     void deleteCarroCompras(Long idCarroCompras);

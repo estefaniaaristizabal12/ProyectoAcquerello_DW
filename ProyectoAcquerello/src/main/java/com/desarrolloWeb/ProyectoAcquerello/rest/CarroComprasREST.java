@@ -118,5 +118,11 @@ public class CarroComprasREST {
 		carroComprasService.deleteCarroCompras(idCarroCompras);
 		return true;
 	}
+
+	@DeleteMapping("/eliminarXUsuario/{idUsuario}")
+	public Boolean deletePlatoXUsuario(@PathVariable Long idUsuario) {
+		carroComprasService.deleteCarroComprasXUsuario(idUsuario);
+		return true;
+	}
       
 }

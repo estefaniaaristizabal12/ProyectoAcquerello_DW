@@ -1,4 +1,5 @@
 package com.desarrolloWeb.ProyectoAcquerello.servicio;
+import java.util.List;
 import java.util.Optional;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.repositorio.CarroComprasRepository;
@@ -51,6 +52,15 @@ public class CarroComprasService implements ICarroComprasService{
 		return provider;
     }
 
+	@Override
+    public Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras){
+        return repository.findByUsuarioc(carroCompras.getUsuarioc());
+    }
+
+	@Override
+    public Iterable<CarroCompras> getCarroComprasLista(){
+        return repository.findAll();
+    }
 
 	@Override
     public void deleteCarroCompras(Long idCarroCompras){
@@ -64,15 +74,16 @@ public class CarroComprasService implements ICarroComprasService{
     }
 
 	@Override
-    public Iterable<CarroCompras> getCarroComprasListaXUsuario(CarroCompras carroCompras){
-        return repository.findByUsuarioc(carroCompras.getUsuarioc());
-    }
-
-
-
-	@Override
-    public Iterable<CarroCompras> getCarroComprasLista(){
-        return repository.findAll();
+    public void deleteCarroComprasXUsuario(Long idUsuario){
+        List<CarroCompras> carroCompras = repository.findByUsuarioCC(idUsuario);
+		for(int i = 0; i < carroCompras.size(); i++){
+			if(!carroCompras.get(i).equals(null)){
+				repository.delete(carroCompras.get(i));
+			}
+			else {
+				System.out.println("ERROR al eliminar carro de compras de usuario");
+			} 
+		}
     }
 
 }

@@ -39,4 +39,8 @@ export class CarroComprasService {
     return this.http.delete(this.Url+"/eliminar/"+idCC);
   }
 
+  deleteCarroUsuario (idUsuario: number){
+    return this.http.delete(this.Url+"/eliminarXUsuario/"+idUsuario);
+  }
+
 }

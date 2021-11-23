@@ -163,7 +163,13 @@ export class CarroComprasComponent implements OnInit {
 
     //Se borran todos los registros de CC
 
-    alert("Su pago se realizó correctamente");
+    this._carroCCService.deleteCarroUsuario(this.usuario._idUsuario).subscribe(() =>{
+      alert("Su pago se realizó correctamente");
+    },() =>{
+      alert("ERROR: No se pudo realizar el pago!");
+    });
+
+
     this.router.navigateByUrl("/ordenes");
  }
 
