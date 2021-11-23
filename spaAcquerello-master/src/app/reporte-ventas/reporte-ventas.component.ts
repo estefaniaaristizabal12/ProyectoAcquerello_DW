@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FacturaService } from '../factura.service';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Plato } from '../model/plato';
@@ -14,6 +15,9 @@ import { UsuarioService } from '../usuario.service';
 })
 export class ReporteVentasComponent implements OnInit {
 
+  fechaL: Date = new Date();
+  factura: Factura = new Factura(0,0,0,this.fechaL,"");
+
   auxx: CarroCompras[] = [];
   auxxf: Factura [] = [];
   public listaPlatos: Plato[] = [];
@@ -26,7 +30,7 @@ export class ReporteVentasComponent implements OnInit {
   public totalVendidos: number = 0; 
   public precioTotal: number = 0; 
 
-  constructor( public _platoService: PlatoService, public router: Router, public _usuarioService: UsuarioService ) {
+  constructor( public _platoService: PlatoService, public router: Router, public _usuarioService: UsuarioService, public _facturaService: FacturaService ) {
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;
@@ -36,6 +40,12 @@ export class ReporteVentasComponent implements OnInit {
     .subscribe(data =>{
       this.listaUsuarios = data;
     }) ;
+
+    this._facturaService.getlistaFactura().subscribe(data3 =>{
+      this.listaOrdenes = data3;
+    },() =>{
+      alert("ERROR: Se generó un error los datos de las facturas");
+    });
 
   }
 
@@ -55,12 +65,10 @@ export class ReporteVentasComponent implements OnInit {
 
   totalVendidosF(plato: Plato){
     this.totalVendidos = 0;
-    for(let auxU of this.listaUsuarios){
-      this.listaOrdenes = auxU.facturas;
-      for(var i = 0; i < this.listaOrdenes.length; i++){
-        if(plato._nombre == this.listaOrdenes[i].nombrePlato){
-          this.totalVendidos++;
-        }
+    for(var i = 0; i < this.listaOrdenes.length; i++){
+      this.factura = this.listaOrdenes[i];
+      if(this.factura.nombrePlato == plato._nombre){
+        this.totalVendidos = this.totalVendidos + this.factura.cantidad;
       }
     }
 

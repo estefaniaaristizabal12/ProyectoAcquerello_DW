@@ -54,8 +54,12 @@ public class FacturaREST {
 		Iterable<Factura> facturas = facturaService.getFacturaLista();
 		List<FacturaDTO> result = new ArrayList<>();
 		ModelMapper mapper = new ModelMapper();
+		FacturaDTO fd = new FacturaDTO();
 		for (Factura factura : facturas) {
-			result.add(mapper.map(factura, FacturaDTO.class));
+			fd = mapper.map(factura, FacturaDTO.class);
+			fd.setUsuariof(null);
+			fd.setPlatof( null);
+		    result.add(fd);
 		}
 		return result;
 	}
