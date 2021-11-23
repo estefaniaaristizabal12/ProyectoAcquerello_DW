@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Factura } from './model/factura';
 import { CarroCompras } from './model/carroCompras';
 import { Observable } from 'rxjs';
+import { JwtRequest } from './model/JwtRequest';
 
 /*
 import { Injectable } from '@angular/core';
@@ -34,6 +35,7 @@ export class UsuarioService {
     }) ;  
 
   }
+
 
   // - - - - - - - -  C   R   U  D  - - - - - - - - 
 
@@ -125,6 +127,44 @@ export class UsuarioService {
   async async_print_personas() {
     await new Promise((f) => setTimeout(f, 1000));
     console.log(this.listaUsuarios);
+  }
+
+
+  // - - - - - - - -   S E C U R I T Y  - - - - - - - -  
+  
+
+  public login(email: string, pass: string): Observable<any> {
+    var req: JwtRequest = {
+      _email: email,
+      _contrasenia: pass,
+    };
+    return this.http.post("http://localhost:8080/login", req, {
+      observe: 'response',
+    });
+  }
+
+  login2(email: string, pass: string): any {    
+     this.login(email, pass).subscribe(
+      (resp) => {
+        this.saveToken(resp.headers.get('authorization'));
+        return true;
+      },
+      (error) => {
+        console.log('#entre savetoken error: ' );
+        console.error(error);
+        return false;
+      }
+    );
+    return false;
+  }
+
+
+  saveToken(token: string) {
+    sessionStorage.setItem('token', token);
+  }
+
+  getToken(): any {
+    return sessionStorage.getItem('token');
   }
 
 }

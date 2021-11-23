@@ -4,8 +4,6 @@ package com.desarrolloWeb.ProyectoAcquerello.security;
 
 import com.desarrolloWeb.ProyectoAcquerello.security.jwt.JWTAuthenticationFilter;
 import com.desarrolloWeb.ProyectoAcquerello.security.jwt.JWTAuthorizationFilter;
-
-import org.eclipse.jetty.http.HttpMethod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

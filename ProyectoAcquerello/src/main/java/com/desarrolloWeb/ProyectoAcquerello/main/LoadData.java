@@ -1,5 +1,6 @@
 package com.desarrolloWeb.ProyectoAcquerello.main;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Calendar;
 
@@ -29,9 +30,10 @@ class LoadData {
 
     Factura factura1 = new Factura();
     Factura factura2 = new Factura();
+    
 
     @Bean
-	CommandLineRunner initDataUsuarios(UsuarioRepository repository) {
+	CommandLineRunner initDataUsuarios(UsuarioRepository repository, PasswordEncoder passwordEncoder) {
         return args -> {
 			System.out.println("Cargando Usuarios en la Base de Datos");
 
@@ -40,7 +42,7 @@ class LoadData {
             usuarioA.set_nombre("Juan");
 			usuarioA.set_apellido("Bolaños");
 			usuarioA.set_email("byjuanjobm1@gmail.com");
-            usuarioA.set_contrasenia("12345");
+            usuarioA.set_contrasenia(passwordEncoder.encode("12345"));
             usuarioA.set_direccion("Calle 89 n122i 27");
             usuarioA.set_rol("administrador");
 
@@ -51,7 +53,7 @@ class LoadData {
             usuarioB.set_nombre("Estefania");
 			usuarioB.set_apellido("Aristizabal");
 			usuarioB.set_email("estefaniaAristi@gmail.com");
-            usuarioB.set_contrasenia("12345");
+            usuarioB.set_contrasenia(passwordEncoder.encode("12345"));
             usuarioB.set_direccion("Calle Salitre 1 izqu");
             usuarioB.set_rol("usuario");
 			repository.save(usuarioB);
@@ -116,7 +118,6 @@ class LoadData {
             System.out.println("Cargando Carrritos de compras en la Base de Datos");
             
             // ____ CarroCompras 1 ______
-
 
             carroCompras1.setUsuarioc(usuarioB);
             carroCompras1.setPlatoc(platoA);

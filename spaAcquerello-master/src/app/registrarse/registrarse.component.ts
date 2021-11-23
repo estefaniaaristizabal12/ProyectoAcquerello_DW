@@ -39,6 +39,7 @@ export class RegistrarseComponent implements OnInit {
   }
 
   irAMiCuenta(){
+    alert("Ahora inicie sesión ....");
     this.router.navigateByUrl("/iniciarSesion");
   }
 

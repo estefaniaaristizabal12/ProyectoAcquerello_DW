@@ -1,13 +1,9 @@
 package com.desarrolloWeb.ProyectoAcquerello.rest;
-import com.desarrolloWeb.ProyectoAcquerello.servicio.ICarroComprasService;
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
-
-import com.desarrolloWeb.ProyectoAcquerello.dtos.CarroComprasDTO;
 import com.desarrolloWeb.ProyectoAcquerello.dtos.UsuarioDTO;
-import com.desarrolloWeb.ProyectoAcquerello.modelo.CarroCompras;
 import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +23,6 @@ public class UsuarioREST {
     @Autowired
 	private IUsuarioService usuarioService;
 
-	@Autowired
-	private ICarroComprasService carroCService;
 
     // - - - - - - - -  C   R   U  D  - - - - - - - - 
 

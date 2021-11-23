@@ -15,5 +15,8 @@ public interface UsuarioRepository extends  CrudRepository<Usuario, Long> {
 
     @Query(value = "SELECT u._idUsuario FROM Usuario u WHERE u._email = ?1")
     Long findIdXEmail(String email);
+
+    @Query(value = "SELECT u FROM Usuario u WHERE u._email = ?1")
+    Usuario findByIdUsuario(String email);
 }
 
