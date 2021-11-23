@@ -42,7 +42,7 @@ export class OrdenesComponent implements OnInit {
     //Se obtiene la información del usuario actual
     this._usuarioService.getUsuarioXEmail(this.correoA)
     .subscribe(data =>{
-      alert("Gracias por su compra en Acquerello Ristorante!");
+      //alert("Gracias por su compra en Acquerello Ristorante!");
       this.usuario = data;
     },() =>{
       alert("ERROR: Se generó un error en el pago.");
