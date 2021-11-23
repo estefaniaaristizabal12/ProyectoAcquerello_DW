@@ -23,9 +23,19 @@ export class InicioComponent implements OnInit {
     this._platoService.getlistaPlato()
     .subscribe(data =>{
       this.listaPlatos = data;
+    },()=>{
+      console.log("Se generó un error cargando los platos.")
+    },()=>{
+      this.inicializarPlatos();
     }) ;
 
     this.ngOnInit();
+  }
+
+  inicializarPlatos(){
+    this.plato1 = this.listaPlatos[0];
+    this.plato2 = this.listaPlatos[1];
+    this.plato3 = this.listaPlatos[2];
   }
 
 
