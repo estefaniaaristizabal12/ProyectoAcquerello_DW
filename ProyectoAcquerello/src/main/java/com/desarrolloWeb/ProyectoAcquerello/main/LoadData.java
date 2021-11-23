@@ -18,7 +18,6 @@ import org.springframework.context.annotation.Bean;
 @Configuration
 class LoadData {
 
-    
     Usuario usuarioA = new Usuario();
     Usuario usuarioB = new Usuario();
 
@@ -58,9 +57,8 @@ class LoadData {
             usuarioB.set_rol("usuario");
 			repository.save(usuarioB);
 
-
             Usuario usuario = new Usuario();
-            for (int i = 3; i< 20; i++) {
+            for (int i = 3; i< 10; i++) {
 				usuario = new Usuario();
 				usuario.set_nombre("Usuario "+i);
 				usuario.set_apellido("Apellido"+i);
@@ -78,9 +76,9 @@ class LoadData {
     @Bean
 	CommandLineRunner initDataPlatos(PlatoRepository repository) {
         return args -> {
-	        System.out.println("Cargando Usuarios en la Base de Datos");
+	        System.out.println("Cargando Platos en la Base de Datos");
 
-                    // ____ Plato 1 ______
+             // ____ Plato 1 ______
 
             platoA.set_nombre("Pasta Al Pomodoro Fresco");
             platoA.set_descripcion("Clasica pasta con albahaca y aceite de oliva");
@@ -88,7 +86,7 @@ class LoadData {
             platoA.set_imagen("assets/imagenVacia.png");
             repository.save(platoA);
 
-                    // ____ Plato 2 ______
+            // ____ Plato 2 ______
 
             platoB.set_nombre("Pasta Al Funghi");
             platoB.set_descripcion("Salsa cremosa de hongos con adicion de especies");
