@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { FacturaService } from '../factura.service';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
+import { PlatoService } from '../plato.service';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
@@ -24,45 +26,42 @@ export class OrdenesComponent implements OnInit {
   public correoA:string ="";
 
 
-  constructor(public _usuarioService: UsuarioService, public router: Router) { 
+  constructor(public _usuarioService: UsuarioService, public router: Router, public _platoService: PlatoService, public _facturaService: FacturaService) { 
     var aux1 = localStorage.getItem('actual');
-    //Se debe validar que no sea nulo el string.
-    if(aux1== null){
-      this.correoA = "";
-    }
-    else{
-      this.correoA = aux1;
-    }
-
-
+    if(aux1== null) this.correoA = "";
+    else this.correoA = aux1;
+  
     this._usuarioService.getlistaUsuario()
     .subscribe(data =>{
       this.listaUsuarios = data;
     }) ;
 
-  
 
-    this.buscarPersona(this.correoA);
+    //Se obtiene la información del usuario actual
+    this._usuarioService.getUsuarioXEmail(this.correoA)
+    .subscribe(data =>{
+      this.usuario = data;
+    },() =>{
+      alert("ERROR: Se generó un error cargando el carro de compras.");
+    },() =>{
+      this.obtenerListaOrdenes();
+    }) ;
 
-    //Aca toca cambiar a this.usuario.ordenes
-
-    console.log(this.usuario._nombre);
-    this.listaOrdenes = this.usuario.facturas;
     
+  }
+
+  obtenerListaOrdenes(){
+    this._facturaService.getlistaFacturasXIdUsuario(this.usuario._idUsuario).subscribe(data3 =>{
+      this.listaOrdenes = data3;
+    },() =>{
+      alert("ERROR: Se generó un error los datos de las facturas");
+    });
   }
 
   ngOnInit(): void {
   }
 
-  buscarPersona(correoA:string){
-    for(let aux of this.listaUsuarios)
-    {
-      if(correoA == aux._email){
-        this.usuario = aux;
-      }
-    }
-  }
-
+ 
   cerrar(){
     //borro el inicio
     localStorage.setItem('actual',"");

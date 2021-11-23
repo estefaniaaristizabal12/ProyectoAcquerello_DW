@@ -10,7 +10,7 @@ import com.desarrolloWeb.ProyectoAcquerello.modelo.Usuario;
 public interface FacturaRepository extends  CrudRepository<Factura, Long>  {
     List<Factura> findByUsuariof(Usuario usuariof);   
 
-    @Query(nativeQuery = true, value = "SELECT f.* FROM Factura f JOIN Usuario u ON f.usuarioId = u._idUsuario WHERE u._idUsuario = ?1")
+    @Query(nativeQuery = true, value = "SELECT f.* FROM Factura f JOIN Usuario u ON f.usuario_Id = u._id_Usuario WHERE u._id_Usuario = ?1")
     List<Factura> findByUsuarioFa( Long idUsuario);
 
     @Query(nativeQuery = true, value = "SELECT f.* FROM Factura f JOIN Plato p ON f.platoId = p._idPlato WHERE p._idPlato = ?1")

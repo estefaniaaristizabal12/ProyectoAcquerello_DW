@@ -34,6 +34,12 @@ public class FacturaService implements IFacturaService{
         return repository.findAll();
     }
 
+    //OJO ACA
+	@Override
+	public Iterable<Factura> getFacturaByIdUsuario(Long idUsuario){
+		return repository.findByUsuarioFa(idUsuario);
+	}
+
     @Override
     public Iterable<Factura> getFacturaListaXUsuario(Factura factura){
         return repository.findByUsuariof(factura.getUsuariof());

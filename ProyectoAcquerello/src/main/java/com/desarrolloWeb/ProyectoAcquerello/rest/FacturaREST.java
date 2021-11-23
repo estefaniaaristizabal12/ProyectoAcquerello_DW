@@ -72,6 +72,22 @@ public class FacturaREST {
 		return result;
 	}
 
+	//OJO ACA
+	@GetMapping("/listaFacturasXidUsuario/{idUsuario}")
+	public List<FacturaDTO> getCarroComprasXIdUsuario(@PathVariable Long idUsuario) {
+		Iterable<Factura> facturas = facturaService.getFacturaByIdUsuario(idUsuario);
+		ModelMapper mapper = new ModelMapper();
+		List<FacturaDTO> result = new ArrayList<>();
+		FacturaDTO fd = new FacturaDTO();
+		for (Factura f : facturas) {
+			fd = mapper.map(f, FacturaDTO.class);
+			fd.setUsuariof(null);
+			fd.setPlatof( null);
+		    result.add(fd);
+		}
+		return result;
+	}
+
 
 
 	@PutMapping("/actualizarFactura/{idFactura}")
