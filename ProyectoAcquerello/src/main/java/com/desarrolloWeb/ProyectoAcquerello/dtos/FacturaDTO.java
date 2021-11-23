@@ -14,8 +14,16 @@ public class FacturaDTO {
     private Integer cantidad;
     private float total;
     private String foto;
+    private String nombrePlato;
 
     
+    public String getNombrePlato() {
+        return nombrePlato;
+    }
+    public void setNombrePlato(String nombrePlato) {
+        this.nombrePlato = nombrePlato;
+    }
+
     public String getFoto() {
         return foto;
     }

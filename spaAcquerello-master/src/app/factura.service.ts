@@ -10,13 +10,11 @@ export class FacturaService {
 
   Url = 'http://localhost:8080/factura';
 
-
   constructor(private http: HttpClient) { 
   }
 
-
-  createFactura (factura: any): Observable<any> {
-    return this.http.post(this.Url +"/crear", factura);
+  createFactura (factura: any, correo: string){
+    return this.http.post(this.Url +"/crear/"+correo, factura);
   }
 
   getlistaFactura(){
@@ -27,7 +25,7 @@ export class FacturaService {
     return this.http.get<Factura[]>(this.Url+"/listaFacturasXUsuario/"+idFactura);
   }
 
-  updateFactura (factura: Factura){ //{idPla}
+  updateFactura (factura: Factura){
     return this.http.put(this.Url +"/actualizarFactura/"+factura.idFactura, factura);
   }
 

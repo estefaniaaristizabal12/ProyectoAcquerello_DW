@@ -58,7 +58,7 @@ export class ReporteVentasComponent implements OnInit {
     for(let auxU of this.listaUsuarios){
       this.listaOrdenes = auxU.facturas;
       for(var i = 0; i < this.listaOrdenes.length; i++){
-        if(plato._nombre == this.listaOrdenes[i].nombreProducto){
+        if(plato._nombre == this.listaOrdenes[i].nombrePlato){
           this.totalVendidos++;
         }
       }

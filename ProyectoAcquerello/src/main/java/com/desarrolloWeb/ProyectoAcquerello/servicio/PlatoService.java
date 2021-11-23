@@ -47,7 +47,7 @@ public class PlatoService implements IPlatoService{
 			return plato.get();
 		}
         else{
-            System.out.println("ERROR");
+            System.out.println("ERROR PLATO");
             return plato.get();
         }
 	}

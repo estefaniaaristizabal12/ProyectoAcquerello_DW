@@ -1,6 +1,9 @@
 package com.desarrolloWeb.ProyectoAcquerello.rest;
 
 import com.desarrolloWeb.ProyectoAcquerello.servicio.IFacturaService;
+import com.desarrolloWeb.ProyectoAcquerello.servicio.IPlatoService;
+import com.desarrolloWeb.ProyectoAcquerello.servicio.IUsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.ArrayList;
@@ -24,17 +27,26 @@ public class FacturaREST {
     @Autowired
 	private IFacturaService facturaService;
 
+	@Autowired
+	private IPlatoService platoService;
+
+	@Autowired
+	private IUsuarioService usuarioService;
+
 
 	// - - - - - - - -  C   R   U  D  - - - - - - - - 
 
-    @PostMapping("/crear")
-	public FacturaDTO createFactura(@RequestBody FacturaDTO nuevaFactura) {
+    @PostMapping("/crear/{emailUsuario}")
+	public Boolean createFactura(@RequestBody FacturaDTO nuevaFactura, @PathVariable String emailUsuario) {
 		Factura factura = new Factura();
 		ModelMapper mapper = new ModelMapper();
 		factura = mapper.map(nuevaFactura, Factura.class);
+		factura.setUsuariof(usuarioService.getUsuarioByEmail(emailUsuario));
+		factura.setPlatof(platoService.getPlatoByNombre(factura.getNombrePlato()));
 		factura = facturaService.createFactura(factura);
 		nuevaFactura = mapper.map(factura, FacturaDTO.class);
-		return nuevaFactura;
+		if(!nuevaFactura.equals(null)) return true;
+		else return false;
 	}
 
 	@GetMapping("/listaFacturas")

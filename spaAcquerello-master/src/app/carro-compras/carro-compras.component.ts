@@ -3,6 +3,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarroComprasService } from '../carro-compras.service';
+import { FacturaService } from '../factura.service';
 import { CarroCompras } from '../model/carroCompras';
 import { Factura } from '../model/factura';
 import { Usuario } from '../model/usuario';
@@ -16,20 +17,11 @@ import { UsuarioService } from '../usuario.service';
 })
 export class CarroComprasComponent implements OnInit {
   
-  listaCC: CarroCompras[] = [];
-  listaCC2: CarroCompras[] = [];
-  facturaN: Factura [] = [];
-  fechaL: Date = new Date();
-  factAux: Factura = new Factura(0,0,0,this.fechaL,"");
-  dato: CarroCompras = new CarroCompras(0,"",0,0,"");
-  aux2: CarroCompras = new CarroCompras(0,"",0,0,"");
-  auxx: CarroCompras[] = [];
-  auxxf: Factura [] = [];
-  idUsuario: number = 0;
+  public listaCC: CarroCompras[] = [];
+  public fechaL: Date = new Date();
+  public factura: Factura = new Factura(0,0,0,this.fechaL,"");
   public usuario: Usuario = new Usuario(0,"","","","","","");
-  public aux: Usuario = new Usuario(0,"","","","","","");
   public listaUsuarios: Usuario[] = [];
-  public listaU2: Usuario[] = [];
   public correoA:string ="";
   public numItems: number = 0;
   public total: number = 0;
@@ -38,9 +30,7 @@ export class CarroComprasComponent implements OnInit {
   public mostrarT: boolean = false;
 
 
-
-
-  constructor(public _usuarioService: UsuarioService,public router: Router, public _carroCCService: CarroComprasService, public _platoService: PlatoService) { 
+  constructor(public _usuarioService: UsuarioService, public router: Router, public _carroCCService: CarroComprasService, public _platoService: PlatoService, public _facturaService: FacturaService) { 
     this.total = 0;
 
     this._usuarioService.getlistaUsuario()
@@ -65,7 +55,9 @@ export class CarroComprasComponent implements OnInit {
  
   }
 
+
   pedirCarroCompras(){
+
     this._carroCCService.getlistaCarroComprasXIdUsuario(this.usuario._idUsuario).subscribe(data3 =>{
       this.listaCC = data3;
     },() =>{
@@ -73,26 +65,19 @@ export class CarroComprasComponent implements OnInit {
     },() =>{
       this.modificarDatos()
     });
+
   }
 
   modificarDatos(){
     if(this.listaCC.length>0) this.mostrar =  true;
     else this.mostrarT = true;
-
     this.numItems = this.listaCC.length;
   }
 
   ngOnInit(): void {
   }
 
-  buscarPersona(correoA:string){
-    for(let aux of this.listaUsuarios)
-    {
-      if(correoA == aux._email){
-        this.usuario = aux;
-      }
-    }
-  }
+ 
 
   darNumItem(){
     return this.numItems;
@@ -102,7 +87,6 @@ export class CarroComprasComponent implements OnInit {
     this.subtotal = 0;
     for(let dato of this.listaCC)
       this.subtotal = this.subtotal + dato._cantidad * dato._precio;
-    
     return this.subtotal;
   }
 
@@ -155,9 +139,7 @@ export class CarroComprasComponent implements OnInit {
   }
 
   borrarDato(datoE: CarroCompras){
-
     //Se elimina el producto de la base de datos
-
     this._carroCCService.deleteProductoCarro(datoE._id_CC).subscribe(() =>{
       alert("Este producto se eliminó correctamente del carro de compras");
     },() =>{
@@ -168,50 +150,23 @@ export class CarroComprasComponent implements OnInit {
 
   pagar(){
 
-    for (var i = 0; i < this.usuario.carroCompras.length; i++) {
-      this.factAux.cantidad = this.usuario.carroCompras[i]._cantidad;
-      this.factAux.total = this.usuario.carroCompras[i]._precio * this.usuario.carroCompras[i]._cantidad;
-      this.factAux.idFactura = 555;
-      this.factAux.fecha = this.fechaL;
-      this.usuario.facturas.push(this.factAux);
+    for(var i=0; i< this.listaCC.length; i++){
+      this.factura= new Factura(0,this.listaCC[i]._cantidad, this.listaCC[i]._precio*this.listaCC[i]._cantidad,this.fechaL,this.listaCC[i]._foto );
+      this.factura.nombrePlato = this.listaCC[i]._nombreProducto;
+      //Se agrega ese carro de compras
+      this._facturaService.createFactura(this.factura,this.correoA).subscribe(() =>{
+      },() =>{
+        alert("Error: No se pudo agregar la factura correctamente");
+      });
 
-    }
+    } 
 
-    /*for (var i = 0; i < this.usuario.carroCompras.length; i++) {
-      this.usuario.facturas.push(this.usuario.carroCompras[i]);
-    }*/
+    //Se borran todos los registros de CC
 
-    this.listaCC = [];
-    this.usuario.carroCompras= this.listaCC;
-
-    for(let aux of this.listaUsuarios)
-   {
-     if(this.usuario._email != aux._email){
-       this.listaU2.push(aux);
-     }else{
-       this.listaU2.push(this.usuario);
-     }
-   }
-
-   localStorage.setItem('localListaUsuarios',JSON.stringify(this.listaU2));
-
-   alert("Su pago se realizó correctamente");
-   this.listaU2 = [];
-   this.actualizarFormulario();
-   this.router.navigateByUrl("/ordenes");
+    alert("Su pago se realizó correctamente");
+    this.router.navigateByUrl("/ordenes");
  }
 
-  actualizarFormulario(){
-    var storageList = localStorage.getItem('localListaUsuarios');
-    if(storageList== null){
-      this.listaUsuarios = [];
-    }
-    else{
-      this.listaUsuarios = JSON.parse(storageList);
-    }
-
-    this.buscarPersona(this.correoA);
-
-  }
+  
 
 }

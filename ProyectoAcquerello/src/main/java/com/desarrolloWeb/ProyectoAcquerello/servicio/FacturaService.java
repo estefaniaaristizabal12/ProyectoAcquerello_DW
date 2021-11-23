@@ -63,11 +63,5 @@ public class FacturaService implements IFacturaService{
 		} 
 
     }
-
-    // @Override
-	// public Page<Factura> getFacturas(Pageable pageable) {
-	// 	return repository.findAll(pageable);
-	// }
-
     
 }

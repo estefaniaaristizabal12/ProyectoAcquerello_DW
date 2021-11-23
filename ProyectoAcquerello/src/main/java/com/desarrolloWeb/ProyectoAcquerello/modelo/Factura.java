@@ -1,8 +1,5 @@
 package com.desarrolloWeb.ProyectoAcquerello.modelo;
-
-import java.time.LocalDateTime;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,17 +7,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Basic;
-//import javax.persistence.EmbeddedId;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-//import javax.persistence.Temporal;
-//import javax.persistence.TemporalType;
 
 
 @Entity
 public class Factura {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFactura;
@@ -46,23 +39,21 @@ public class Factura {
     @Basic
     private float total;
 
+    @Basic
+    private String nombrePlato;
+
 
     public Factura(){
 
     }
     
-    
-
-
     public String getFoto() {
         return foto;
     }
 
-
     public void setFoto(String foto) {
         this.foto = foto;
     }
-
 
     public Long getIdFactura() {
         return idFactura;
@@ -123,6 +114,11 @@ public class Factura {
         this.total = total;
     }
 
+    public String getNombrePlato() {
+        return nombrePlato;
+    }
 
-    
+    public void setNombrePlato(String nombrePlato) {
+        this.nombrePlato = nombrePlato;
+    } 
 }

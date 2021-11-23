@@ -97,6 +97,8 @@ export class InfoPlatoComponent implements OnInit {
       alert("Error: No se pudo agregar correctamente");
     });
    }
+
+   
   }
 
 
