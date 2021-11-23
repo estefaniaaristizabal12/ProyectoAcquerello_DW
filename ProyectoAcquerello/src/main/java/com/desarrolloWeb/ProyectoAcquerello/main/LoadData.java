@@ -36,6 +36,8 @@ class LoadData {
         return args -> {
 			System.out.println("Cargando Usuarios en la Base de Datos");
 
+           
+
             // ____ Usuario A ______
 
             usuarioA.set_nombre("Juan");
@@ -78,32 +80,94 @@ class LoadData {
         return args -> {
 	        System.out.println("Cargando Platos en la Base de Datos");
 
+            
+
+
+            //------ Pizza -------
+            Plato plato1 = new Plato();
+            plato1.set_nombre("Pizza Burrata");
+            plato1.set_descripcion("Burrata fresca de búfala, parmigiano y pimienta.");
+            plato1.set_precio(39900);
+            plato1.set_imagen("assets/pizzaBurrata.png");
+            repository.save(plato1);
+
+            Plato plato2 = new Plato();
+            plato2.set_nombre("Pizza Pepperoni");
+            plato2.set_descripcion("Chorizo italiano, queso mozzarella y pimienta");
+            plato2.set_precio(33900);
+            plato2.set_imagen("assets/pizzaPepperoni.png");
+            repository.save(plato2);
+
+            Plato plato3 = new Plato();
+            plato3.set_nombre("Pizza Italiana");
+            plato3.set_descripcion("Salsiccia sicilina, jamón artesanal, pepperoni y queso.");
+            plato3.set_precio(33900);
+            plato3.set_imagen("assets/pizzaItaliana.png");
+            repository.save(plato3);
+
+            //------ Ensalada -------
+            Plato plato4 = new Plato();
+            plato4.set_nombre("Ensalada de la casa");
+            plato4.set_descripcion("Pollo a la parilla, tocineta crujiente, tomate cherry y habichuela");
+            plato4.set_precio(33900);
+            plato4.set_imagen("assets/ensaladaCasa.png");
+            repository.save(plato4);
+
+            Plato plato5 = new Plato();
+            plato5.set_nombre("Ensalada césar");
+            plato5.set_descripcion("Pollo a la parrilla, lechuga romana, crutones y parmigiano");
+            plato5.set_precio(33900);
+            plato5.set_imagen("assets/ensaladaCesar.png");
+            repository.save(plato5);
+
+            Plato plato6 = new Plato();
+            plato6.set_nombre("Panino pollo rostizado");
+            plato6.set_descripcion("Jugoso pollo rostizado, lechuga, tomate y tocineta");
+            plato6.set_precio(33900);
+            plato6.set_imagen("assets/paninoPolloRostizado.png");
+            repository.save(plato6);
+
+
+            //  -------  Pasta ---------
+            Plato plato7 = new Plato();
+            plato7.set_nombre("Pasta al pomodoro fresco");
+            plato7.set_descripcion("Nuestra clásica salsa de tomate, albahaca y aceite de oliva.");
+            plato7.set_precio(27900);
+            plato7.set_imagen("assets/pastaPomodoro.png");
+            repository.save(plato7);
+
+            Plato plato8 = new Plato();
+            plato8.set_nombre("Pasta al Funghi");
+            plato8.set_descripcion("Salsa cremosa de hongos y parmigiano.");
+            plato8.set_precio(30900);
+            plato8.set_imagen("assets/pastaAlFunghi.png");
+            repository.save(plato8);
+
+            Plato plato9 = new Plato();
+            plato9.set_nombre("Pasta al Ragú de res");
+            plato9.set_descripcion("Suculento ragú de res en nuestra salsa pomodoro");
+            plato9.set_precio(35900);
+            plato9.set_imagen("assets/pastaAlRagu.png");
+            repository.save(plato9);
+
+
              // ____ Plato 1 ______
 
-            platoA.set_nombre("Pasta Al Pomodoro Fresco");
-            platoA.set_descripcion("Clasica pasta con albahaca y aceite de oliva");
-            platoA.set_precio(19000);
-            platoA.set_imagen("assets/imagenVacia.png");
+            platoA.set_nombre("Risotto Di Mare");
+            platoA.set_descripcion("Arroz arbóreo, pescado blanco y camarones.");
+            platoA.set_precio(49900);
+            platoA.set_imagen("assets/risottoDiMare.png");
             repository.save(platoA);
 
             // ____ Plato 2 ______
 
-            platoB.set_nombre("Pasta Al Funghi");
-            platoB.set_descripcion("Salsa cremosa de hongos con adicion de especies");
-            platoB.set_precio(19000);
-            platoB.set_imagen("assets/imagenVacia.png");
+            platoB.set_nombre("Risotto Al Funghi");
+            platoB.set_descripcion("Arroz arbóreo, cremosa salsa de hongos y parmigiano.");
+            platoB.set_precio(39000);
+            platoB.set_imagen("assets/risottoAlFunghi.png");
             repository.save(platoB);
 
 
-            Plato plato = new Plato();
-            for (int i = 3; i< 20; i++) {
-				plato = new Plato();
-				plato.set_nombre("Plato "+i);
-				plato.set_descripcion("descripcion"+i);
-				plato.set_precio(100);
-                plato.set_imagen("assets/imagenVacia.png");
-				repository.save(plato);
-			}
             System.out.println("Platos cargados de manera exitosa");
         };
     }
